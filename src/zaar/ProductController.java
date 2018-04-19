@@ -27,6 +27,7 @@ public class ProductController implements Initializable {
 
     }
 
+    // Byter scen från startsidan till loginskärmen
     public void useLoginButton(ActionEvent e) throws IOException {
         Node node = (Node)e.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
