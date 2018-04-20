@@ -9,6 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,10 +24,13 @@ public class ProductController implements Initializable {
     @FXML private Button kundVButton;
     @FXML private Button searchButton;
     @FXML private TextField searchField;
+    @FXML private ImageView logo;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        AnchorPane pane = new AnchorPane();
+        Image image = new Image("File:img/ShopIT.png");
+        pane.getChildren().add(new ImageView(image));
     }
 
     // Byter scen från startsidan till loginskärmen
