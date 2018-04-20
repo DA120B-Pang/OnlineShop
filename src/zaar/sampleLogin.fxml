@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LoginController">
     <children>
-        <TextField layoutX="217.0" layoutY="118.0" promptText="Användarnamn" />
-        <TextField layoutX="218.0" layoutY="163.0" promptText="Lösenord" />
+        <TextField fx:id="username" layoutX="217.0" layoutY="118.0" promptText="Användarnamn" />
         <Label layoutX="264.0" layoutY="57.0" prefHeight="43.0" prefWidth="79.0" text="Login">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button fx:id="backButton" layoutX="217.0" layoutY="216.0" mnemonicParsing="false" onAction="#useBackButton" text="Bakåt" />
+        <Button fx:id="backButton" layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#useBackButton" text="&lt;---" />
+      <Label layoutX="217.0" layoutY="200.0" prefHeight="17.0" prefWidth="92.0" text="Kom ihåg mig" />
+      <Label layoutX="218.0" layoutY="224.0" prefHeight="17.0" prefWidth="135.0" text="Glömt ditt lösenord?" />
+      <Button fx:id="loginButton" layoutX="218.0" layoutY="253.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="167.0" text="Logga in" />
+      <CheckBox layoutX="309.0" layoutY="200.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="0.0" />
+      <Label layoutX="216.0" layoutY="320.0" text="Har du inget konto? Skapa ett här!" />
+      <Label layoutX="216.0" layoutY="342.0" text="Vill du logga in som admin? Klicka här!" />
+      <Label fx:id="dbStatus" layoutX="426.0" layoutY="23.0" prefHeight="27.0" prefWidth="127.0" />
+      <Label fx:id="loginStatus" layoutX="216.0" layoutY="97.0" prefHeight="17.0" prefWidth="275.0" />
+      <PasswordField fx:id="password" layoutX="218.0" layoutY="154.0" promptText="Lösenord" />
     </children>
 </AnchorPane>
