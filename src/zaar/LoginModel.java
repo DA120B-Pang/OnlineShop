@@ -23,7 +23,7 @@ public class LoginModel {
     public boolean isLogin(String user, String pass) throws SQLException{
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "Select * from Login where username = ? and password = ?";
+        String query = "Select * from Customers where login_name = ? and login_password = ?";
 
         try{
             preparedStatement = connection.prepareStatement(query);
