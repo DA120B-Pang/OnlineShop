@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LogoPageController">
+   <children>
+      <ImageView fx:id="logo" fitHeight="394.0" fitWidth="395.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/ShopIT.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="moveOn" layoutX="108.0" layoutY="355.0" mnemonicParsing="false" onAction="#useMoveOnButton" text="Klicka här om du vill gå vidare" />
+   </children>
+</AnchorPane>
