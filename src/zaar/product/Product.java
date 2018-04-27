@@ -1,4 +1,4 @@
-package zaar;
+package zaar.product;
 
 public class Product {
     private int productId;

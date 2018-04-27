@@ -1,5 +1,8 @@
 package zaar;
 
+import zaar.customer.Customer;
+import zaar.product.Product;
+
 import java.util.ArrayList;
 
 public class Data {

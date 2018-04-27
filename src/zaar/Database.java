@@ -1,14 +1,14 @@
 package zaar;
 
 import com.mysql.jdbc.Connection;
+import zaar.product.Category;
+import zaar.product.MenuSort;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Database {
     private static Database ourInstance = new Database();;
@@ -34,6 +34,7 @@ public class Database {
         if (connection != null) {
             Queue<Category> list;
             Category cat;
+            HashMap<Integer,String> forSortingMenu = new HashMap<>();
             try {
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery("SELECT * FROM shopit.category where parent_product_catagory_id is not null order by parent_product_catagory_id DESC, product_catagory_name DESC");
@@ -41,26 +42,29 @@ public class Database {
                     //index1 = category ID, index2 = parent Category ID, index 3 = category type desc, index 4 = category name
                     cat = new Category(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
                     System.out.println(cat.getName());
-                    if (menu.containsKey(cat.getProductCategory())) {
-                                    list = menu.get(cat.getProductCategory());//Read Qqueue
-                                    menu.remove(cat.getProductCategory());//Remove old Hashvalue
-                                    list.add(cat);//Add Category
-                                    if (cat.getParentGroupCategory() != 0) {
-                                        if (menu.containsKey(cat.getParentGroupCategory())) {
-                                            Queue<Category> list2 = menu.get(cat.getParentGroupCategory());
-                                            for (Category c: list2) {
+                    forSortingMenu.put(cat.getProductCategory(), cat.getName());
+                    if (menu.containsKey(cat.getProductCategory())) {//Submenus exists
+                        list = menu.get(cat.getProductCategory());//Read Qqueue
+                        menu.remove(cat.getProductCategory());//Remove old Hashvalue
+                        list.add(cat);//Add Category
+                        if (cat.getParentGroupCategory() != 0) {
+                            if (menu.containsKey(cat.getParentGroupCategory())) {
+                                Queue<Category> list2 = menu.get(cat.getParentGroupCategory());
+                                for (Category c: list2) {
                                     list.add(c);
-                                }
+                                    }
                             }
                             menu.put(cat.getParentGroupCategory(), list);//Insert new Hash
-                        } else {
+                        }
+                        else {
                             menu.put(cat.getProductCategory(), list);//Insert new Hash
                         }
-                    } else if (menu.containsKey(cat.getParentGroupCategory())) {
+                    }
+                    else if (menu.containsKey(cat.getParentGroupCategory())) {//Add to same menulevel
                         list = menu.get(cat.getParentGroupCategory());//Read Qqueue
                         list.add(cat);//Add Category
-                    } else {
-
+                    }
+                    else {
                         list = new LinkedList<>();
                         list.add(cat);
                         if (cat.getParentGroupCategory()==0) {
@@ -71,7 +75,18 @@ public class Database {
                         }
                     }
                 }
-                return menu;
+                ArrayList<MenuSort> menuSort = new ArrayList<>();
+                for (Map.Entry<Integer, Queue<Category>> entry : menu.entrySet()){
+                    menuSort.add(new MenuSort(entry.getKey(),forSortingMenu.get(entry.getKey())));
+                }
+                menuSort.sort(new MenuSort(1,""));
+
+                HashMap<Integer, Queue <Category>> tmp = new HashMap<>();
+                for (int i = 0; i < menuSort.size(); i++) {
+                    tmp.put(i,menu.get(menuSort.get(i).index));
+                }
+
+                return tmp;
 
             } catch (SQLException ex) {
                 System.out.println("error on executing the query" + ex);

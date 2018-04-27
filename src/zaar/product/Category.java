@@ -1,4 +1,4 @@
-package zaar;
+package zaar.product;
 
 import java.util.Comparator;
 

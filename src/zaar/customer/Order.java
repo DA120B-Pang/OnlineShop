@@ -1,4 +1,4 @@
-package zaar;
+package zaar.customer;
 
 public class Order {
 }
