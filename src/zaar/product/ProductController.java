@@ -64,7 +64,7 @@ public class ProductController implements Initializable {
         productModel.getMenu(menuBtn);
         ArrayList<Product> products = new ArrayList<>();
         for (int i = 0; i < 20 ; i++) {
-            products.add(new Product(1, 2, "Namn på produkt",32.68, 4,"", ""));
+            products.add(new Product(1, 2, "Namn på produkt",32.68, 1,"Tetsed dsfdsa dafdag adsfdasf sdfasdfadf fadsfasdf adsfdasf asdfd asd sdad sdad asf sadsa sadsd sadsa dsad fdda eaf dafa", ""));
         }
         prodVbox.setPrefWidth(1000);
         productModel.populateProductVbox(prodVbox,products);

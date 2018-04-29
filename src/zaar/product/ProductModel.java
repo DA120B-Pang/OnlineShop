@@ -1,16 +1,17 @@
 package zaar.product;
 
+import javafx.beans.value.WritableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import zaar.Database;
@@ -123,11 +124,20 @@ public class ProductModel {
         System.out.println(num +" "+name);
     }
 
+
     public void populateProductVbox(VBox vBox, ArrayList<Product> products){
+        AnchorPane anchorPane;
         for (Product p: products){
             vBox.getChildren().add(productIconView(p));
+
         }
     }
+
+    /**
+     * Returns Layout container with product view;
+     * @param product product details
+     * @return AnchorPane
+     */
     private AnchorPane productIconView(Product product){
         AnchorPane anchorPane = new AnchorPane();
         anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -142,16 +152,64 @@ public class ProductModel {
             ImageView imageView = new ImageView(image);//Adding image
             imageView.setFitWidth(100);//Adding image
             imageView.setFitHeight(100);//Adding image
+            AnchorPane.setTopAnchor(imageView,10.0);
+            AnchorPane.setLeftAnchor(imageView,10.0);
+            AnchorPane.setBottomAnchor(imageView,10.0);
 
-            Label productName = new Label(product.getName());
-            productName.setFont(Font.font(null,FontWeight.BOLD,14));
-            productName.setLayoutX(126);
-            productName.setLayoutY(14);
 
-            anchorPane.getChildren().addAll(imageView,productName);//Add to layout
-            System.out.println(anchorPane.getStyle().toString());
+            Label productName = new Label(product.getName());//Adding product name
+            productName.setFont(Font.font(null,FontWeight.BOLD,14));//Adding product name
+            productName.setLayoutX(126);//Adding product name
+            productName.setLayoutY(14);//Adding product name
+
+            Label productDesc = new Label(product.getDescription());//Adding product description
+            productDesc.setFont(Font.font(null,12));//Adding product descriptio
+            productDesc.setPrefWidth(300);//Adding product description
+            productDesc.setPrefHeight(35);//Adding product description
+            productDesc.wrapTextProperty().setValue(true);//Adding product description
+            productDesc.setLayoutX(126);//Adding product descriptio
+            productDesc.setLayoutY(33);//Adding product descriptio
+
+            Rectangle inStockIndicator = new Rectangle(15,15);
+            inStockIndicator.setLayoutX(126);
+            inStockIndicator.setLayoutY(78);
+            if(product.getQuantity()>0) {
+                inStockIndicator.setFill(Color.LIMEGREEN);
+            }
+            else {
+                inStockIndicator.setFill(Color.RED);
+            }
+
+            Label inStockLbl = new Label(String.format("%d items in stock.", product.getQuantity()));
+            inStockLbl.setLayoutX(153);
+            inStockLbl.setLayoutY(77);
+
+
+            input = new FileInputStream("src/img/product/cart.png");//Adding image
+            image = new Image(input);//Adding image
+            ImageView imageView2 = new ImageView(image);//Adding image
+            imageView2.setFitWidth(20);//Adding image
+            imageView2.setFitHeight(20);//Adding image
+            Button addToCartBtn = new Button("Add",imageView2);
+            addToCartBtn.setLayoutX(456);
+            addToCartBtn.setLayoutY(73);
+            addToCartBtn.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.out.println("Add to cart");
+                }
+            });
+
+            Label price = new Label(String.format("Price: %.2fkr", product.getPrice()));
+            price.setLayoutX(456);
+            price.setLayoutY(33);
+
+
+            anchorPane.getChildren().addAll(imageView,productName,productDesc,inStockIndicator,inStockLbl,addToCartBtn,price);//Add to layout
+
             if(toggleColor) {
-                anchorPane.setStyle("-fx-background-color: #e4e2e2;");
+                System.out.println(anchorPane.getStyle());
+                anchorPane.setStyle("-fx-background-color: #e4e2e2");
                 toggleColor = false;
             }
             else{

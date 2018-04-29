@@ -3,6 +3,7 @@ package zaar;
 import com.mysql.jdbc.Connection;
 import zaar.product.Category;
 import zaar.product.MenuSort;
+import zaar.product.Product;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -90,12 +91,26 @@ public class Database {
 
             } catch (SQLException ex) {
                 System.out.println("error on executing the query" + ex);
-                menu = null;
-            } finally {
-
+                //menu = null;
             }
+        }
+        return menu;
+    }
+
+    public ArrayList<Product> getMenuProducts(int Category){
+        if (connection != null){
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery("SELECT * FROM shopit.products where parent_product_catagory_id is not null order by parent_product_catagory_id DESC, product_catagory_name DESC");
+
+            }catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+                //menu = null;
+            }
+
         }
         return null;
     }
-
 }
+
+
