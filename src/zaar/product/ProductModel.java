@@ -1,9 +1,6 @@
 package zaar.product;
-
-import javafx.beans.value.WritableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +12,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import zaar.Database;
-
+import zaar.product.Menu.Category;
+import zaar.product.Menu.Menus;
+import zaar.product.Menu.MenuObject;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.util.*;
@@ -25,99 +24,86 @@ public class ProductModel {
     private Database db;
     private boolean toggleColor;
 
-    public MenuButton getMenu(MenuButton button) {
-        HashMap<Integer, Queue <Category> > menu = new HashMap<>();
-        db = Database.getInstance();
-        menu = db.getMenu(menu);
-        for (Map.Entry<Integer, Queue<Category>> entry : menu.entrySet()){
-            Queue queue = entry.getValue();
-            Stack<Object> menuItems = new Stack<>();
-            int oldParent = ((Category)queue.peek()).getParentGroupCategory();
-            while (!queue.isEmpty()) {
-                if(queue.size()==1 && menuItems.isEmpty()){
-                    menuItems.push(createMenuitem(new MenuItem(), queue));
-                }
-                else if(queue.size()==1){
+    /**
+     * Gets the menubutton from Database
+     * @param button
+     * @return
+     */
+    public MenuButton getMenu(MenuButton button, VBox vBox) {
+        db = Database.getInstance();//Get Menus and categories from database
+        ArrayList<ArrayList<MenuObject>> list = db.getMenu();//Get menus and categories from db
+        HashMap<Integer,Menu> menuHash = new HashMap<>();//All Menu that exists.
+        HashMap<Integer,ArrayList<MenuObject>> toParentHash = new HashMap<>();//Items sorted by to wich parent they belong
+        ArrayList<Menus> rootMenus = new ArrayList<>();//Lowest level of Menu
 
-                    Menu item = createMenuitem(new Menu(), queue);
-                    while(!menuItems.isEmpty()){
-                        if( menuItems.peek() instanceof Menu) {
-                            item.getItems().add((Menu) menuItems.pop());
-                        }
-                        else{
-                            item.getItems().add((MenuItem) menuItems.pop());
-                        }
-                    }
-                    menuItems.push(item);
-                }
-                else{
-                    if(oldParent != ((Category)queue.peek()).getParentGroupCategory()){
-                        oldParent=((Category)queue.peek()).getParentGroupCategory();
-                        Menu item = createMenuitem(new Menu(), queue);
-                        while(!menuItems.isEmpty()){//Empty Stack to menu and then push menu to stack
-                            if( menuItems.peek() instanceof Menu) {
-                                item.getItems().add((Menu) menuItems.pop());
-                            }
-                            else{
-                                item.getItems().add((MenuItem) menuItems.pop());
-                            }
-                        }
-                        menuItems.push(item);
-                    }
-                    else{
-                        MenuItem item = createMenuitem(new MenuItem(), queue);
-                        menuItems.push(item);
-                    }
-                }
-
+        for(MenuObject o:list.get(0)){//Get Menus and sort
+            if (o.getParentMenuId()==0){//Is menu root menu?
+                rootMenus.add((Menus)o);
             }
-            while(!menuItems.isEmpty()){
-                if(menuItems.peek() instanceof Menu) {
-                    button.getItems().add((Menu)menuItems.pop());
+            else{//Menu is higher than root
+                addMenuObject(toParentHash,o);//Add menu hashtable for wich parent MenuObject belongs
+            }
+            Menu menu = new Menu(o.getName());//Create Menu
+            menuHash.put(((Menus)o).getMenuId(), menu);//And add to hashMap that contains all Menus
+        }
+
+        for(MenuObject o:list.get(1)){// Get Categories and sort
+            addMenuObject(toParentHash,o);//Add menu hashtable for wich parent MenuObject belongs
+        }
+
+        for(Map.Entry<Integer, ArrayList<MenuObject>> Entry: toParentHash.entrySet()){//Loop all Menuobjects that belongs to a parentMenuObject
+            Entry.getValue().sort(new MenuObject());//Sort list alphabetically
+            for (MenuObject m:Entry.getValue()){//Loop MenuObjects that belong to parentMenuObject
+                if(m instanceof Menus){//Is MenuObject Menu or menuitem?
+                    menuHash.get(Entry.getKey()).getItems().add(menuHash.get(((Menus) m).getMenuId()));//Get Menu from hashmap that contains all menus add to parent Menu
                 }
                 else{
-                    button.getItems().add((MenuItem) menuItems.pop());
+                    MenuItem menuItem = new MenuItem(m.getName());
+                    menuItem.setOnAction((event -> {
+                        ArrayList<Product> prodList = db.getCategory(((Category)m).getCategoryId());
+                        populateProductVbox(vBox,prodList);
+                    }));
+                    menuHash.get(Entry.getKey()).getItems().add(menuItem);//Add MenuItem to parent Menu
                 }
             }
         }
-            try {
-                FileInputStream input = new FileInputStream("src/img/product/menu.png");
-                Image image = new Image(input);
-                ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(20);
-                imageView.setFitHeight(20);
-                button.setGraphic(imageView);
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
+        rootMenus.sort(new MenuObject());//Sort list alphabetically
+        for(Menus m:rootMenus){//Loop all root Menus
+            button.getItems().add(menuHash.get(m.getMenuId()));//Add root Menus to button
+        }
+        try {
+            //Adding image to button
+            FileInputStream input = new FileInputStream("src/img/product/menu.png");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(20);
+            imageView.setFitHeight(20);
+            button.setGraphic(imageView);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
-            return button;
+        return button;
     }
 
     /**
-     * Creates menus and menuitems
-     * @param item Menu or MenuItem
-     * @param queue Queue of Category
-     * @param <T>
-     * @return Menu or MenuItem
+     * Adds Menuobject to hashMap
+     * @param toParentHash HashMap<Integer,ArrayList<MenuObject>>
+     * @param o MenuObject
      */
-    private <T extends javafx.scene.control.MenuItem > T createMenuitem(T item, Queue<Category> queue){
-        final Category category = (Category)queue.poll();
-        item.setText(category.getName());
-        if(item instanceof Menu) {
-            //Nothing only for menuitems
+    private void addMenuObject(HashMap<Integer,ArrayList<MenuObject>> toParentHash, MenuObject o){
+        ArrayList<MenuObject> tmpList;
+        if(toParentHash.get(o.getParentMenuId())==null){//If list does not exist.. create
+            tmpList = new ArrayList<>();
+            toParentHash.put(o.getParentMenuId(),tmpList);//Insert list to hashmap
         }
-        else{
-            item.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    outpuyt(category.getProductCategory(), category.getName());
-                }
-            });
+        else{//List did exist.. then get it
+            tmpList = toParentHash.get(o.getParentMenuId());
         }
-        return item;
+        tmpList.add(o);//Add menu to list
     }
+
 
 
     public void outpuyt(int num, String name){
@@ -127,9 +113,11 @@ public class ProductModel {
 
     public void populateProductVbox(VBox vBox, ArrayList<Product> products){
         AnchorPane anchorPane;
+        if(vBox.getChildren().size()>0) {
+            vBox.getChildren().remove(0, vBox.getChildren().size());
+        }
         for (Product p: products){
             vBox.getChildren().add(productIconView(p));
-
         }
     }
 
@@ -147,9 +135,9 @@ public class ProductModel {
             }
         });
         try {
-            FileInputStream input = new FileInputStream("src/img/product/cart.png");//Adding image
-            Image image = new Image(input);//Adding image
-            ImageView imageView = new ImageView(image);//Adding image
+//            FileInputStream input = new FileInputStream("src/img/product/cart.png");//Adding image
+//            Image image = new Image(input);//Adding image
+            ImageView imageView = product.getImageView();
             imageView.setFitWidth(100);//Adding image
             imageView.setFitHeight(100);//Adding image
             AnchorPane.setTopAnchor(imageView,10.0);
@@ -185,8 +173,8 @@ public class ProductModel {
             inStockLbl.setLayoutY(77);
 
 
-            input = new FileInputStream("src/img/product/cart.png");//Adding image
-            image = new Image(input);//Adding image
+            FileInputStream input = new FileInputStream("src/img/product/cart.png");//Adding image
+            Image image = new Image(input);//Adding image
             ImageView imageView2 = new ImageView(image);//Adding image
             imageView2.setFitWidth(20);//Adding image
             imageView2.setFitHeight(20);//Adding image

@@ -1,22 +1,29 @@
 package zaar.product;
 
+
+import javafx.scene.image.ImageView;
+
 public class Product {
     private int productId;
     private int productCategory;
+    private int manufacturerId;
     private String name;
     private double price;
     private int quantity;
     private String description;
     private String technicalDetail;
+    private ImageView imageView;
 
-    public Product(int productId, int productCategory, String name, double price, int quantity, String description, String technicalDetail) {
+    public Product(int productId, int productCategory,int manufacturerId, String name, double price, int quantity, String description, String technicalDetail, ImageView imageView) {
         this.productId = productId;
         this.productCategory = productCategory;
+        this.manufacturerId = manufacturerId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
         this.technicalDetail = technicalDetail;
+        this.imageView = imageView;
     }
 
     public int getProductId() {
@@ -73,5 +80,13 @@ public class Product {
 
     public void setTechnicalDetail(String technicalDetail) {
         this.technicalDetail = technicalDetail;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
     }
 }
