@@ -7,8 +7,8 @@ public class LoginModel {
     Connection connection;
 
     public LoginModel(){
-    connection = SqliteConnection.connector();
-    if (connection == null) System.exit(0);
+    connection = SqlConnection.connector();
+    //if (connection == null) System.exit(0);
     }
 
     public boolean isDBConnected(){

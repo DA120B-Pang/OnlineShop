@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,7 +38,7 @@ public class LogoPageController implements Initializable {
         Node node = (Node) e.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("sampleProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("product/Product.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
