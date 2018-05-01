@@ -67,7 +67,8 @@ public class ProductController implements Initializable {
             products.add(new Product(1, 2,1, "Namn på produkt",32.68, 1,"Tetsed dsfdsa dafdag adsfdasf sdfasdfadf fadsfasdf adsfdasf asdfd asd sdad sdad asf sadsa sadsd sadsa dsad fdda eaf dafa", "", new ImageView()));
         }
 
-        prodVbox.setPrefWidth(1000);
+        prodVbox.setPrefWidth(1500);
+
         productModel.populateProductVbox(prodVbox,products);
     }
 

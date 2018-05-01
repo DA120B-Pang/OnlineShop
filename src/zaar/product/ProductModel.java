@@ -195,6 +195,7 @@ public class ProductModel {
 
             anchorPane.getChildren().addAll(imageView,productName,productDesc,inStockIndicator,inStockLbl,addToCartBtn,price);//Add to layout
 
+
             if(toggleColor) {
                 System.out.println(anchorPane.getStyle());
                 anchorPane.setStyle("-fx-background-color: #e4e2e2");
