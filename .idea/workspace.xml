@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/Database.java" afterPath="$PROJECT_DIR$/src/zaar/Database.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Category.java" afterPath="$PROJECT_DIR$/src/zaar/product/Menu/Category.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/MenuSort.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Product.java" afterPath="$PROJECT_DIR$/src/zaar/product/Product.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductController.java" afterPath="$PROJECT_DIR$/src/zaar/product/ProductController.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductModel.java" afterPath="$PROJECT_DIR$/src/zaar/product/ProductModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -383,7 +377,7 @@
       <workItem from="1524739629978" duration="21475000" />
       <workItem from="1524805797903" duration="26590000" />
       <workItem from="1525172027610" duration="4352000" />
-      <workItem from="1525181277828" duration="18785000" />
+      <workItem from="1525181277828" duration="18861000" />
     </task>
     <task id="LOCAL-00001" summary="Test2 Emil">
       <created>1523478044085</created>
@@ -448,11 +442,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525012077518</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Har ändrat menyn och databasen för meny visning och val av kategori/menyval">
+      <created>1525205037666</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1525205037666</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121812000" />
+    <option name="totallyTimeSpent" value="121888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -526,7 +527,8 @@
     <MESSAGE value="två scener" />
     <MESSAGE value="Fixat med meny och produkt visning" />
     <MESSAGE value="Fixat produkt visning fixat lite" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixat produkt visning fixat lite" />
+    <MESSAGE value="Har ändrat menyn och databasen för meny visning och val av kategori/menyval" />
+    <option name="LAST_COMMIT_MESSAGE" value="Har ändrat menyn och databasen för meny visning och val av kategori/menyval" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
