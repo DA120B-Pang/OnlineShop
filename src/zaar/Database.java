@@ -66,13 +66,14 @@ public class Database {
                         list.add(cat);//Add Category
                     }
                     else {
-                        list = new LinkedList<>();
-                        list.add(cat);
-                        if (cat.getParentGroupCategory()==0) {
-                            menu.put(cat.getProductCategory(), list);//Insert new Hash
-                        }
-                        else{
-                            menu.put(cat.getParentGroupCategory(), list);//Insert new Hash
+                        if(cat.getProductCategory()!=0) {//Root Categori ska inte komma med
+                            list = new LinkedList<>();
+                            list.add(cat);
+                            if (cat.getParentGroupCategory() == 0) {
+                                menu.put(cat.getProductCategory(), list);//Insert new Hash
+                            } else {
+                                menu.put(cat.getParentGroupCategory(), list);//Insert new Hash
+                            }
                         }
                     }
                 }
