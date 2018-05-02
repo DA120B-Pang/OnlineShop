@@ -90,4 +90,21 @@ public class ProductController implements Initializable {
         stage.setScene(scene);
     }
 
+    // Byter scen från loginskärmen till kundvagnen
+    @FXML
+     public void kundVButton(ActionEvent e) throws IOException {
+
+            Node node = (Node)e.getSource();
+            Stage stage = (Stage)node.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("kundvagn.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+
+
+    }
+
 }

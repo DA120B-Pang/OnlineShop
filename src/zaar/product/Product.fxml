@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.product.ProductController">
+<VBox xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.product.ProductController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #112731;">
          <children>
@@ -35,7 +35,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-              <Button fx:id="kundVButton" mnemonicParsing="false" text="KundV">
+              <Button fx:id="kundVButton" mnemonicParsing="false" onAction="#kundVButton" text="KundV">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
