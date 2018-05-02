@@ -29,6 +29,7 @@ public class ProductController implements Initializable {
     @FXML private TextField searchField;
     @FXML private ImageView logo;
     @FXML private VBox prodVbox;
+
     private ProductModel productModel = new ProductModel();
 
     @Override
@@ -93,7 +94,7 @@ public class ProductController implements Initializable {
 
     // Byter scen från loginskärmen till kundvagnen
     @FXML
-     public void kundVButton(ActionEvent e) throws IOException {
+     void kundVButton(ActionEvent e) throws IOException {
 
             Node node = (Node)e.getSource();
             Stage stage = (Stage)node.getScene().getWindow();
@@ -103,7 +104,5 @@ public class ProductController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
     }
-
 }
