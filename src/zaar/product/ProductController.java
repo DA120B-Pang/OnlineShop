@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -102,8 +103,6 @@ public class ProductController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
-
 
     }
 
