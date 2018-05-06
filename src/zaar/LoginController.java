@@ -48,7 +48,6 @@ public class LoginController implements Initializable {
             e.printStackTrace();
 
         }
-
     }
 
     // byter scen från loginskärmen till startsidan
