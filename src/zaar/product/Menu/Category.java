@@ -2,6 +2,10 @@ package zaar.product.Menu;
 
 import java.util.Comparator;
 
+/**
+ * Used for storing product categories
+ *  test
+ */
 public class Category extends MenuObject {
     private int categoryId;
     private int parentMenuId;
@@ -18,6 +22,5 @@ public class Category extends MenuObject {
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
-
 
 }
