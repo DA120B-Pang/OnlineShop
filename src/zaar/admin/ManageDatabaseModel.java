@@ -16,30 +16,30 @@ public class ManageDatabaseModel {
     ToolsSingleton tS = ToolsSingleton.getInstance();
     ScreenSingleton sS = ScreenSingleton.getInstance();
 
-    public AnchorPane getAdminTools(VBox vbox){
+    public AnchorPane getProdTools(VBox vbox){
         Double layoutX = 100.0;
         Double layoutY = 100.0;
         AnchorPane anchorPane = new AnchorPane();
-        Label titleLbl = new Label("Admin tools");
+        Label titleLbl = new Label("Product tools");
         titleLbl.setStyle("-fx-background-color: #f4f4f4");
         titleLbl.setLayoutX(layoutX);
         titleLbl.setLayoutY(layoutY+25);
-        Rectangle rectangle = new Rectangle(layoutX-10,layoutY+35,120,150);
+        Rectangle rectangle = new Rectangle(layoutX-10,layoutY+35,220,100);
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.BLACK);
-        Double buttonWidth = 100.0;
-        Button editOrdersBtn = new Button("Edit orders");
-        editOrdersBtn.setPrefWidth(buttonWidth);
-        editOrdersBtn.setLayoutX(layoutX);
-        editOrdersBtn.setLayoutY(layoutY+50);
-        Button addProductBtn = new Button("Add products");
+        Double buttonWidth = 200.0;
+        Button editProdBtn = new Button("Edit products/menu/category");
+        editProdBtn.setPrefWidth(buttonWidth);
+        editProdBtn.setLayoutX(layoutX);
+        editProdBtn.setLayoutY(layoutY+50);
+        Button addProductBtn = new Button("Add products/menu/category");
         addProductBtn.setPrefWidth(buttonWidth);
         addProductBtn.setLayoutX(layoutX);
         addProductBtn.setLayoutY(layoutY+100);
-        Button manageUsersBtn = new Button("Manage users");
-        manageUsersBtn.setPrefWidth(buttonWidth);
-        manageUsersBtn.setLayoutX(layoutX);
-        manageUsersBtn.setLayoutY(layoutY+150);
+//        Button manageUsersBtn = new Button("Spare");
+//        manageUsersBtn.setPrefWidth(buttonWidth);
+//        manageUsersBtn.setLayoutX(layoutX);
+//        manageUsersBtn.setLayoutY(layoutY+150);
 
         addProductBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -48,21 +48,16 @@ public class ManageDatabaseModel {
             }
         });
 
-        editOrdersBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-            }
-        });
-
-        manageUsersBtn.setOnAction(new EventHandler<ActionEvent>() {
+        editProdBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-
+                sS.new OpenEditProductScreen().screenChange(e);//Open add productScreen
             }
         });
 
-                anchorPane.getChildren().addAll(rectangle, titleLbl, editOrdersBtn, addProductBtn, manageUsersBtn);
+
+                anchorPane.getChildren().addAll(rectangle, titleLbl, editProdBtn, addProductBtn);
+
         return anchorPane;
     }
 

@@ -14,8 +14,8 @@ import zaar.product.Menu.Menus;
 import zaar.product.Menu.MenuObject;
 import zaar.product.Product;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
@@ -107,8 +107,41 @@ public class Database {
     public ArrayList<Product> getCategory(int categoryId) {
         ArrayList<Product> list = new ArrayList<>();
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.products WHERE product_catagory_id = ?;")) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.products WHERE product_catagory_id = ?  order by product_name;")) {
                 pst.setInt(1, categoryId);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    ImageView imageView = new ImageView();
+                    if (rs.getBinaryStream(9) != null) {
+                        try (InputStream is = rs.getBinaryStream(9);){
+                            Image image = new Image(is);
+                            imageView = new ImageView(image);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try(FileInputStream input = new FileInputStream("src/img/icons/noimage.png");) {
+                            Image image = new Image(input);
+                            imageView = new ImageView(image);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getString(8), imageView));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<Product> getAllProducts() {
+        ArrayList<Product> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.products order by product_name;")) {
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
                     ImageView imageView = new ImageView();
@@ -140,10 +173,36 @@ public class Database {
         return list;
     }
 
-    public boolean addProduct(int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other) {
-        boolean retVal = false;
+    public String[] getManufCatName(int manufacturerId, int categoryId){
+        String[] retVal = new String[2];
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`products` (`product_catagory_id`,`manufacturer_idmanufacturer`, `product_name`, `product_price`, `product_quantity`, `product_description`, `other_product_details`) VALUES (?,?, ?, ?, ?, ?, ?);")) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT manufacturer_name,product_catagory_name FROM shopit.manufacturer,shopit.category where idmanufacturer = ? AND product_catagory_id = ?;")) {
+                pst.setInt(1, manufacturerId);
+                pst.setInt(2, categoryId);
+
+                ResultSet rs = pst.executeQuery();
+                if(rs.next()) {
+                    retVal[0] = rs.getString(1);
+                    retVal[1] = rs.getString(2);
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                retVal = null;
+            }
+        }
+        return retVal;
+    }
+
+    public boolean updateProduct(int prodId, int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file){
+        boolean retVal = false;
+        InputStream is = null;
+        String query = "UPDATE `shopit`.`products` SET `product_catagory_id`=?, `manufacturer_idmanufacturer`=?, `product_name`=?, `product_price`=?, `product_quantity`=?, `product_description`=?, `other_product_details`=? WHERE `product_id`=?;";
+        if(file!=null) {
+            query = "UPDATE `shopit`.`products` SET `product_catagory_id`=?, `manufacturer_idmanufacturer`=?, `product_name`=?, `product_price`=?, `product_quantity`=?, `product_description`=?, `other_product_details`=?,`product_picture`=? WHERE `product_id`=?;";
+        }
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
                 pst.setInt(1, categoryId);
                 pst.setInt(2, manufacturerId);
                 pst.setString(3, name);
@@ -151,12 +210,73 @@ public class Database {
                 pst.setInt(5, Quantity);
                 pst.setString(6, desc);
                 pst.setString(7, other);
+                if(file!=null) {
+                    is = new FileInputStream(file);
+                    pst.setBinaryStream(8, is);
+                    pst.setInt(9,prodId);
+                }
+                else {
+                    pst.setInt(8,prodId);
+                }
+                pst.executeUpdate();
+                retVal = true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+            catch(IOException e){
 
+            }
+            finally {
+                if(is!=null){
+                    try{
+                        is.close();
+                    }
+                    catch (IOException e){
+
+                    }
+                }
+            }
+
+        }
+        return retVal;
+    }
+
+    public boolean insertProduct(int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file) {
+        boolean retVal = false;
+        InputStream is = null;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`products` (`product_catagory_id`,`manufacturer_idmanufacturer`, `product_name`, `product_price`, `product_quantity`, `product_description`, `other_product_details`,`product_picture`) VALUES (?,?, ?, ?, ?, ?, ?, ?);");) {
+                pst.setInt(1, categoryId);
+                pst.setInt(2, manufacturerId);
+                pst.setString(3, name);
+                pst.setDouble(4, price);
+                pst.setInt(5, Quantity);
+                pst.setString(6, desc);
+                pst.setString(7, other);
+                if(file==null) {
+                    pst.setNull(8,Types.BLOB);
+                }
+                else {
+                    is = new FileInputStream(file);
+                    pst.setBinaryStream(8, is);
+
+                }
                 pst.execute();
                 retVal = true;
             } catch (SQLException ex) {
                 System.out.println("error on executing the query" + ex);
-                //menu = null;
+            }
+            catch (IOException e){
+
+            }
+            finally {
+                if(is!=null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+
+                    }
+                }
             }
 
         }

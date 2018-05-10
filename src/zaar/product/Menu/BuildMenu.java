@@ -1,34 +1,61 @@
 package zaar.product.Menu;
 
-import javafx.application.Platform;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import zaar.Database.Database;
 import zaar.product.Product;
 import zaar.product.ProductModel;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static zaar.product.Menu.BuildMenu.MenuBuildMode.FILTER;
+import static zaar.product.Menu.BuildMenu.MenuBuildMode.STANDARD;
+
 public class BuildMenu {
+
     Database db = Database.getInstance();
     ProductModel productModel = new ProductModel();
 
-    public void getMenu(MenuButton button, VBox vBox, MenuAction menuAction, MenuItemAction menuItemAction) {
-        db = Database.getInstance();//Get Menus and categories from database
-        ArrayList<ArrayList<MenuObject>> list = db.getMenu();//Get menus and categories from db
+    public void getMenu(MenuButton button, VBox vBox, MenuAction menuAction, MenuItemAction menuItemAction, FilteredList<Product> filteredList, MenuBuildMode menuBuildMode, ArrayList<ArrayList<MenuObject>> filtermodeList) {
+        ArrayList<ArrayList<MenuObject>> list;
+        if(menuBuildMode==FILTER){//Lista ska inte läsas från databas när meny i filter Editproduct används
+            list = filtermodeList;
+        }
+        else {
+            db = Database.getInstance();//Get Menus and categories from database
+            list = db.getMenu();//Get menus and categories from db
+        }
+
         HashMap<Integer, Menu> menuHash = new HashMap<>();//All Menu that exists.
         HashMap<Integer, ArrayList<MenuObject>> toParentHash = new HashMap<>();//Items sorted by to wich parent they belong
         ArrayList<Menus> rootMenus = new ArrayList<>();//Lowest level of Menu
 
+
+
         if(button.getItems().size()>0){
             button.getItems().remove(0,button.getItems().size());
+        }
+
+        for (MenuObject o : list.get(1)) {// Get Categories
+            if(menuBuildMode == FILTER){
+                for(Product p: filteredList){
+                    if(((Category)o).getCategoryId() == p.getProductCategory()){
+                        addMenuObject(toParentHash, o);
+                        break;
+                    }
+                }
+            }
+            else {
+                addMenuObject(toParentHash, o);//Add menu hashtable for wich parent MenuObject belongs
+            }
+        }
+        if(menuBuildMode==FILTER || menuBuildMode == STANDARD) {//Filters Menus in list(1) According to existing categories
+            filterMenu(toParentHash, list);
         }
 
         for (MenuObject o : list.get(0)) {//Get Menus and sort
@@ -44,9 +71,6 @@ public class BuildMenu {
             menuHash.put(((Menus) o).getMenuId(), menu);//And add to hashMap that contains all Menus
         }
 
-        for (MenuObject o : list.get(1)) {// Get Categories and sort
-            addMenuObject(toParentHash, o);//Add menu hashtable for wich parent MenuObject belongs
-        }
 
         for (Map.Entry<Integer, ArrayList<MenuObject>> Entry : toParentHash.entrySet()) {//Loop all Menuobjects that belongs to a parentMenuObject
             Entry.getValue().sort(new MenuObject());//Sort list alphabetically
@@ -85,6 +109,40 @@ public class BuildMenu {
         }
         tmpList.add(o);//Add menu to list
     }
+    private void filterMenu(HashMap<Integer, ArrayList<MenuObject>> categoriesToParentHash, ArrayList<ArrayList<MenuObject>> list){
 
+        HashMap<Integer,MenuObject> filteredMenus = new HashMap<>();
+        HashMap<Integer,MenuObject> allMenus = new HashMap<>();
 
+        for(MenuObject m: list.get(0)){//Put all menus in hash
+            allMenus.put(((Menus)m).getMenuId(),m);
+        }
+
+        for(Map.Entry<Integer, ArrayList<MenuObject>> entry : categoriesToParentHash.entrySet()){//Loop all categories and locate all menus connected to Category
+        Category cat = (Category)entry.getValue().get(0);//Gets category
+            boolean loop = true;
+            int parentKey = cat.getParentMenuId();
+            do{
+                if(!filteredMenus.containsKey(parentKey) && parentKey!=0){//Check if menu already exists in filtered menus... If the parent exits. It and all its parent menus exits
+                    filteredMenus.put(parentKey,allMenus.get(parentKey));//Add it
+                    parentKey = allMenus.get(parentKey).getParentMenuId();//Get new parent
+                }
+                else {
+                    loop = false;
+                }
+            }while(loop);
+        }
+        ArrayList<MenuObject> tmp = new ArrayList<>(); // replace arraylist containing menus
+        for(Map.Entry<Integer,MenuObject> entry: filteredMenus.entrySet()){// replace arraylist containing menus
+            tmp.add(entry.getValue());// replace arraylist containing menus
+        }
+        list.remove(0);// replace arraylist containing menus
+        list.add(0,tmp);// replace arraylist containing menus
+    }
+
+    public enum MenuBuildMode{
+        STANDARD,//Shows only menus containing categories
+        FILTER,//Filtering menu is done for Editscreen
+        CHOOSE_MENU;//Shows all menus even those not containing categories
+    }
 }

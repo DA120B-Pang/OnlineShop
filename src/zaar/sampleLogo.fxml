@@ -7,9 +7,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#useMoveOnButton" onMouseClicked="#useMoveOnButton" prefHeight="394.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LogoPageController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LogoPageController">
    <children>
-      <ImageView fx:id="logo" fitHeight="394.0" fitWidth="395.0" layoutX="-2.0" onKeyPressed="#useMoveOnButton" onMouseClicked="#useMoveOnButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="394.0" fitWidth="395.0" layoutX="-2.0" onMouseClicked="#useMoveOnButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/ShopIT.png" />
          </image>

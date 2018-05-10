@@ -2,24 +2,19 @@ package zaar;
 
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,9 +40,10 @@ public class LogoPageController implements Initializable {
 
     }
 
-    public void useMoveOnButton(javafx.scene.input.MouseEvent e) throws IOException {
+    @FXML
+    void useMoveOnButton(MouseEvent Event) {
         try {
-            Node node = (Node) e.getSource();
+            Node node = (Node) Event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("product/Product.fxml"));
@@ -55,9 +51,10 @@ public class LogoPageController implements Initializable {
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            System.out.println("go");
         } catch (Exception ex) {
+            ex.printStackTrace();
             System.out.println("Switched scene");
         }
-
-        }
     }
+}

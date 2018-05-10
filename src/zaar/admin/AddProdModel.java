@@ -1,8 +1,11 @@
 package zaar.admin;
 
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
+
+import java.io.File;
 
 public class AddProdModel{
 

@@ -1,9 +1,12 @@
 package zaar.helperclasses;
 
+import com.sun.xml.internal.ws.developer.MemberSubmissionEndpointReference;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -14,19 +17,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import zaar.Database.Database;
+import zaar.admin.EditFilters;
+import zaar.admin.FilterInterfaces;
+import zaar.admin.FilterShowHide;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
+import zaar.product.Product;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 /**
  * Singleton class for creating objects for screen changing
@@ -34,6 +43,8 @@ import java.util.ArrayList;
 public class ScreenSingleton {
     private static ScreenSingleton ourInstance = new ScreenSingleton();
     private DataSingleton dS = DataSingleton.getInstance();
+    private ToolsSingleton tS = ToolsSingleton.getInstance();
+    private EditFilters ePF = EditFilters.getInstance();
 
     public static ScreenSingleton getInstance() {
         return ourInstance;
@@ -41,7 +52,7 @@ public class ScreenSingleton {
 
     private ScreenSingleton() {
     }
-
+    //****************Navigation***********************************************************************
     public interface ScreenChange{
         public void screenChange(ActionEvent e);
     }
@@ -54,6 +65,11 @@ public class ScreenSingleton {
     public class OpenAddProductScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
             activateScreen(e,"../admin/AddProd.fxml");
+        }
+    }
+    public class OpenEditProductScreen implements ScreenChange {
+        public void screenChange(ActionEvent e) {
+            activateScreen(e,"../admin/EditProd.fxml");
         }
     }
     public class OpenManageDatabase implements ScreenChange {
@@ -85,64 +101,414 @@ public class ScreenSingleton {
             ex.printStackTrace();
         }
     }
+//    //****************Filter popups***********************************************************************
+//
+//    /**
+//     * Filter popup for manufaturer
+//     */
+//    public class PopUpFilterManufacturer extends FilterShowHide{
+//        private Button button;
+//        private ArrayList<Manufacturer> list;
+//        private ObservableList<Manufacturer> list2;
+//        private FilteredList<Manufacturer> filteredData = null;
+//        private FilteredList<Product> productFilteredList;
+//        private ObservableList<Manufacturer>listUnchanged;
+//        private Database dB = Database.getInstance();
+//        private Stage stage;
+//        private TextField filterTxtField = new TextField();
+//        private ComboBox<Manufacturer> listView;
+//        private boolean listIsCollected = false;
+//        private SimpleIntegerProperty manufaturerid = new SimpleIntegerProperty(0);
+//
+//
+//
+//        public PopUpFilterManufacturer(FilterInterfaces.SetFilter setFilter, Button button, FilteredList<Product> productFilteredList){
+//            super(setFilter);
+//            this.button = button;
+//            this.productFilteredList = productFilteredList;
+//            popUp();
+//        }
+//        private void popUp(){
+//            EditFilters.IntegerPropertyEquals prodManufacturer = ePF.new IntegerPropertyEquals(EditFilters.PropertyCompare.MANUFACTURER);
+//            prodManufacturer.setId(manufaturerid);
+//            prodManufacturer.setFilter(super.getSetFilter());
+//
+//            stage = new Stage();
+//            stage.setResizable(false);
+//            stage.initStyle(StageStyle.UNDECORATED);
+//
+//            filterTxtField.setPromptText("Contains");
+//
+//            listView = new ComboBox<>();
+//
+//            VBox vboxListView = new VBox(filterTxtField,listView);
+//
+//
+//            VBox vbox = new VBox();
+//            Button selectBtn = new Button("Accept selected");
+//            Button resetFilterBtn = new Button("Reset filter");
+//
+//            Insets insets = new Insets(5,5,5,5);
+//            VBox.setMargin(filterTxtField, insets);
+//            VBox.setMargin(listView, insets);
+//            HBox.setMargin(selectBtn, insets);
+//            insets = new Insets(5,5,5,20);
+//            HBox.setMargin(resetFilterBtn, insets);
+//
+//
+//            HBox hbox = new HBox(selectBtn,resetFilterBtn);
+//            vbox.getChildren().addAll(vboxListView, hbox);
+//            selectBtn.setOnAction(event -> {
+//                Manufacturer selectedIndices = listView.getSelectionModel().getSelectedItem();//getSelectedIndices();
+//                if(selectedIndices!=null) {
+//                    manufaturerid.set(selectedIndices.getId());
+//                    dS.setFilterButtonYellow(button);
+//                    hide();
+//                }
+//            });
+//
+//            resetFilterBtn.setOnAction((Event)->{
+//                manufaturerid.set(0);
+//                dS.setFilterButtonGreen(button);
+//                hide();
+//            });
+//            tS.setRoundBorder(vbox);
+//            Scene scene = new Scene(vbox, -1, 120);
+//            stage.setScene(scene);
+//
+//            stage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+//                @Override
+//                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+//                    if(!stage.isFocused()){
+//                        stage.hide();
+//                    }
+//                }
+//            });
+//
+//            Platform.runLater(new Runnable() {
+//                @Override
+//                public void run() {
+//                    selectBtn.requestFocus();
+//                }
+//            });
+//
+//        }
+//
+//        @Override
+//        public void hide() {
+//            if(stage.isShowing()){
+//                stage.hide();
+//            }
+//        }
+//
+//        @Override
+//        public void show(double x, double y) {
+//            if(!listIsCollected){
+//                collectList();
+//            }
+//            if(listIsCollected){
+//                stage.setX(x);
+//                stage.setY(y);
+//                stage.show();
+//            }
+//        }
+//
+//        @Override
+//        public void close() {
+//            stage.close();
+//        }
+//
+//        @Override
+//        public boolean getIsShowing() {
+//            return false;
+//        }
+//
+//        private void collectList(){
+//            list = dB.getManufacturers();
+//            if(list!=null) {
+//                listUnchanged = FXCollections.observableList(list);
+//                filteredData = new FilteredList<>(listUnchanged, s -> true);
+//                listView.setItems(filteredData);
+//                filterTxtField.textProperty().addListener((obs,ov,nv)->{
+//                    setPredicate();
+//                });
+//                listIsCollected = true;
+//            }
+//        }
+//
+//        public void setPredicate(){
+//            filteredData.setPredicate(predicate());
+//        }
+//        private Predicate<Manufacturer> predicate(){
+//            return Predicate->{
+//                String filter = filterTxtField.getText();
+//                boolean retval1;
+//                boolean retVal2 = false;
+//                if(filter == null || filter.length() == 0) {
+//                    retval1  = true;
+//                }
+//                else {
+//                    retval1 = Predicate.getName().getValue().toLowerCase().contains(filter.toLowerCase());//Search for manufacturer case insensitive
+//                }
+//                for (Product p : productFilteredList) {
+//                    if (Predicate.getId() == p.getManufacturerId()) {
+//                        retVal2 = true;
+//                    }
+//                }
+//                return retval1 && retVal2;
+//            };
+//        }
+//    }
+//    public class PopUpFilterString extends FilterShowHide{
+//        private Stage stage;
+//        private TextField filterText;
+//        private Button button;
+//        private boolean isButtonGreen;
+//
+//        public PopUpFilterString(FilterInterfaces.SetFilter setFilter,Button button){
+//            super(setFilter);
+//            stage = new Stage();
+//            filterText = new TextField();
+//            isButtonGreen = true;
+//            this.button = button;
+//            popUp();
+//        }
+//        private void popUp() {
+//            stage.setResizable(false);
+//
+//            filterText.setPrefWidth(200);
+//            stage.initStyle(StageStyle.UNDECORATED);
+//
+//            EditFilters.ProdName prodName = ePF.new ProdName();
+//            prodName.setFilter(super.getSetFilter());
+//
+//            prodName.setName(filterText);
+//            filterText.textProperty().addListener(l->{
+//                if(filterText.getText().length()==0 && !isButtonGreen){
+//                    dS.setFilterButtonGreen(button);
+//                    isButtonGreen = true;
+//                }
+//                else if(isButtonGreen){
+//                    dS.setFilterButtonYellow(button);
+//                    isButtonGreen = false;
+//                }
+//            });
+//            VBox.setMargin(filterText,new Insets(5,5,5,5));
+//            VBox vBox = new VBox(filterText);
+//
+//            tS.setRoundBorder(vBox);
+//
+//            stage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+//                @Override
+//                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+//                    if(!stage.isFocused()){
+//                        stage.hide();
+//                    }
+//                }
+//            });
+//
+//
+//            Scene scene = new Scene(vBox, -1, -1);
+//            stage.setScene(scene);
+//        }
+//
+//        public void show(double x,double y){
+//            if(!stage.isShowing()){
+//                stage.setX(x);
+//                stage.setY(y);
+//                stage.show();
+//            }
+//        }
+//
+//        public void hide(){
+//            if(!stage.isShowing()){
+//                stage.show();
+//            }
+//        }
+//
+//        public boolean getIsShowing(){
+//            return stage.isShowing();
+//        }
+//
+//        public void close(){
+//            stage.close();
+//        }
+//
+//    }
+//    public class PopUpFilterCategory extends FilterShowHide{
+//        private Stage stage;
+//        private FilterInterfaces.SetFilter setFilter;
+//        private Button button;
+//        private MenuButton menuButton = new MenuButton("Choose");
+//        private SimpleIntegerProperty categoryID = new SimpleIntegerProperty(0);
+//
+//        public PopUpFilterCategory(FilterInterfaces.SetFilter setFilter, Button button){
+//            super(setFilter);
+//            this.button = button;
+//        }
+//
+//        public void popUp(){
+//            EditFilters.IntegerPropertyEquals prodCategory = ePF.new IntegerPropertyEquals(EditFilters.PropertyCompare.CATEGORY);
+//            prodCategory.setId(categoryID);
+//            prodCategory.setFilter(super.getSetFilter());
+//
+//            stage = new Stage();
+//            stage.setResizable(false);
+//            stage.initStyle(StageStyle.UNDECORATED);
+//
+////            VBox vboxListView = new VBox(filterTxtField,listView);
+////
+////
+////            VBox vbox = new VBox();
+////            vbox.setBorder(new Border(new BorderStroke(Color.BLACK,
+////                    BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+////            Button selectBtn = new Button("Accept selected");
+////            Button resetFilterBtn = new Button("Reset filter");
+////
+////            Insets insets = new Insets(5,5,5,5);
+////            VBox.setMargin(filterTxtField, insets);
+////            VBox.setMargin(listView, insets);
+////            HBox.setMargin(selectBtn, insets);
+////            insets = new Insets(5,5,5,20);
+////            HBox.setMargin(resetFilterBtn, insets);
+////
+////
+////            HBox hbox = new HBox(selectBtn,resetFilterBtn);
+////            vbox.getChildren().addAll(vboxListView, hbox);
+////            selectBtn.setOnAction(event -> {
+////                Manufacturer selectedIndices = listView.getSelectionModel().getSelectedItem();//getSelectedIndices();
+////                if(selectedIndices!=null) {
+////                    manufaturerid.set(selectedIndices.getId());
+////                    dS.setFilterButtonYellow(button);
+////                    hide();
+////                }
+////            });
+////
+////            resetFilterBtn.setOnAction((Event)->{
+////                manufaturerid.set(0);
+////                dS.setFilterButtonGreen(button);
+////                hide();
+////            });
+////            tS.setRoundBorder(vbox);
+////            Scene scene = new Scene(vbox, -1, 120);
+////            stage.setScene(scene);
+//
+//            stage.focusedProperty().addListener(new ChangeListener<Boolean>() {
+//                @Override
+//                public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+//                    if(!stage.isFocused()){
+//                        stage.hide();
+//                    }
+//                }
+//            });
+//        }
+//
+//
+//
+//        public void getMenu(){
+//            //MenuButton.getBuildMenu().getMenu();
+//        }
+//
+//        @Override
+//        public void hide() {
+//
+//        }
+//
+//        @Override
+//        public void show(double x, double y) {
+//
+//        }
+//
+//        @Override
+//        public void close() {
+//
+//        }
+//
+//        @Override
+//        public boolean getIsShowing() {
+//            return false;
+//        }
+//        private class AddMenuAction implements MenuAction{
+//
+//            @Override
+//            public void action(Menus menu) {
+//                //nothing
+//            }
+//        }
+//
+//        private class AddMenuItemAction implements MenuItemAction{
+//
+//            @Override
+//            public void action(VBox vbox, Category cat) {
+//                categoryID.set(cat.getCategoryId());
+//            }
+//        }
+//    }
+    //****************Adding products/menus/categories popups*********************************************
     public class SelectManufacturerPopUp {
-            public void popUp(Manufacturer manufacturer, Double x, Double y){
-                Database dB = Database.getInstance();
-                ArrayList<Manufacturer> list = dB.getManufacturers();
-                if(list!=null) {
-                    Stage stage = new Stage();
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setTitle("Select Manufacturer");
+        public void popUp(Manufacturer manufacturer, Double x, Double y){
+            Database dB = Database.getInstance();
+            ArrayList<Manufacturer> list = dB.getManufacturers();
+            if(list!=null) {
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setTitle("Select Manufacturer");
 
-                    ObservableList<Manufacturer> list2 = FXCollections.observableList(list);
-                    FilteredList<Manufacturer> filteredData = new FilteredList<>(list2, s -> true);
+                ObservableList<Manufacturer> list2 = FXCollections.observableList(list);
+                FilteredList<Manufacturer> filteredData = new FilteredList<>(list2, s -> true);
 
-                    TextField filterTxtField = new TextField();
-                    filterTxtField.setPromptText("Search");
-                    filterTxtField.textProperty().addListener(observ->{
-                        String filter = filterTxtField.getText();
-                        if(filter == null || filter.length() == 0) {
-                            filteredData.setPredicate(s -> true);
-                        }
-                        else {
-                            filteredData.setPredicate(s -> s.getName().getValue().toLowerCase().contains(filter.toLowerCase()));//Search for manufacturer case insensitive
-                        }
-                    });
+                TextField filterTxtField = new TextField();
+                filterTxtField.setPromptText("Contains");
+                filterTxtField.textProperty().addListener((obs,ov,nv)->{
+                    filteredData.setPredicate(predicate(nv));
+                });
 
-                    ListView<Manufacturer> listView = new ListView(filteredData);
+                ListView<Manufacturer> listView = new ListView(filteredData);
 
-                    VBox vboxListView = new VBox(filterTxtField,listView);
+                VBox vboxListView = new VBox(filterTxtField,listView);
 
 
-                    HBox hbox = new HBox();
-                    Button selectBtn = new Button("Accept selected");
+                HBox hbox = new HBox();
+                Button selectBtn = new Button("Accept selected");
 
-                    Insets insets = new Insets(5,5,5,5);
-                    VBox.setMargin(filterTxtField, insets);
-                    VBox.setMargin(listView, insets);
-                    HBox.setMargin(selectBtn, insets);
+                Insets insets = new Insets(5,5,5,5);
+                VBox.setMargin(filterTxtField, insets);
+                VBox.setMargin(listView, insets);
+                HBox.setMargin(selectBtn, insets);
 
-                    hbox.getChildren().addAll(vboxListView, selectBtn);
-                    selectBtn.setOnAction(event -> {
-                        Manufacturer selectedIndices = listView.getSelectionModel().getSelectedItem();//getSelectedIndices();
+                hbox.getChildren().addAll(vboxListView, selectBtn);
+                selectBtn.setOnAction(event -> {
+                    Manufacturer selectedIndices = listView.getSelectionModel().getSelectedItem();//getSelectedIndices();
+                    if(selectedIndices!=null) {
                         manufacturer.setId(selectedIndices.getId());
                         manufacturer.getName().setValue(selectedIndices.getName().getValue());
                         stage.close();
-                    });
+                    }
+                });
 
-                    Scene scene = new Scene(hbox, -1, 120);
-                    stage.setX(x);
-                    stage.setY(y);
-                    stage.setScene(scene);
-                    stage.show();
+                Scene scene = new Scene(hbox, -1, 120);
+                stage.setX(x);
+                stage.setY(y);
+                stage.setScene(scene);
+                stage.show();
 
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            selectBtn.requestFocus();
-                        }
-                    });
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        selectBtn.requestFocus();
+                    }
+                });
+            }
+        }
+        private Predicate<Manufacturer> predicate(String filter){
+            return Predicate->{
+                if(filter == null || filter.length() == 0) {
+                    return true;
                 }
+                else {
+                    return Predicate.getName().getValue().toLowerCase().contains(filter.toLowerCase());//Search for manufacturer case insensitive
+                }
+            };
         }
     }
     public class InsertStringToDbPopUp {
@@ -248,11 +614,11 @@ public class ScreenSingleton {
 
             menuBtn.setOnMouseClicked((Event)->{//If database error occured then Get menu on click
                 if(menuBtn.getItems().size()==0){
-                    tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction());
+                    tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
                 }
             });
 
-            tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction());//Get menu
+            tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);//Get menu
 
             nameTxtField.setPromptText("Name");
             nameTxtField.textProperty().addListener(new ChangeListener<String>() {//Check length(limit in database)
@@ -285,7 +651,7 @@ public class ScreenSingleton {
                 }
                 if(retVal){//If writing to database was successful
                     tS.getButtonAnimation(anchorPane,addBtn,dS.getOkImgView().getImage());//Set animation for success
-                    tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction());//Rebuild menu to add new
+                    tS.getBuildMenu().getMenu(menuBtn,new VBox(),new AddMenuAction(), new AddMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);//Rebuild menu to add new
                     menuChanged = true;//Set that menu has been changed(for when exiting window to tell main window about change)
                     nameTxtField.setText("");//remove info from fields
                     menuIdTxtField.setText("");//remove info from fields

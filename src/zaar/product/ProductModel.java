@@ -30,7 +30,7 @@ public class ProductModel {
      * @param vBox  VBox
      */
     public void getMenu(MenuButton button, VBox vBox){
-        tS.getBuildMenu().getMenu(button,vBox,new ProdMenuAction(), new ProdMenuItemAction());//Call build menu
+        tS.getBuildMenu().getMenu(button,vBox,new ProdMenuAction(), new ProdMenuItemAction(),null, BuildMenu.MenuBuildMode.STANDARD,null);//Call build menu
     }
 
 

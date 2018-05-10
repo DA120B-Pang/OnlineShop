@@ -5,6 +5,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -16,19 +17,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import zaar.product.Manufacturer;
 import zaar.product.Menu.BuildMenu;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.security.SecureRandom;
+import java.util.function.Predicate;
 
 /**
  * Singleton class for metods used by various classes in application.
@@ -55,7 +57,29 @@ public class ToolsSingleton {
         }
     }
 
-    
+    public File openFileChooser(FileChooser fileChooser, Event event, TextField pictureTxtFld) {
+        Node node = (Node) event.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();//Gets stage for positioning poup
+        InputStream stream = null;
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
+            pictureTxtFld.setText(file.getAbsolutePath());
+        }
+        return file;
+    }
+    /**
+     * Sets filechooser to png pictures
+     * @param fileChooser
+     */
+    public void setFileChooser(FileChooser fileChooser){
+        fileChooser.setTitle("Select png picture");
+        fileChooser.setInitialDirectory(
+                new File(System.getProperty("user.home"))
+        );
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+    }
     /**
      * Gets instance of menu builder class
      * @return BuildMenu
@@ -152,6 +176,10 @@ public class ToolsSingleton {
         );
         parallelTransition.setCycleCount(1);
         parallelTransition.play();
+    }
+
+    public <T extends Region> void setRoundBorder(T t){
+        t.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
     }
 
 

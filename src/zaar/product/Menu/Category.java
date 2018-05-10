@@ -8,8 +8,10 @@ import java.util.Comparator;
  */
 public class Category extends MenuObject {
     private int categoryId;
-    private int parentMenuId;
 
+    public Category(){
+        this(0,0,"");
+    }
     public Category(int categoryId, int parentMenuId, String name) {
         super(name, parentMenuId);
         this.categoryId = categoryId;
