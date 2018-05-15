@@ -1,6 +1,6 @@
 package zaar.customer;
 
-public class Customer {
+public class User {
     private int customerID;
     private String firstName;
     private String lastName;
@@ -13,11 +13,11 @@ public class Customer {
     private String county;
     private String country;
 
-    public Customer() {
+    public User() {
         this(0, null, null, null, null, null, null, null, null, null, null);
     }
 
-    public Customer(int customerID, String firstName, String lastName, String email, String loginName, String password, String phoneNumber, String adress, String city, String county, String country) {
+    public User(int customerID, String firstName, String lastName, String email, String loginName, String password, String phoneNumber, String adress, String city, String county, String country) {
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;

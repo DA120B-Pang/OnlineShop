@@ -8,12 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import zaar.helperclasses.ToolsSingleton;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,55 +21,37 @@ import java.util.ResourceBundle;
 
 public class ProductController implements Initializable {
 
-    @FXML private Button loginButton;
-    @FXML private Button kundVButton;
-    @FXML private Button searchButton;
+    @FXML private Button searchBtn;
     @FXML private MenuButton menuBtn;
     @FXML private TextField searchField;
     @FXML private ImageView logo;
     @FXML private VBox prodVbox;
+    @FXML private HBox hBox;
     private ProductModel productModel = new ProductModel();
+    private ToolsSingleton tS = ToolsSingleton.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tS.buttonSetImage(searchBtn,"src/img/icons/search.png",15d,15d); //Set image to buttons
+        tS.buttonSetImage(menuBtn, "src/img/icons/menu.png", 15d,15d);
 
-        try {
-            FileInputStream input = new FileInputStream("src/img/product/cart.png");
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(20);
-            imageView.setFitHeight(20);
-            kundVButton.setGraphic(imageView);
+        productModel.getMenu(menuBtn, prodVbox);//Get menu to menubutton
 
-            input = new FileInputStream("src/img/product/login.png");
-            image = new Image(input);
-            imageView = new ImageView(image);
-            imageView.setFitWidth(20);
-            imageView.setFitHeight(20);
-            loginButton.setGraphic(imageView);
-
-            input = new FileInputStream("src/img/product/search.png");
-            image = new Image(input);
-            imageView = new ImageView(image);
-            imageView.setFitWidth(20);
-            imageView.setFitHeight(20);
-            searchButton.setGraphic(imageView);
-
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-        productModel.getMenu(menuBtn, prodVbox);
-        ArrayList<Product> products = new ArrayList<>();
+        menuBtn.setOnMouseClicked((Event)->{
+            if(menuBtn.getItems().size()==0){
+                productModel.getMenu(menuBtn, prodVbox);
+            }
+        });
+        //<*><*><*><*><*><*><*><*><*><*><*><*><*>TEST<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>Start
+        ArrayList<Product> products = new ArrayList<>();//För test
         for (int i = 0; i < 20 ; i++) {
             products.add(new Product(1, 2,1, "Namn på produkt",32.68, 1,"Tetsed dsfdsa dafdag adsfdasf sdfasdfadf fadsfasdf adsfdasf asdfd asd sdad sdad asf sadsa sadsd sadsa dsad fdda eaf dafa", "", new ImageView()));
         }
-
-        prodVbox.setPrefWidth(1500);
-
         productModel.populateProductVbox(prodVbox,products);
+        //<*><*><*><*><*><*><*><*><*><*><*><*><*>TEST<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>End
+
+
+        productModel.getTopHBox(hBox);//Lägger till navigeringsknappar
     }
 
     @FXML
