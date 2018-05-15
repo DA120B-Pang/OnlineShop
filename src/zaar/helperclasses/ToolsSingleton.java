@@ -14,10 +14,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -178,9 +175,67 @@ public class ToolsSingleton {
         parallelTransition.play();
     }
 
+    /**
+     * Sets round borders to Region
+     * @param t
+     * @param <T>
+     */
     public <T extends Region> void setRoundBorder(T t){
         t.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, new CornerRadii(5), BorderWidths.DEFAULT)));
+        t.setBackground(new Background(new BackgroundFill(null,new CornerRadii(5),null)));
+    }
+    /**
+     * Sets borders to Region
+     * @param t
+     * @param <T>
+     */
+    public <T extends Region> void setBorder(T t){
+        t.setBorder(new Border(new BorderStroke(Color.BLACK,BorderStrokeStyle.SOLID, null, BorderWidths.DEFAULT)));
+        t.setBackground(new Background(new BackgroundFill(null,new CornerRadii(5),null)));
+    }
+    /**
+     * Sets darkBackground to Region
+     * @param t
+     * @param <T>
+     */
+    public <T extends Region> void setBGDark(T t){
+        t.setStyle("-fx-background-color:  #112731;-fx-text-fill: #FFFFFF;");
     }
 
+    public <T extends Region> void setMenuDark(T t){
+        t.setStyle("-fx-background-color:  #d3cdcd;");
+    }
+
+    /**
+     * Produces a VBox with with titleLabel parameter on top and buttons below.
+     * @param titleLabel Label
+     * @param buttons   Button ... (multiple) all that shall be in menu
+     * @return
+     */
+    public VBox makeButtonMenuModel(String titleLabel,Button...buttons){
+        VBox vBox = new VBox();
+        setRoundBorder(vBox);
+
+        Label titleLbl = new Label(titleLabel);
+        titleLbl.setMaxHeight(5000);
+        titleLbl.setMaxWidth(5000);
+        titleLbl.paddingProperty().setValue(new Insets(0,5,0,5));
+        setBGDark(titleLbl);
+
+        HBox hBox = new HBox();//HBox is for producing a black line between label and buttons
+        hBox.setPrefHeight(2);
+        hBox.setPrefWidth(-1);
+        hBox.setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
+        vBox.getChildren().addAll(titleLbl,hBox);
+
+        for(Button b: buttons){
+            b.setMaxWidth(5000);
+            VBox.setVgrow(b,Priority.ALWAYS);
+            Insets insets = new Insets(5,5,5,5);
+            VBox.setMargin(b,insets);
+            vBox.getChildren().add(b);
+        }
+        return vBox;
+    }
 
 }

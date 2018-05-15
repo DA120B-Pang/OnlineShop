@@ -19,6 +19,8 @@ import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
+import static zaar.Database.Database.DeleteRecord.PRODUCT;
+
 public class Database {
     private static Database ourInstance = new Database();
     private boolean tryReconnect;
@@ -44,11 +46,13 @@ public class Database {
         }
     }
 
-    private boolean checkConnection(){
+    public boolean checkConnection(){
         if(connection!=null){
             try {
                 if (!connection.isClosed()) {
-                    return true;
+                    if(connection.isValid(10)) {
+                        return true;
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -104,11 +108,82 @@ public class Database {
         return list;
     }
 
-    public ArrayList<Product> getCategory(int categoryId) {
+    public enum GetString{
+        GET_MANUFACTURER,
+        GET_CATEGORY,
+        GET_MENU;
+    }
+
+    public String getStringFromTable(int id, GetString getString){
+        String Query;
+        if(getString == GetString.GET_CATEGORY){
+            Query = "SELECT product_catagory_name FROM shopit.category where product_catagory_id = ?;";
+        }
+        else if(getString == GetString.GET_MANUFACTURER){
+            Query = "SELECT manufacturer_name FROM shopit.manufacturer where idmanufacturer = ?;";
+        }
+        else{
+            Query = "select menu.menuName from menu where menu.idMenu = ?;";
+        }
+        String string = null;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(Query)) {
+                if(id==0){
+                    string ="root";
+                }
+                else {
+                    pst.setInt(1, id);
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        string = rs.getString(1);
+                    }
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return string;
+    }
+
+    public ArrayList<Manufacturer> getManufacturers() {
+        ArrayList<Manufacturer> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet rs = statement.executeQuery("SELECT * FROM shopit.manufacturer order by manufacturer_name;");
+                while (rs.next()) {
+//                    //index1 = manufacturer ID, index2 = name
+                    list.add(new Manufacturer(rs.getInt(1), rs.getString(2)));
+                }
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+                list = null;
+            }
+
+        }else{
+            list = null;
+        }
+        return list;
+    }
+
+    public enum GetProd{
+        PROD_SINGLE,
+        PROD_CATEGORY;
+    }
+
+    public ArrayList<Product> getProduct(int id, GetProd getProd) {
+        String Query;
+        if(getProd == GetProd.PROD_SINGLE){
+            Query = "SELECT * FROM shopit.products where product_id = ? order by product_name;";
+        }
+        else{
+            Query = "SELECT * FROM shopit.products WHERE product_catagory_id = ? order by product_name;";
+        }
         ArrayList<Product> list = new ArrayList<>();
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.products WHERE product_catagory_id = ?  order by product_name;")) {
-                pst.setInt(1, categoryId);
+            try (PreparedStatement pst = connection.prepareStatement(Query)) {
+                pst.setInt(1, id);
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
                     ImageView imageView = new ImageView();
@@ -138,31 +213,61 @@ public class Database {
         return list;
     }
 
+    public ArrayList<Category> getAllCategories(){
+        ArrayList<Category> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.category;")) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new Category(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    };
+
+    public ArrayList<Menus> getAllMenus(){
+        ArrayList<Menus> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.menu;")) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new Menus(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    };
+
+    public ArrayList<Manufacturer> getAllManufacturers(){
+        ArrayList<Manufacturer> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.manufacturer;")) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new Manufacturer(rs.getInt(1), rs.getString(2)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    };
+
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> list = new ArrayList<>();
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.products order by product_name;")) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT product_id, product_catagory_id, manufacturer_idmanufacturer, product_name, product_price, product_quantity, product_description FROM shopit.products order by product_name;")) {
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
-                    ImageView imageView = new ImageView();
-                    if (rs.getBinaryStream(9) != null) {
-                        try {
-                            InputStream is = rs.getBinaryStream(9);
-                            Image image = new Image(is);
-                            imageView = new ImageView(image);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        try {
-                            FileInputStream input = new FileInputStream("src/img/icons/noimage.png");
-                            Image image = new Image(input);
-                            imageView = new ImageView(image);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getString(8), imageView));
+                    list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), null, null));
                 }
 
             } catch (SQLException ex) {
@@ -171,27 +276,6 @@ public class Database {
             }
         }
         return list;
-    }
-
-    public String[] getManufCatName(int manufacturerId, int categoryId){
-        String[] retVal = new String[2];
-        if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("SELECT manufacturer_name,product_catagory_name FROM shopit.manufacturer,shopit.category where idmanufacturer = ? AND product_catagory_id = ?;")) {
-                pst.setInt(1, manufacturerId);
-                pst.setInt(2, categoryId);
-
-                ResultSet rs = pst.executeQuery();
-                if(rs.next()) {
-                    retVal[0] = rs.getString(1);
-                    retVal[1] = rs.getString(2);
-                }
-
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                retVal = null;
-            }
-        }
-        return retVal;
     }
 
     public boolean updateProduct(int prodId, int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file){
@@ -284,25 +368,6 @@ public class Database {
         //INSERT INTO `shopit`.`products` (`manufacturer_idmanufacturer`, `product_name`, `product_price`, `product_quantity`, `product_description`, `other_product_details`) VALUES ('2', 'Test', '100', '2', 'testa', 'testa');
     }
 
-    public ArrayList<Manufacturer> getManufacturers() {
-        ArrayList<Manufacturer> list = new ArrayList<>();
-        if (checkConnection()) {
-            try (Statement statement = connection.createStatement()) {
-                ResultSet rs = statement.executeQuery("SELECT * FROM shopit.manufacturer order by manufacturer_name;");
-                while (rs.next()) {
-//                    //index1 = manufacturer ID, index2 = name
-                    list.add(new Manufacturer(rs.getInt(1), rs.getString(2)));
-                }
-            } catch (SQLException ex) {
-                System.out.println("error on executing the query" + ex);
-                list = null;
-            }
-
-        }else{
-            list = null;
-        }
-        return list;
-    }
     private boolean dbInsertIntString(String insertStatement ,int intNumber, String string) {
         boolean retVal = false;
         if (checkConnection()) {
@@ -343,25 +408,146 @@ public class Database {
 
     public class InsertManufacturer implements BooleanMethodString{
         @Override
-        public boolean method(String string) {
+        public boolean method(int intNum, String string) {
             return dbInsertString("INSERT INTO `shopit`.`manufacturer` (`manufacturer_name`) VALUES (?);",string);
         }
     }
 
     public class InsertCategory implements BooleanMethodIntString{
         @Override
-        public boolean method(int intNum, String string) {
-            return dbInsertIntString("INSERT INTO `shopit`.`category` (`Menu_idMenu`, `product_catagory_name`) VALUES (?, ?);",intNum,string);
+        public boolean method(int intNum, int intNum2, String string) {
+            return dbInsertIntString("INSERT INTO `shopit`.`category` (`Menu_idMenu`, `product_catagory_name`) VALUES (?, ?);",intNum2,string);
         }
     }
 
     public class InsertMenu implements BooleanMethodIntString{
         @Override
-        public boolean method(int intNum, String string) {
-            return dbInsertIntString("INSERT INTO `shopit`.`menu` (`idParentMenu`, `menuName`) VALUES (?, ?);",intNum,string);
+        public boolean method(int intNum, int intNum2, String string) {
+            return dbInsertIntString("INSERT INTO `shopit`.`menu` (`idParentMenu`, `menuName`) VALUES (?, ?);",intNum2,string);
         }
     }
 
+
+    public boolean update2intString(String statement, int intNum, String string , int intNum2){
+
+        String query = statement;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+                if(intNum2 == 0) {
+                    pst.setNull(1, Types.INTEGER);
+                }
+                else {
+                    pst.setInt(1, intNum2);
+                }
+                pst.setString(2, string);
+
+                pst.setInt(3, intNum);
+
+                pst.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return false;
+    }
+
+    public class UpdateMenu implements BooleanMethodIntString{
+        @Override
+        public boolean method(int intNum, int intNum2, String string) {
+            return update2intString("UPDATE `shopit`.`menu` SET `idParentMenu`= ?, `menuName`= ? WHERE `idMenu`= ?;",intNum,string,intNum2);
+        }
+    }
+
+    public class UpdateCategory implements BooleanMethodIntString{
+        @Override
+        public boolean method(int intNum, int intNum2, String string) {
+            return update2intString("UPDATE `shopit`.`category` SET `Menu_idMenu`= ?, `product_catagory_name`= ? WHERE `product_catagory_id`= ? ;",intNum,string,intNum2);
+        }
+    }
+
+    public boolean updateintString(String statement, int intNum, String string){
+
+        String query = statement;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+
+                pst.setString(1, string);
+
+                pst.setInt(2, intNum);
+
+                pst.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return false;
+    }
+    public class UpdateManufacturer implements BooleanMethodString{
+        @Override
+        public boolean method(int intNum, String string) {
+            return updateintString("UPDATE `shopit`.`manufacturer` SET `manufacturer_name`=? WHERE `idmanufacturer`=?;",intNum,string);
+        }
+    }
+
+    public enum DeleteRecord{
+        PRODUCT,
+        MANUFACTURER,
+        CATEGORY,
+        MENU;
+    }
+
+    public boolean deleteRecord(DeleteRecord deleteRecord, int id) {
+        String[] query = new String[2];
+        String warning = "";
+        switch (deleteRecord){
+            case MENU:
+                query = new String[3];
+                query[0] = "SELECT * FROM shopit.category where category.Menu_idMenu = ?;";
+                query[1] = "SELECT * FROM shopit.menu where idParentMenu = ?;";
+                query[2] = "delete from shopit.menu where idMenu = ?";
+                warning = "Child menus & categories must be removed first";
+                break;
+            case PRODUCT:
+                query[1] = "delete from products where product_id = ?;";
+                break;
+            case CATEGORY:
+                query[0] = "SELECT * FROM shopit.products where product_catagory_id = ?;";
+                query[1] = "delete from shopit.category where product_catagory_id = ?;";
+                warning = "Child products must be removed first";
+                break;
+            case MANUFACTURER:
+                query[0] = "SELECT * FROM shopit.products where products.manufacturer_idmanufacturer = ?;";
+                query[1] = "delete from shopit.manufacturer where idmanufacturer = ?;";
+                warning = "Child products must be removed first";
+        }
+
+        if (checkConnection()) {
+            for (int i = 0; i <query.length ; i++) {
+                if(deleteRecord!=PRODUCT || i != 0) {
+                    try (PreparedStatement pst = connection.prepareStatement(query[i])) {
+                        pst.setInt(1, id);
+                        if (i == query.length - 1) {
+                            pst.executeUpdate();
+                            return true;
+                        } else {
+                            if (pst.executeQuery().next()) {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, warning);
+                                alert.show();
+                                return false;
+                            }
+                        }
+
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
 
 

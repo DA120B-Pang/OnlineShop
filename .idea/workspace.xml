@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="Lagt till lägga till produkt menyer categorier till databas">
+    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/EditFiltersProd.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/FilterInterfacesProd.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterShowHide.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/zaar/Database/Database.java" afterPath="$PROJECT_DIR$/src/zaar/Database/Database.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/LogoPageController.java" afterPath="$PROJECT_DIR$/src/zaar/LogoPageController.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddManufacturer.fxml" afterPath="$PROJECT_DIR$/src/zaar/admin/EditProd.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddManufacturerController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/EditProdController.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddManufacturerModel.java" afterPath="$PROJECT_DIR$/src/zaar/admin/EditProdModel.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProd.fxml" afterPath="$PROJECT_DIR$/src/zaar/admin/AddProd.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProdController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/AddProdController.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProdModel.java" afterPath="$PROJECT_DIR$/src/zaar/admin/AddProdModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProd.fxml" afterPath="$PROJECT_DIR$/src/zaar/admin/add/AddProd.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProdController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AddProdModel.java" afterPath="$PROJECT_DIR$/src/zaar/admin/add/AddProdModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/EditFilters.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/EditProd.fxml" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/Edit.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/EditProdController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/EditController.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/EditProdModel.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/FilterInterfaces.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/FilterShowHide.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseController.java" />
       <change beforePath="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseModel.java" afterPath="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseModel.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/UpdateProd.fxml" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProd.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/UpdateProdController.java" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProdController.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/admin/UpdateProdModel.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java" />
       <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" />
       <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" />
       <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/product/Manufacturer.java" afterPath="$PROJECT_DIR$/src/zaar/product/Manufacturer.java" />
       <change beforePath="$PROJECT_DIR$/src/zaar/product/Menu/BuildMenu.java" afterPath="$PROJECT_DIR$/src/zaar/product/Menu/BuildMenu.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Menu/Category.java" afterPath="$PROJECT_DIR$/src/zaar/product/Menu/Category.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Product.java" afterPath="$PROJECT_DIR$/src/zaar/product/Product.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductModel.java" afterPath="$PROJECT_DIR$/src/zaar/product/ProductModel.java" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/sampleLogo.fxml" afterPath="$PROJECT_DIR$/src/zaar/sampleLogo.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/product/Menu/MenuItemAction.java" afterPath="$PROJECT_DIR$/src/zaar/product/Menu/MenuItemAction.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/product/Product.fxml" afterPath="$PROJECT_DIR$/src/zaar/product/Product.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductController.java" afterPath="$PROJECT_DIR$/src/zaar/product/ProductController.java" />
+      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductModel.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,137 +47,129 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BuildMenu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/BuildMenu.java">
+      <file leaf-file-name="BooleanMethodString.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+            <state relative-caret-position="102">
+              <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="259" column="66" lean-forward="false" selection-start-line="259" selection-start-column="66" selection-end-line="259" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditManufacturerTableView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditManufacturerTableView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="56" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#3271#3272#0" expanded="true" />
+                <element signature="e#3313#3314#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditProdModel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProdModel.java">
+      <file leaf-file-name="ScreenSingleton.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="460" column="17" lean-forward="true" selection-start-line="460" selection-start-column="17" selection-end-line="460" selection-end-column="17" />
+            <state relative-caret-position="2737">
+              <caret line="220" column="65" lean-forward="false" selection-start-line="220" selection-start-column="65" selection-end-line="220" selection-end-column="65" />
               <folding>
-                <element signature="e#9456#9457#0" expanded="true" />
-                <element signature="e#9520#9521#0" expanded="true" />
-                <element signature="e#10059#10060#0" expanded="true" />
-                <element signature="e#10096#10097#0" expanded="true" />
-                <element signature="e#10155#10156#0" expanded="true" />
-                <element signature="e#10203#10204#0" expanded="true" />
-                <element signature="e#13986#13987#0" expanded="true" />
-                <element signature="e#14034#14035#0" expanded="true" />
-                <element signature="e#14064#14065#0" expanded="true" />
-                <element signature="e#14101#14102#0" expanded="true" />
-                <element signature="e#17234#17235#0" expanded="true" />
-                <element signature="e#17282#17283#0" expanded="true" />
-                <element signature="e#17685#17686#0" expanded="true" />
-                <element signature="e#17747#17748#0" expanded="true" />
+                <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" expanded="false" />
+                <element signature="class#ScreenChange#0;class#ScreenSingleton#0" expanded="false" />
+                <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" expanded="false" />
+                <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" expanded="false" />
+                <element signature="class#OpenLoginScreen#0;class#ScreenSingleton#0" expanded="false" />
+                <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilterShowHide.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/FilterShowHide.java">
+      <file leaf-file-name="DataSingleton.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1819">
+              <caret line="131" column="26" lean-forward="false" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
+              <folding>
+                <element signature="e#3627#3628#0" expanded="true" />
+                <element signature="e#3661#3662#0" expanded="true" />
+                <element signature="e#3912#3913#0" expanded="true" />
+                <element signature="e#3945#3946#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditProductTableView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditCategoryTableView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTableView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditMenusTableView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditMenusTableView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <caret line="32" column="63" lean-forward="false" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilterInterfaces.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/FilterInterfaces.java">
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/zaar/Database/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditProdController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProdController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="58" column="81" lean-forward="true" selection-start-line="58" selection-start-column="81" selection-end-line="58" selection-end-column="81" />
+            <state relative-caret-position="3553">
+              <caret line="486" column="35" lean-forward="false" selection-start-line="486" selection-start-column="17" selection-end-line="486" selection-end-column="35" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddProdController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/AddProdController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="240" column="27" lean-forward="true" selection-start-line="240" selection-start-column="27" selection-end-line="240" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateProdController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/UpdateProdController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="134" column="48" lean-forward="true" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToolsSingleton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="86" column="15" lean-forward="true" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
-              <folding>
-                <element signature="docComment;method#removeVboxChildren#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#removeVboxChildren#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#openFileChooser#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="docComment;method#setFileChooser#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#setFileChooser#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="docComment;method#getBuildMenu#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="e#2645#2646#0" expanded="true" />
-                <element signature="e#2677#2678#0" expanded="true" />
-                <element signature="docComment;method#setButtonTopHBox#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#setButtonTopHBox#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="docComment;method#buttonSetImage#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#buttonSetImage#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="docComment;method#getButtonAnimation#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#getButtonAnimation#0;class#ToolsSingleton#0" expanded="false" />
-                <element signature="method#setRoundBorder#0;class#ToolsSingleton#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditFilters.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditFilters.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="119" column="37" lean-forward="true" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
-              <folding>
-                <element signature="e#561#562#0" expanded="true" />
-                <element signature="e#595#596#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
-                <element signature="e#2403#2404#0" expanded="true" />
-                <element signature="e#2445#2446#0" expanded="true" />
-                <element signature="e#3079#3080#0" expanded="true" />
-                <element signature="e#3119#3120#0" expanded="true" />
-                <element signature="e#3656#3657#0" expanded="true" />
-                <element signature="e#3698#3699#0" expanded="true" />
+                <element signature="method#getMenu#0;class#Database#0" expanded="false" />
+                <element signature="class#GetString#0;class#Database#0" expanded="false" />
+                <element signature="method#getManufacturers#0;class#Database#0" expanded="false" />
+                <element signature="class#GetProd#0;class#Database#0" expanded="false" />
+                <element signature="method#getProduct#0;class#Database#0" expanded="false" />
+                <element signature="method#getAllCategories#0;class#Database#0" expanded="false" />
+                <element signature="method#getAllMenus#0;class#Database#0" expanded="false" />
+                <element signature="method#getAllManufacturers#0;class#Database#0" expanded="false" />
+                <element signature="method#getAllProducts#0;class#Database#0" expanded="false" />
+                <element signature="method#updateProduct#0;class#Database#0" expanded="false" />
+                <element signature="method#insertProduct#0;class#Database#0" expanded="false" />
+                <element signature="method#dbInsertIntString#0;class#Database#0" expanded="false" />
+                <element signature="class#InsertMenu#0;class#Database#0" expanded="false" />
+                <marker date="1526421332536" expanded="true" signature="3975:4054" ph="SELECT produ... category" />
+                <marker date="1526421332536" expanded="true" signature="4147:4221" ph="SELECT manuf... manufacturer" />
+                <marker date="1526421332536" expanded="true" signature="4270:4322" ph="select menu.... menu" />
+                <marker date="1526421332536" expanded="true" signature="18647:18707" ph="SELECT * FRO... category" />
+                <marker date="1526421332536" expanded="true" signature="18819:18859" ph="delete from shopit.menu... " />
+                <marker date="1526421332536" expanded="true" signature="19015:19056" ph="delete from products... " />
+                <marker date="1526421332536" expanded="true" signature="19229:19285" ph="delete from shopit.category... " />
+                <marker date="1526421332536" expanded="true" signature="19229:19286" ph="delete from shopit.category... " />
+                <marker date="1526421332536" expanded="true" signature="19546:19602" ph="delete from shopit.manufacturer... " />
               </folding>
             </state>
           </provider>
@@ -179,6 +183,7 @@
         <option value="FxmlFile" />
         <option value="Singleton" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -199,57 +204,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/zaar/admin/Product/AddProductModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/ModelTools.java" />
-        <option value="$PROJECT_DIR$/src/zaar/Data.java" />
-        <option value="$PROJECT_DIR$/src/zaar/DataAndTools.java" />
-        <option value="$PROJECT_DIR$/src/zaar/DataSingleton.java" />
-        <option value="$PROJECT_DIR$/src/zaar/ToolsSingleton.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/Singleton/ToolsSingleton.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ScreenClass.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/product/AddProductModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/product/AddProductController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/product/AddProdController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/prod/AddProdController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Menu/BuildMenuList.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Menu/MenuActions.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Menu/MenuItemAction.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Menu/MenuAction.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/AppProdModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Manufacturer.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ArgumentMethod.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ArgumentBooleanMethod.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ArgumentBooleanMethodString.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/ProductController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/UpdateProdModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/AddProdModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/ManageDatabaseModel.java" />
-        <option value="$PROJECT_DIR$/src/zaar/Database/Database.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/test.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Product.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/SetFilther.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/SetFilter.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/Filter.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/SetFilterObject.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/EditProdFilterObject.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/FilterInterfaces.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/FilterShowHide.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/EditProdFilters.java" />
-        <option value="$PROJECT_DIR$/src/zaar/product/Menu/Category.java" />
-        <option value="$PROJECT_DIR$/src/zaar/LogoPageController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/AddProdController.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/EditProdModel.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/EditModel.java" />
         <option value="$PROJECT_DIR$/src/zaar/product/ProductModel.java" />
         <option value="$PROJECT_DIR$/src/zaar/admin/UpdateProdController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/EditProdController.java" />
-        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/EditProdTableView.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/EditCategoryTable.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTable.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/EditFiltersProduct.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/EditFiltersCategory.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/FilterInterfaces.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/FilterInterfaces.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/FilterInterfaces.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/EditFiltersCategory.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/EditFilters.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/FilterInterfacesProd.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterNumber2.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer2.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/EditFiltersProd.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/FilterInterfacesCat.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterShowHide.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterMenu.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterString.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterNumber.java" />
+        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" />
+        <option value="$PROJECT_DIR$/src/zaar/product/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterCategory.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterObjectType.java" />
+        <option value="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateCatMenuMan.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/EditFiltersCat.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/menus/EditFiltersCat.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/menus/FilterInterfacesMenus.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/menus/EditFiltersMenus.java" />
         <option value="$PROJECT_DIR$/src/zaar/product/Menu/BuildMenu.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/EditFilters.java" />
-        <option value="$PROJECT_DIR$/src/zaar/admin/EditProdModel.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterCategoryMenu.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/manufacturer/FilterInterfacesCat.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/manufacturer/FilterInterfacesMan.java" />
+        <option value="$PROJECT_DIR$/src/zaar/product/Manufacturer.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/manufacturer/EditFiltersMan.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProdController.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java" />
+        <option value="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTableView.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditMenusTableView.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditManufacturerTableView.java" />
+        <option value="$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java" />
+        <option value="$PROJECT_DIR$/src/zaar/Database/Database.java" />
+        <option value="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" />
+        <option value="$PROJECT_DIR$/src/zaar/admin/edit/EditController.java" />
       </list>
     </option>
   </component>
@@ -283,6 +288,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -313,6 +322,49 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="zaar" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zaar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="add" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zaar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="edit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zaar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="edit" type="462c0819:PsiDirectoryNode" />
+              <item name="PredicateFilters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zaar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="edit" type="462c0819:PsiDirectoryNode" />
+              <item name="tables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zaar" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="edit" type="462c0819:PsiDirectoryNode" />
+              <item name="update" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
@@ -354,10 +406,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,19 +418,24 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Programmering 2/Lecture10/Task2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\add" />
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\edit\update" />
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\edit" />
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin" />
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\img\icons" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="zaar.admin.edit.tables" />
+      <recent name="zaar.admin.edit.filterPopUps" />
+      <recent name="zaar.admin.edit.PredicateFilters.category" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\edit\PredicateFilters\manufacturer" />
+      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\edit\PredicateFilters\menus" />
       <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin" />
       <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin\Product" />
       <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\Admin" />
-      <recent name="$PROJECT_DIR$/out/production/OnlineShop" />
-      <recent name="$PROJECT_DIR$/src/zaar" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\admin" />
-      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\img\icons" />
-      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\img\button" />
-      <recent name="C:\Users\CZR\Documents\HKR\Projekt2\OnlineShop\src\zaar\product" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -468,7 +521,14 @@
       <workItem from="1525675110563" duration="27944000" />
       <workItem from="1525763520725" duration="54840000" />
       <workItem from="1525940438367" duration="30628000" />
-      <workItem from="1525977597100" duration="9057000" />
+      <workItem from="1525977597100" duration="28424000" />
+      <workItem from="1526044109434" duration="22921000" />
+      <workItem from="1526153163448" duration="12075000" />
+      <workItem from="1526207002746" duration="13505000" />
+      <workItem from="1526281367540" duration="12423000" />
+      <workItem from="1526304812550" duration="43774000" />
+      <workItem from="1526415842299" duration="6964000" />
+      <workItem from="1526422882522" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Test2 Emil">
       <created>1523478044085</created>
@@ -561,11 +621,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525640332787</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixat med editering av databas från programmet samt filtrering av resultat">
+      <created>1525986764226</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1525986764226</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377840000" />
+    <option name="totallyTimeSpent" value="508879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -573,34 +640,65 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26406926" sideWeight="0.41471216" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2835498" sideWeight="0.58102345" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2835498" sideWeight="0.6034115" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.271645" sideWeight="0.4978678" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2835498" sideWeight="0.41897655" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32142857" sideWeight="0.39658847" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.9184435" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20682302" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30277187" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982684" sideWeight="0.40831557" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982684" sideWeight="0.4035181" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26406926" sideWeight="0.39072496" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.48720682" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.48294243" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2835498" sideWeight="0.6034115" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982684" sideWeight="0.4035181" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26406926" sideWeight="0.39072496" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.271645" sideWeight="0.4978678" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2835498" sideWeight="0.39658847" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Sequence" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.9184435" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21108742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.48294243" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -643,7 +741,8 @@
     <MESSAGE value="Har ändrat menyn och databasen för meny visning och val av kategori/menyval" />
     <MESSAGE value="Lade till reconnect om databasuppkoppling ligger nere" />
     <MESSAGE value="Lagt till lägga till produkt menyer categorier till databas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lagt till lägga till produkt menyer categorier till databas" />
+    <MESSAGE value="Fixat med editering av databas från programmet samt filtrering av resultat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixat med editering av databas från programmet samt filtrering av resultat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,61 +777,121 @@
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/AddProdController.java</url>
-          <line>101</line>
+          <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
+          <line>98</line>
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/UpdateProdController.java</url>
-          <line>239</line>
-          <properties />
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/AddProdController.java</url>
-          <line>181</line>
+          <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
+          <line>176</line>
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java</url>
-          <line>447</line>
-          <properties />
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java</url>
-          <line>257</line>
+          <line>100</line>
           <properties />
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java</url>
+          <line>154</line>
+          <properties />
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java</url>
+          <line>155</line>
+          <properties />
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java</url>
+          <line>157</line>
+          <properties />
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>503</line>
+          <properties />
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>528</line>
+          <properties />
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>529</line>
+          <properties />
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>531</line>
+          <properties />
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>532</line>
+          <properties />
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>541</line>
+          <properties />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>542</line>
+          <properties />
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>415</line>
+          <properties />
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/zaar/Database/Database.java</url>
+          <line>371</line>
+          <properties />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java</url>
-          <line>261</line>
+          <line>362</line>
           <properties />
-          <option name="timeStamp" value="145" />
+          <option name="timeStamp" value="221" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/EditProdModel.java</url>
-          <line>449</line>
+          <url>file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterCategoryMenu.java</url>
+          <line>155</line>
           <properties />
-          <option name="timeStamp" value="162" />
+          <option name="timeStamp" value="222" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/EditProdModel.java</url>
-          <line>451</line>
+          <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
+          <line>122</line>
           <properties />
-          <option name="timeStamp" value="163" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/zaar/admin/EditProdModel.java</url>
-          <line>450</line>
-          <properties />
-          <option name="timeStamp" value="164" />
+          <option name="timeStamp" value="223" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="165" />
+      <option name="time" value="224" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -746,467 +905,422 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/AddProdModel.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.graphics/javafx/scene/image/ImageView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/Comparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4680">
-          <caret line="108" column="17" lean-forward="false" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/ButtonBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/AddProd.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="64" column="37" lean-forward="true" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/beans/property/ObjectPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../Databas/Java/DB_Connector/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar!/com/mysql/jdbc/PreparedStatement.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="264" column="105" lean-forward="false" selection-start-line="264" selection-start-column="105" selection-end-line="264" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/ManageDatabaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../Databas/Java/DB_Connector/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="605" column="0" lean-forward="false" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/UpdateProd.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="57" column="50" lean-forward="true" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/MenuAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/Filter.java" />
-    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProdFilterObject.java" />
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/MenuItemAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.controls/javafx/scene/control/TextInputControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="1428" column="46" lean-forward="true" selection-start-line="1428" selection-start-column="46" selection-end-line="1428" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/collections/ObservableListBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/javafx.base/javafx/collections/ListChangeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="482" column="0" lean-forward="false" selection-start-line="482" selection-start-column="0" selection-end-line="482" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/product/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="88" column="46" lean-forward="false" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="46" />
+        <state relative-caret-position="271">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
-            <element signature="e#1443#1444#0" expanded="false" />
-            <element signature="e#1470#1471#0" expanded="false" />
+            <element signature="e#1644#1645#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/ManageDatabaseModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="35" column="48" lean-forward="false" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Manufacturer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#254#255#0" expanded="false" />
-            <element signature="e#280#281#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/MenuObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/UpdateProdModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="method#isUserLoggedIn#0;class#DataSingleton#0" expanded="false" />
-            <element signature="method#toggleMenuChanged#0;class#DataSingleton#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/LoginModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <marker date="1524741788140" expanded="true" signature="601:668" ph="Select * fro... Customers" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="565" column="9" lean-forward="false" selection-start-line="565" selection-start-column="9" selection-end-line="565" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="2469" column="32" lean-forward="true" selection-start-line="2469" selection-start-column="32" selection-end-line="2469" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/AddProdModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="57" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProd.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="48" column="57" lean-forward="true" selection-start-line="48" selection-start-column="57" selection-end-line="48" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="211">
+          <caret line="2624" column="0" lean-forward="false" selection-start-line="2624" selection-start-column="0" selection-end-line="2624" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/LogoPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="13" lean-forward="false" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        <state relative-caret-position="243">
+          <caret line="43" column="44" lean-forward="false" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/Menus.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/EditModel.java" />
+    <entry file="jar://$PROJECT_DIR$/../../Databas/Java/DB_Connector/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="605" column="0" lean-forward="false" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProd.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterPopUpCommons.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterNumber2.java" />
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer2.java" />
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/CompareOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterShowHide.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterMenu.java" />
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="40" />
+          <folding>
+            <element signature="e#207#208#0" expanded="false" />
+            <element signature="e#235#236#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/MenuObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="28" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/FilterInterfacesProd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/FilterInterfacesCat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="69" column="97" lean-forward="false" selection-start-line="69" selection-start-column="97" selection-end-line="69" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/add/AddProdModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/ProductModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="32" column="136" lean-forward="false" selection-start-line="32" selection-start-column="136" selection-end-line="32" selection-end-column="136" />
+          <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/FilterObjectType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="2" selection-end-line="445" selection-end-column="7" />
-          <folding>
-            <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="class#ScreenChange#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="e#2061#2062#0" expanded="true" />
-            <element signature="e#2128#2129#0" expanded="true" />
-            <element signature="class#OpenAddProductScreen#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="class#OpenEditProductScreen#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="e#2805#2806#0" expanded="true" />
-            <element signature="e#2868#2869#0" expanded="true" />
-            <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="class#SelectManufacturerPopUp#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="e#18054#18055#0" expanded="true" />
-            <element signature="e#18126#18127#0" expanded="true" />
-            <element signature="class#InsertStringToDbPopUp#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="method#popUp#0;class#InsertStringToDbPopUp#0;class#ScreenSingleton#0" expanded="false" />
-            <element signature="e#20944#20945#0" expanded="true" />
-            <element signature="e#21005#21006#0" expanded="true" />
-            <element signature="e#25474#25475#0" expanded="true" />
-            <element signature="e#25535#25536#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/function/Predicate.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateCategory.java" />
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/ManageDatabaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="39" column="17" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        <state relative-caret-position="323">
+          <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/AddProdController.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/ManageDatabaseModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="240" column="27" lean-forward="true" selection-start-line="240" selection-start-column="27" selection-end-line="240" selection-end-column="27" />
+        <state relative-caret-position="289">
+          <caret line="25" column="65" lean-forward="false" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/collections/transformation/FilteredList.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
+        <state relative-caret-position="34">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/UpdateProdController.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateCatMenuMan.java" />
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/Menus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="134" column="48" lean-forward="true" selection-start-line="134" selection-start-column="48" selection-end-line="134" selection-end-column="48" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProdController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="58" column="81" lean-forward="true" selection-start-line="58" selection-start-column="81" selection-end-line="58" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="199">
+          <caret line="2467" column="24" lean-forward="false" selection-start-line="2467" selection-start-column="24" selection-end-line="2467" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/FilterShowHide.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/menus/EditFiltersMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="338">
+          <caret line="61" column="21" lean-forward="false" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/FilterInterfaces.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/menus/FilterInterfacesMenus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditFilters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="119" column="37" lean-forward="true" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
-          <folding>
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
-            <element signature="e#2403#2404#0" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
-            <element signature="e#3079#3080#0" expanded="true" />
-            <element signature="e#3119#3120#0" expanded="true" />
-            <element signature="e#3656#3657#0" expanded="true" />
-            <element signature="e#3698#3699#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="86" column="15" lean-forward="true" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
+        <state relative-caret-position="442">
+          <caret line="83" column="13" lean-forward="false" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
           <folding>
             <element signature="docComment;method#removeVboxChildren#0;class#ToolsSingleton#0" expanded="false" />
-            <element signature="method#removeVboxChildren#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="method#openFileChooser#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="docComment;method#setFileChooser#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="method#setFileChooser#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="docComment;method#getBuildMenu#0;class#ToolsSingleton#0" expanded="false" />
-            <element signature="e#2645#2646#0" expanded="true" />
-            <element signature="e#2677#2678#0" expanded="true" />
+            <element signature="e#2521#2522#0" expanded="false" />
+            <element signature="e#2553#2554#0" expanded="false" />
             <element signature="docComment;method#setButtonTopHBox#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="method#setButtonTopHBox#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="docComment;method#buttonSetImage#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="method#buttonSetImage#0;class#ToolsSingleton#0" expanded="false" />
             <element signature="docComment;method#getButtonAnimation#0;class#ToolsSingleton#0" expanded="false" />
-            <element signature="method#getButtonAnimation#0;class#ToolsSingleton#0" expanded="false" />
-            <element signature="method#setRoundBorder#0;class#ToolsSingleton#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/Database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="82" column="44" lean-forward="false" selection-start-line="82" selection-start-column="44" selection-end-line="82" selection-end-column="44" />
-          <folding>
-            <marker date="1525728205446" expanded="true" signature="2800:2825" ph="SELECT * FRO... menu" />
-            <marker date="1525728205446" expanded="true" signature="3109:3138" ph="SELECT * FRO... category" />
-            <marker date="1525728205446" expanded="true" signature="3798:3857" ph="SELECT * FRO... users" />
-            <marker date="1525728205446" expanded="true" signature="3798:3880" ph="SELECT * FRO... products" />
-            <marker date="1525728205446" expanded="true" signature="5380:5431" ph="SELECT * FRO... products" />
-            <marker date="1525728205446" expanded="true" signature="6954:6978" ph="SELECT manuf... manufacturer" />
-            <marker date="1525728205446" expanded="true" signature="6954:7093" ph="SELECT manuf... manufacturer" />
-            <marker date="1525728205446" expanded="true" signature="6954:7094" ph="SELECT manuf... manufacturer" />
-            <marker date="1525728205446" expanded="true" signature="7803:8022" ph="UPDATE `shopit`.`products`... " />
-            <marker date="1525728205446" expanded="true" signature="8072:8311" ph="UPDATE `shopit`.`products`... " />
-            <marker date="1525728205446" expanded="true" signature="9840:10075" ph="INSERT INTO `shopit`.`products`... " />
-            <marker date="1525728205446" expanded="true" signature="11612:11672" ph="SELECT * FRO... manufacturer" />
+            <element signature="docComment;method#setRoundBorder#0;class#ToolsSingleton#0" expanded="false" />
+            <element signature="method#setBGDark#0;class#ToolsSingleton#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/product/Menu/BuildMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="87" column="43" lean-forward="false" selection-start-line="87" selection-start-column="43" selection-end-line="87" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/EditFiltersCat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterCategoryMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="117" column="51" lean-forward="false" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2840#2841#0" expanded="false" />
+            <element signature="e#2865#2866#0" expanded="false" />
+            <element signature="e#5853#5854#0" expanded="false" />
+            <element signature="e#5893#5894#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/EditProdModel.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/manufacturer/FilterInterfacesMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="460" column="17" lean-forward="true" selection-start-line="460" selection-start-column="17" selection-end-line="460" selection-end-column="17" />
+        <state relative-caret-position="323">
+          <caret line="19" column="51" lean-forward="false" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/EditFiltersProd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/Manufacturer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding>
-            <element signature="e#9456#9457#0" expanded="true" />
-            <element signature="e#9520#9521#0" expanded="true" />
-            <element signature="e#10059#10060#0" expanded="true" />
-            <element signature="e#10096#10097#0" expanded="true" />
-            <element signature="e#10155#10156#0" expanded="true" />
-            <element signature="e#10203#10204#0" expanded="true" />
-            <element signature="e#13986#13987#0" expanded="true" />
-            <element signature="e#14034#14035#0" expanded="true" />
-            <element signature="e#14064#14065#0" expanded="true" />
-            <element signature="e#14101#14102#0" expanded="true" />
-            <element signature="e#17234#17235#0" expanded="true" />
-            <element signature="e#17282#17283#0" expanded="true" />
-            <element signature="e#17685#17686#0" expanded="true" />
-            <element signature="e#17747#17748#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="false" />
+            <element signature="e#536#537#0" expanded="false" />
+            <element signature="e#652#653#0" expanded="false" />
+            <element signature="e#679#680#0" expanded="false" />
+            <element signature="e#752#753#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProdController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="11" selection-end-line="132" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="94" column="79" lean-forward="false" selection-start-line="94" selection-start-column="79" selection-end-line="94" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="112" column="36" lean-forward="false" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="48" lean-forward="false" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/Database/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3553">
+          <caret line="486" column="35" lean-forward="false" selection-start-line="486" selection-start-column="17" selection-end-line="486" selection-end-column="35" />
+          <folding>
+            <element signature="method#getMenu#0;class#Database#0" expanded="false" />
+            <element signature="class#GetString#0;class#Database#0" expanded="false" />
+            <element signature="method#getManufacturers#0;class#Database#0" expanded="false" />
+            <element signature="class#GetProd#0;class#Database#0" expanded="false" />
+            <element signature="method#getProduct#0;class#Database#0" expanded="false" />
+            <element signature="method#getAllCategories#0;class#Database#0" expanded="false" />
+            <element signature="method#getAllMenus#0;class#Database#0" expanded="false" />
+            <element signature="method#getAllManufacturers#0;class#Database#0" expanded="false" />
+            <element signature="method#getAllProducts#0;class#Database#0" expanded="false" />
+            <element signature="method#updateProduct#0;class#Database#0" expanded="false" />
+            <element signature="method#insertProduct#0;class#Database#0" expanded="false" />
+            <element signature="method#dbInsertIntString#0;class#Database#0" expanded="false" />
+            <element signature="class#InsertMenu#0;class#Database#0" expanded="false" />
+            <marker date="1526421332536" expanded="true" signature="3975:4054" ph="SELECT produ... category" />
+            <marker date="1526421332536" expanded="true" signature="4147:4221" ph="SELECT manuf... manufacturer" />
+            <marker date="1526421332536" expanded="true" signature="4270:4322" ph="select menu.... menu" />
+            <marker date="1526421332536" expanded="true" signature="18647:18707" ph="SELECT * FRO... category" />
+            <marker date="1526421332536" expanded="true" signature="18819:18859" ph="delete from shopit.menu... " />
+            <marker date="1526421332536" expanded="true" signature="19015:19056" ph="delete from products... " />
+            <marker date="1526421332536" expanded="true" signature="19229:19285" ph="delete from shopit.category... " />
+            <marker date="1526421332536" expanded="true" signature="19229:19286" ph="delete from shopit.category... " />
+            <marker date="1526421332536" expanded="true" signature="19546:19602" ph="delete from shopit.manufacturer... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditMenusTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="32" column="63" lean-forward="false" selection-start-line="32" selection-start-column="63" selection-end-line="32" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/manufacturer/EditFiltersMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="59" column="48" lean-forward="true" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="131" column="26" lean-forward="false" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
+          <folding>
+            <element signature="e#3627#3628#0" expanded="true" />
+            <element signature="e#3661#3662#0" expanded="true" />
+            <element signature="e#3912#3913#0" expanded="true" />
+            <element signature="e#3945#3946#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="220" column="65" lean-forward="false" selection-start-line="220" selection-start-column="65" selection-end-line="220" selection-end-column="65" />
+          <folding>
+            <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" expanded="false" />
+            <element signature="class#ScreenChange#0;class#ScreenSingleton#0" expanded="false" />
+            <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" expanded="false" />
+            <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" expanded="false" />
+            <element signature="class#OpenLoginScreen#0;class#ScreenSingleton#0" expanded="false" />
+            <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/tables/EditManufacturerTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="56" />
+          <folding>
+            <element signature="e#3271#3272#0" expanded="true" />
+            <element signature="e#3313#3314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/EditController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="259" column="66" lean-forward="false" selection-start-line="259" selection-start-column="66" selection-end-line="259" selection-end-column="66" />
+          <folding />
         </state>
       </provider>
     </entry>

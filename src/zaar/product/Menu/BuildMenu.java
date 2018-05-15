@@ -4,10 +4,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
 import zaar.Database.Database;
+import zaar.admin.edit.filterPopUps.FilterObjectType;
 import zaar.product.Product;
-import zaar.product.ProductModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,13 +17,34 @@ import static zaar.product.Menu.BuildMenu.MenuBuildMode.STANDARD;
 
 public class BuildMenu {
 
-    Database db = Database.getInstance();
-    ProductModel productModel = new ProductModel();
+    private Database db = Database.getInstance();
 
-    public void getMenu(MenuButton button, VBox vBox, MenuAction menuAction, MenuItemAction menuItemAction, FilteredList<Product> filteredList, MenuBuildMode menuBuildMode, ArrayList<ArrayList<MenuObject>> filtermodeList) {
+    /**
+     * Build Menu for Menubutton passed as parameter.
+     * @param button MenuButton
+     * @param menuAction
+     * @param menuItemAction
+     * @param filteredList
+     * @param menuBuildMode
+     * @param filtermodeList
+     */
+    public void getMenu(MenuButton button, MenuAction menuAction, MenuItemAction menuItemAction, FilteredList<?> filteredList, FilterObjectType filterObjectType, MenuBuildMode menuBuildMode, ArrayList<ArrayList<MenuObject>> filtermodeList) {
         ArrayList<ArrayList<MenuObject>> list;
+        FilteredList<Product> filteredListProduct = null;
+        FilteredList<Category> filteredListCategory = null;
+        FilteredList<Menus> filteredListMenus = null;
+
         if(menuBuildMode==FILTER){//Lista ska inte läsas från databas när meny i filter Editproduct används
             list = filtermodeList;
+            if(filterObjectType == FilterObjectType.PRODUCT){
+                filteredListProduct = (FilteredList<Product>) filteredList;
+            }
+            else if(filterObjectType == FilterObjectType.CATEGORY){
+                filteredListCategory = (FilteredList<Category>) filteredList;
+            }
+            else{
+                filteredListMenus = (FilteredList<Menus>) filteredList;
+            }
         }
         else {
             db = Database.getInstance();//Get Menus and categories from database
@@ -43,10 +63,20 @@ public class BuildMenu {
 
         for (MenuObject o : list.get(1)) {// Get Categories
             if(menuBuildMode == FILTER){
-                for(Product p: filteredList){
-                    if(((Category)o).getCategoryId() == p.getProductCategory()){
-                        addMenuObject(toParentHash, o);
-                        break;
+                if(filterObjectType == FilterObjectType.PRODUCT) {
+                    for (Product p : filteredListProduct) {
+                        if (((Category) o).getCategoryId() == p.getProductCategory()) {
+                            addMenuObject(toParentHash, o);
+                            break;
+                        }
+                    }
+                }
+                else if(filterObjectType == FilterObjectType.CATEGORY){
+                    for (Category c : filteredListCategory) {
+                        if (((Category) o).getCategoryId() == c.getCategoryId()) {
+                            addMenuObject(toParentHash, o);
+                            break;
+                        }
                     }
                 }
             }
@@ -80,7 +110,7 @@ public class BuildMenu {
                 } else {
                     MenuItem menuItem = new MenuItem(m.getName());
                     menuItem.setOnAction((event -> {
-                        menuItemAction.action(vBox,((Category) m));//Action from calling class
+                        menuItemAction.action(((Category) m));//Action from calling class
                     }));
                     menuHash.get(Entry.getKey()).getItems().add(menuItem);//Add MenuItem to parent Menu
                 }

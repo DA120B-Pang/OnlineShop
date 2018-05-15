@@ -23,7 +23,7 @@ public class ManageDatabaseController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mDM.getTopHBox(hBox);
-        vBox.getChildren().add(mDM.getProdTools(vBox));
+        vBox.getChildren().add(mDM.getProdTools());
 
     }
 }

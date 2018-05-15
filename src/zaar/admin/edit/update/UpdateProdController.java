@@ -1,7 +1,9 @@
-package zaar.admin;
+package zaar.admin.edit.update;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -9,10 +11,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import zaar.Database.Database;
+import zaar.admin.edit.filterPopUps.FilterObjectType;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
@@ -21,11 +27,12 @@ import zaar.product.Menu.*;
 import zaar.product.Product;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class UpdateProdController implements Initializable{
 
@@ -83,82 +90,90 @@ public class UpdateProdController implements Initializable{
     @FXML
     private ImageView oldImageView;
 
+    @FXML
+    private GridPane gridPane;
+
 
 
     private Database dB = Database.getInstance();
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
     private ScreenSingleton sS = ScreenSingleton.getInstance();
-    private Category category;
+    private Category category = new Category();
     private Manufacturer manufacturer = new Manufacturer();
-    private AddProdModel aPM = new AddProdModel();
     private final FileChooser fileChooser = new FileChooser();
     private File file;
     private Product product;
+    private Product listViewProduct;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         setChangelisteners();//Set changelisteners for textfields
 
         writeToDbBtn.setOnAction((Event)->{
-            executeAddProduct();//Add product to database
+            executeUpdateProduct();//Add product to database
         });
 
+        //Shows dialog for choosing manufacturer
         chooseManBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
             sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
         });
 
+        //Adds manufacturer
         addManBtn.setOnAction((Event)->{//Add manufacturer
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
             sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
         });
 
-        manufacturer.getName().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                manufacturerTxtFld.setText(manufacturer.getName().getValue());
-            }
+        //Puts choosen name in manufactorer textfield
+        dS.manChangedProperty().addListener(l-> {
+                manufacturerTxtFld.setText(manufacturer.getName());
         });
 
+        //Shows available menus
         menuBtn.setOnMouseClicked((Event)->{
             if(menuBtn.getItems().size()==0){
-                tS.getBuildMenu().getMenu(menuBtn,vBox,new AddProdMenuAction(), new AddProdMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
+                tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null, FilterObjectType.PRODUCT, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
             }
         });
 
+        //Add category
         addCatBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
             sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
         });
 
+        //Add menu
         addMenuBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
             sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
         });
 
+        //Choose picture
         choosePicBtn.setOnAction((Event)->{
             file = tS.openFileChooser(fileChooser, Event,pictureTxtFld);
         });
         tS.setFileChooser(fileChooser);
-        tS.getBuildMenu().getMenu(menuBtn,vBox,new AddProdMenuAction(), new AddProdMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
+        tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
+
+
     }
 
     /**
      * Adds product to database if successful
      */
-    private void executeAddProduct(){
+    private void executeUpdateProduct(){
         boolean retVal = false;
         Image image;
         int categoryId;
-        int manufacturerId;
-        String name;
+        int manufacturerId = 0;
+        String name = "";
         Double price;
         int quantity;
         String desc;
@@ -176,6 +191,14 @@ public class UpdateProdController implements Initializable{
             desc = desqTxtArea.getText();
             other = detailsTxtArea.getText();
             retVal = dB.updateProduct(product.getProductId(),categoryId, manufacturerId, name, price, quantity, desc, other, file);
+            if(retVal){
+                listViewProduct.setName(name);
+                listViewProduct.setManufacturerId(manufacturerId);
+                listViewProduct.setProductCategory(categoryId);
+                listViewProduct.setPrice(price);
+                listViewProduct.setQuantity(quantity);
+                listViewProduct.setDescription(desc);
+            }
         }
         catch (Exception e){
             //e.printStackTrace();
@@ -198,13 +221,13 @@ public class UpdateProdController implements Initializable{
                 if(!newValue.equalsIgnoreCase("")) {
                     try {
                         Double.parseDouble(newValue);
-                        System.out.println(Double.parseDouble(newValue));
                     } catch (Exception e) {
                         priceTxtFld.setText(oldValue);
                     }
                 }
             }
         });
+
         quantityTxtFld.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
@@ -221,43 +244,50 @@ public class UpdateProdController implements Initializable{
         dS.menuChangedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                tS.getBuildMenu().getMenu(menuBtn,vBox,new AddProdMenuAction(), new AddProdMenuItemAction(),null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
+                tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
             }
         });
     }
 
-    private void setProduct(Product product) {
+    /**
+     *Sets selected product from edti screen listview
+     *
+     * @param product
+     * @param nameManufacturer
+     * @param nameCategory
+     * @param listViewProd
+     */
+    public void setProduct(Product product, String nameManufacturer, String nameCategory, Product listViewProd) {
+        this.listViewProduct = listViewProd;
         this.product = product;
-        String name[] = dB.getManufCatName(product.getManufacturerId(), product.getProductCategory());
-        if (name != null){
-            manufacturer.getName().setValue(name[0]);
-            category.setName(name[1]);
-            categoryTxtFld.setText(name[1]);
-        }
-        else {
-            manufacturer.getName().setValue("Error retrieving name");
-            categoryTxtFld.setText("Error retrieving name");
-        }
+        ArrayList<Product> productFromDb = dB.getProduct(product.getProductId(), Database.GetProd.PROD_SINGLE);
+        manufacturer.setName(nameManufacturer);
+        category.setName(nameCategory);
+        categoryTxtFld.setText(nameCategory);
+        product = productFromDb.get(0);
+        nameTxtFld.setText(product.getName());
         manufacturer.setId(product.getManufacturerId());
         category.setCategoryId(product.getProductCategory());
         priceTxtFld.setText(String.valueOf(product.getPrice()));
         quantityTxtFld.setText(String.valueOf(product.getQuantity()));
         desqTxtArea.setText(String.valueOf(product.getDescription()));
         detailsTxtArea.setText(String.valueOf(product.getTechnicalDetail()));
-        oldImageView = product.getImageView();
+        product.getImageView().setFitWidth(230);
+        product.getImageView().setFitHeight(230);
+        gridPane.add(product.getImageView(),1,8);
     }
 
-    public class AddProdMenuAction implements MenuAction {
+    public class UpdateProdMenuAction implements MenuAction {
         @Override
         public void action(Menus menu) {
 
         }
     }
 
-    public class AddProdMenuItemAction implements MenuItemAction {
+    public class UpdateProdMenuItemAction implements MenuItemAction {
 
         @Override
-        public void action(VBox vbox, Category cat) {
+        public void action(Category cat) {
             categoryTxtFld.setText(String.valueOf(cat.getName()));
             category = cat;
         }
