@@ -153,7 +153,6 @@ public class ProductController implements Initializable {
 
         pane.setMaxWidth(5000);
         pane.setPrefWidth(-1);
-        VBox.setVgrow(pane, Priority.ALWAYS);
 
         if(toggleColor) {//Background color for product view
             System.out.println(pane.getStyle());
