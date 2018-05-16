@@ -99,7 +99,9 @@ public class EditController implements Initializable {
         });
 
         dS.manChangedProperty().addListener(l->{
-            eManTV.getMasterFilter().setPredicate();
+            if(eManTV!=null) {
+                eManTV.getMasterFilter().setPredicate();
+            }
         });
 
     }

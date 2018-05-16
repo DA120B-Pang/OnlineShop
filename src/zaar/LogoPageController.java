@@ -28,7 +28,7 @@ public class LogoPageController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         AnchorPane pane = new AnchorPane();
-        Image image = new Image("File:img/ShopIT.png");
+        Image image = new Image("File:img/ShopITsmall.png");
         pane.getChildren().add(new ImageView(image));
 
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1.2), moveOn);
