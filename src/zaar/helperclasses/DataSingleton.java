@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import zaar.customer.Order;
 import zaar.customer.User;
 import zaar.product.Product;
 
@@ -18,6 +19,7 @@ public class DataSingleton {
     private static DataSingleton ourInstance = new DataSingleton();
     private User loggedInUser;
     private ArrayList<Product> cart;
+    private ArrayList<Order> order;
     private ImageView okImgView;
     private ImageView notOkImgView;
     private Image plusGreenImg;
@@ -97,6 +99,14 @@ public class DataSingleton {
 
     public ImageView getNotOkImgView() {
         return notOkImgView;
+    }
+
+    public ArrayList<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(ArrayList<Order> order) {
+        this.order = order;
     }
 
     public void setFilterButtonGreen(Button button) {

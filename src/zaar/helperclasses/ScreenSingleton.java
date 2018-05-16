@@ -81,7 +81,7 @@ public class ScreenSingleton {
     }
     public class OpenCartScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            //activateScreen(e,"../sampleLogin.fxml");
+            activateScreen(e,"../product/kundvagn.fxml");
         }
     }
     private void activateScreen(ActionEvent e, String url){
