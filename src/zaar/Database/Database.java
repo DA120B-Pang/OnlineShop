@@ -46,6 +46,15 @@ public class Database {
         }
     }
 
+    public boolean isDBConnected(){
+        try {
+            return !connection.isClosed();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean checkConnection(){
         if(connection!=null){
             try {
