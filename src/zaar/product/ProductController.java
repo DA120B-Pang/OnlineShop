@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import zaar.Database.Database;
+import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 import zaar.product.Menu.*;
@@ -31,6 +32,7 @@ public class ProductController implements Initializable {
     @FXML private HBox hBox;
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private boolean toggleColor;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
