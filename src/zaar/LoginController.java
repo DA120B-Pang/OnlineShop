@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import zaar.Database.Database;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,7 @@ public class LoginController implements Initializable {
     @FXML private Label loginStatus;
 
     public LoginModel loginModel = new LoginModel();
+    private Database dB = Database.getInstance();
 
 
     @Override
@@ -39,8 +41,8 @@ public class LoginController implements Initializable {
 
     public void login(ActionEvent event){
         try{
-            if (loginModel.isLogin(username.getText(), password.getText())){
-                loginStatus.setText("Användarnamn och lösenor är korrekt!");
+            if (dB.isLogin(username.getText(), password.getText())){
+                loginStatus.setText("Användarnamn och lösenord är korrekt!");
             }else {
                 loginStatus.setText("Användarnamn eller lösenord är inkorrekt!");
             }
