@@ -71,7 +71,7 @@ public class ScreenSingleton {
     }
     public class OpenManageDatabase implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../admin/ManageDatabase.fxml");
+            activateScreen(e,"../admin/AdminTools.fxml");
         }
     }
     public class OpenLoginScreen implements ScreenChange {

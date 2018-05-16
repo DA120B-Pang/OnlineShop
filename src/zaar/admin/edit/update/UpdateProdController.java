@@ -262,6 +262,7 @@ public class UpdateProdController implements Initializable{
         this.product = product;
         ArrayList<Product> productFromDb = dB.getProduct(product.getProductId(), Database.GetProd.PROD_SINGLE);
         manufacturer.setName(nameManufacturer);
+        manufacturerTxtFld.setText(nameManufacturer);
         category.setName(nameCategory);
         categoryTxtFld.setText(nameCategory);
         product = productFromDb.get(0);

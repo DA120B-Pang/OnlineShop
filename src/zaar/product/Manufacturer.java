@@ -1,7 +1,7 @@
 package zaar.product;
 
 
-import javafx.beans.property.SimpleStringProperty;
+
 
 import java.util.Comparator;
 
