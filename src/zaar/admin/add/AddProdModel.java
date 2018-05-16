@@ -1,4 +1,4 @@
-package zaar.admin;
+package zaar.admin.add;
 
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;

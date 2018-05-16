@@ -1,20 +1,20 @@
 package zaar.product;
 
 
-import javafx.beans.property.SimpleStringProperty;
+
 
 import java.util.Comparator;
 
 public class Manufacturer implements Comparator<Manufacturer>{
     private int id;
-    private SimpleStringProperty name;
+    private String name;
 
     public Manufacturer(){
         this(0,"");
     }
     public Manufacturer(int id, String name){
         this.id = id;
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
     }
 
     public int getId() {
@@ -25,20 +25,20 @@ public class Manufacturer implements Comparator<Manufacturer>{
         this.id = id;
     }
 
-    public SimpleStringProperty getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(SimpleStringProperty name) {
+    public void setName(String name) {
         this.name = name;
     }
     @Override
     public String toString(){
-        return name.getValue();
+        return name;
     }
     @Override
     public int compare(Manufacturer o1, Manufacturer o2) {
-        return o1.name.getValue().compareTo(o2.name.getValue());
+        return o1.name.compareTo(o2.name);
     }
 
 

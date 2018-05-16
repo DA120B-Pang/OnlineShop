@@ -2,12 +2,8 @@
   <library name="mysql-connector-java-5.1.46">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../Databas/Java/DB_Connector/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar!/" />
-      <root url="file://$PROJECT_DIR$/mysql-connector-java-5.1.45" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/mysql-connector-java-5.1.45/src" />
-    </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/mysql-connector-java-5.1.45" recursive="false" />
+    <SOURCES />
   </library>
 </component>

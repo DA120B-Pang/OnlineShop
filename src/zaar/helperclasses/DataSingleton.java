@@ -22,7 +22,8 @@ public class DataSingleton {
     private ImageView notOkImgView;
     private Image plusGreenImg;
     private Image plusYellowImg;
-    private SimpleBooleanProperty menuChanged;
+    private SimpleBooleanProperty menuChanged = new SimpleBooleanProperty(false);
+    private SimpleBooleanProperty manChanged = new SimpleBooleanProperty(false);
 
     public static DataSingleton getInstance() {
         return ourInstance;
@@ -32,7 +33,6 @@ public class DataSingleton {
         this.loggedInUser = new User();
         cart = new ArrayList<>();
         createImageViews();
-        menuChanged = new SimpleBooleanProperty(false);
     }
 
     private final void createImageViews(){
@@ -123,6 +123,17 @@ public class DataSingleton {
         }
         else{
             menuChanged.setValue(true);
+        }
+    }
+    public SimpleBooleanProperty manChangedProperty() {
+        return manChanged;
+    }
+
+    public void toggleManChanged() {
+        if (manChanged.getValue()) {
+            manChanged.setValue(false);
+        } else {
+            manChanged.setValue(true);
         }
     }
 
