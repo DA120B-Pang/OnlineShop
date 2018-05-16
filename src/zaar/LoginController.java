@@ -63,4 +63,23 @@ public class LoginController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+
+    public void addUser(ActionEvent e) throws IOException{
+
+        Node node = (Node)e.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("customer/AddNewUser.fxml")); // ändra namn
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void adminLogin(ActionEvent e) throws IOException{
+        //TODO login för admin, tas till ny scene.
+    }
+
 }

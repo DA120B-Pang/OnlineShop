@@ -14,11 +14,13 @@ import zaar.product.Menu.Menus;
 import zaar.product.Menu.MenuObject;
 import zaar.product.Product;
 
+import javax.swing.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
+import static java.lang.Enum.valueOf;
 import static zaar.Database.Database.DeleteRecord.PRODUCT;
 
 public class Database {
@@ -45,10 +47,6 @@ public class Database {
             System.out.println(e);
         }
     }
-
-
-
-
 
     public boolean isDBConnected(){
         try {
@@ -584,6 +582,74 @@ public class Database {
             return false;
         }
     }
+
+    public void insertAccountInfoToDB(String fName, String lastName, String email, String userName, String passWord,
+                                      String phone, String adress, String city, String country) throws SQLException {
+
+
+        String query = "insert into users (user_id, Role_idRole, first_name, last_name, " +
+                "email_adress, login_name, login_password, phone_number, address_line, town_city," +
+                "country) values(?,?,?,?,?,?,?,?,?,?,?)";
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            //TODO ändra PK automatiskt ist och roll manuellt i programmet
+
+            preparedStatement.setInt(1, 3);
+            preparedStatement.setInt(2, 1);
+            preparedStatement.setString(3, fName);
+            preparedStatement.setString(4, lastName);
+            preparedStatement.setString(5, email);
+            preparedStatement.setString(6, userName);
+            preparedStatement.setString(7, passWord);
+            preparedStatement.setString(8,phone);
+            preparedStatement.setString(9,adress);
+            preparedStatement.setString(10,city);
+            preparedStatement.setString(11,country);
+
+
+            int i = preparedStatement.executeUpdate();
+            if (i > 0) {
+                System.out.println("Data is saved");
+            } else {
+                System.out.println("Data is not saved");
+            }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

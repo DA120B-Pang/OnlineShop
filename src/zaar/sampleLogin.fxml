@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -17,14 +16,14 @@
             </font>
         </Label>
         <Button fx:id="backButton" layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#useBackButton" text="&lt;---" />
-      <Label layoutX="217.0" layoutY="200.0" prefHeight="17.0" prefWidth="92.0" text="Kom ihåg mig" />
       <Label layoutX="218.0" layoutY="224.0" prefHeight="17.0" prefWidth="135.0" text="Glömt ditt lösenord?" />
       <Button fx:id="loginButton" layoutX="218.0" layoutY="253.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="167.0" text="Logga in" />
-      <CheckBox layoutX="309.0" layoutY="200.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="0.0" />
-      <Label layoutX="216.0" layoutY="320.0" text="Har du inget konto? Skapa ett här!" />
-      <Label layoutX="216.0" layoutY="342.0" text="Vill du logga in som admin? Klicka här!" />
+      <Label layoutX="216.0" layoutY="320.0" text="Har du inget konto?" />
+      <Label layoutX="216.0" layoutY="342.0" text="Vill du logga in som admin?" />
       <Label fx:id="dbStatus" layoutX="426.0" layoutY="23.0" prefHeight="27.0" prefWidth="127.0" />
       <Label fx:id="loginStatus" layoutX="216.0" layoutY="97.0" prefHeight="17.0" prefWidth="275.0" />
       <PasswordField fx:id="password" layoutX="218.0" layoutY="154.0" promptText="Lösenord" />
+      <Button fx:id="addUserButton" layoutX="213.0" layoutY="315.0" mnemonicParsing="false" onAction="#addUser" opacity="0.0" prefHeight="27.0" prefWidth="127.0" text="Button" />
+      <Button fx:id="adminLoginButton" layoutX="213.0" layoutY="337.0" mnemonicParsing="false" onAction="#adminLogin" opacity="0.0" prefHeight="27.0" prefWidth="175.0" text="adminLoginButton" />
     </children>
 </AnchorPane>
