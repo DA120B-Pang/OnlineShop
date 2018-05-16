@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="img.SampleAfterPayments">
+   <children>
+      <ImageView fx:id="check" fitHeight="56.0" fitWidth="86.0" layoutX="272.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@check.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pic" fitHeight="86.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ShopITsmall.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="ty" layoutX="186.0" layoutY="132.0" prefHeight="29.0" prefWidth="229.0" text="Tack för att du handlat hos oss på Shop-IT" />
+      <Label fx:id="confirmed" layoutX="122.0" layoutY="154.0" prefHeight="56.0" prefWidth="357.0" text="Din order är nu bekfräftad och dina varor skickas till dig inom kort" />
+   </children>
+</AnchorPane>
