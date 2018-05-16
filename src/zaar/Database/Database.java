@@ -46,6 +46,10 @@ public class Database {
         }
     }
 
+
+
+
+
     public boolean isDBConnected(){
         try {
             return !connection.isClosed();
@@ -556,6 +560,29 @@ public class Database {
             }
         }
         return false;
+
+    }
+
+    public boolean isLogin(String user, String pass) throws SQLException{
+
+        ResultSet resultSet = null;
+        String query = "Select * from users where login_name = ? and login_password = ?";
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+
+            preparedStatement.setString(1,user);
+            preparedStatement.setString(2,pass);
+
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return true;
+            }else {
+                return false;
+            }
+
+        }catch (Exception e ){
+            return false;
+        }
     }
 }
 
