@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import zaar.Database.Database;
 import zaar.admin.edit.PredicateFilters.product.EditFiltersProd;
+import zaar.product.CartController;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
 
@@ -81,9 +82,10 @@ public class ScreenSingleton {
     }
     public class OpenCartScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../product/kundvagn.fxml");
+            activateCartScreen(e,"../product/kundvagn.fxml");
         }
     }
+
     private void activateScreen(ActionEvent e, String url){
         try {
             Node node = (Node) e.getSource();
@@ -98,6 +100,23 @@ public class ScreenSingleton {
             ex.printStackTrace();
         }
     }
+    private void activateCartScreen(ActionEvent e, String url) {
+        try {
+            Node node = (Node) e.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+
+            AnchorPane loader = (AnchorPane) FXMLLoader.load(CartController.class.getResource(url));
+            Parent root = loader.getParent();
+
+            Scene scene = new Scene(loader);
+            stage.setScene(scene);
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     //****************Adding products/menus/categories popups*********************************************
     public class SelectManufacturerPopUp {
         public void popUp(Manufacturer manufacturer, Double x, Double y){
