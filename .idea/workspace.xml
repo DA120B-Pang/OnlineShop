@@ -194,6 +194,7 @@
       <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc42/ResultSetTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc42/StatementsTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/tb2-data.txt.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -236,11 +237,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CartController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CartController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/product/CartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+            <state relative-caret-position="357">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -251,8 +252,20 @@
       <file leaf-file-name="emptyCartController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/product/emptyCartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="85">
+              <caret line="14" column="36" selection-start-line="14" selection-end-line="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="removeItemController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/zaar/product/removeItemController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -335,7 +348,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/category/EditFiltersCategory.java" />
         <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/EditFilters.java" />
         <option value="$PROJECT_DIR$/src/zaar/admin/edit/PredicateFilters/product/FilterInterfacesProd.java" />
         <option value="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterNumber2.java" />
@@ -386,6 +398,7 @@
         <option value="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" />
         <option value="$PROJECT_DIR$/src/zaar/product/CartController.java" />
         <option value="$PROJECT_DIR$/src/zaar/product/emptyCartController.java" />
+        <option value="$PROJECT_DIR$/src/zaar/product/removeItemController.java" />
       </list>
     </option>
   </component>
@@ -805,7 +818,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526976546820</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Kundvagnen">
+      <created>1526976825536</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1526976825536</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1088,7 +1108,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateCategory.java" />
     <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/BooleanMethodIntString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1386,20 +1405,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/emptyCartController.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/CartController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="357">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/product/CartController.java">
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/emptyCartController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+        <state relative-caret-position="85">
+          <caret line="14" column="36" selection-start-line="14" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/product/removeItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
