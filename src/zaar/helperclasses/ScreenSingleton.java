@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -24,15 +23,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import zaar.Database.Database;
 import zaar.admin.edit.PredicateFilters.product.EditFiltersProd;
-import zaar.product.CartController;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 /**
