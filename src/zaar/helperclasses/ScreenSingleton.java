@@ -77,7 +77,7 @@ public class ScreenSingleton {
     }
     public class OpenCartScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateCartScreen(e,"../product/kundvagn.fxml");
+            activateScreen(e,"../product/kundvagn.fxml");
         }
     }
 
@@ -92,22 +92,6 @@ public class ScreenSingleton {
             Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
         } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    private void activateCartScreen(ActionEvent e, String url) {
-        try {
-            Node node = (Node) e.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-
-            AnchorPane loader = (AnchorPane) FXMLLoader.load(CartController.class.getResource(url));
-            Parent root = loader.getParent();
-
-            Scene scene = new Scene(loader);
-            stage.setScene(scene);
-
-
-        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
