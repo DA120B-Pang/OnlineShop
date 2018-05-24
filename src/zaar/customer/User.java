@@ -9,16 +9,15 @@ public class User {
     private String loginName;
     private String password;
     private String phoneNumber;
-    private String adress;
+    private String address;
     private String city;
-    private String county;
     private String country;
 
     public User() {
-        this(0,0, null, null, null, null, null, null, null, null, null, null);
+        this(0,0, null, null, null, null, null, null, null, null, null);
     }
 
-    public User(int customerID, int role, String firstName, String lastName, String email, String loginName, String password, String phoneNumber, String adress, String city, String county, String country) {
+    public User(int customerID, int role, String firstName, String lastName, String email, String loginName, String password, String phoneNumber, String address, String city, String country) {
         this.customerID = customerID;
         this.role = role;
         this.firstName = firstName;
@@ -27,9 +26,8 @@ public class User {
         this.loginName = loginName;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.adress = adress;
+        this.address = address;
         this.city = city;
-        this.county = county;
         this.country = country;
     }
 
@@ -98,12 +96,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -112,14 +110,6 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county;
     }
 
     public String getCountry() {

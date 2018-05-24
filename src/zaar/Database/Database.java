@@ -6,21 +6,23 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import zaar.customer.PaymentMethods;
+import zaar.customer.User;
 import zaar.helperclasses.BooleanMethodIntString;
 import zaar.helperclasses.BooleanMethodString;
+import zaar.helperclasses.DataSingleton;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.Category;
 import zaar.product.Menu.Menus;
 import zaar.product.Menu.MenuObject;
 import zaar.product.Product;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
-import static java.lang.Enum.valueOf;
+import static zaar.Database.Database.DeleteRecord.PAYMENT_METHOD;
 import static zaar.Database.Database.DeleteRecord.PRODUCT;
 
 public class Database {
@@ -45,15 +47,6 @@ public class Database {
             }
         } catch (Exception e) {
             System.out.println(e);
-        }
-    }
-
-    public boolean isDBConnected(){
-        try {
-            return !connection.isClosed();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
@@ -125,21 +118,19 @@ public class Database {
         GET_MENU;
     }
 
-    public String getStringFromTable(int id, GetString getString){
-        String Query;
-        if(getString == GetString.GET_CATEGORY){
-            Query = "SELECT product_catagory_name FROM shopit.category where product_catagory_id = ?;";
-        }
-        else if(getString == GetString.GET_MANUFACTURER){
-            Query = "SELECT manufacturer_name FROM shopit.manufacturer where idmanufacturer = ?;";
-        }
-        else{
-            Query = "select menu.menuName from menu where menu.idMenu = ?;";
+    public String getStringFromTable(int id, GetString getString) {
+        String query;
+        if (getString == GetString.GET_CATEGORY) {
+            query = "SELECT product_catagory_name FROM shopit.category where product_catagory_id = ?;";
+        } else if (getString == GetString.GET_MANUFACTURER) {
+            query = "SELECT manufacturer_name FROM shopit.manufacturer where idmanufacturer = ?;";
+        } else{
+            query = "select menu.menuName from menu where menu.idMenu = ?;";
         }
         String string = null;
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement(Query)) {
-                if(id==0){
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+                if(id == 0){
                     string ="root";
                 }
                 else {
@@ -156,6 +147,25 @@ public class Database {
             }
         }
         return string;
+    }
+
+    public boolean checkLoginName(String loginName){
+        String query = "SELECT login_name FROM shopit.users where login_name = ?;";
+        boolean  retVal = false;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+
+                pst.setString(1, loginName);
+                if (!pst.executeQuery().next()){
+                    retVal = true;
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return retVal;
+
     }
 
     public ArrayList<Manufacturer> getManufacturers() {
@@ -272,6 +282,57 @@ public class Database {
         return list;
     };
 
+    public ArrayList<User> getAllUsers(){
+        ArrayList<User> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.users;")) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new User(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    public  ArrayList<PaymentMethods> getPayment(int id, boolean singlePayment){
+        ArrayList<PaymentMethods> list = new ArrayList<>();
+        String query;
+        if (!singlePayment){
+            query = "SELECT * FROM shopit.user_payment_methods;";
+        }
+        else{
+            query = "SELECT * FROM shopit.user_payment_methods;";
+        }
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.user_payment_methods;")) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new PaymentMethods(rs.getInt(1),rs.getInt(2), rs.getString(3)));
+                }
+
+            } catch (SQLException ex) {
+                list = null;
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
+
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> list = new ArrayList<>();
         if (checkConnection()) {
@@ -288,6 +349,60 @@ public class Database {
         }
         return list;
     }
+
+    public boolean insertPaymentMethod(int id, String card){
+        boolean retVal = false;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`user_payment_methods` (`users_user_id`, `credit_card_number`) VALUES (?, ?);")) {
+                pst.setInt(1, id);
+                pst.setString(2, card);
+
+                pst.execute();
+                retVal = true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+
+        }
+        return retVal;
+    }
+
+    public int insertPayment(String amount) {
+        int retVal = -1;
+
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`payments` (`payment_date`, `payment_amount`) VALUES (now(), ?);",Statement.RETURN_GENERATED_KEYS)) {
+                pst.setString(1, amount);
+                pst.execute();
+
+                if(pst.getGeneratedKeys().next()){
+                    System.out.println(pst.getGeneratedKeys());
+                }
+                retVal = 0;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+
+        }
+        return retVal;
+    }
+
+//    public boolean updatePaymentMethod(int id, String card){
+//        boolean retVal = false;
+//        if (checkConnection()) {
+//            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`user_payment_methods` (`users_user_id`, `credit_card_number`) VALUES (?, ?);")) {
+//                pst.setInt(1, id);
+//                pst.setString(2, card);
+//
+//                pst.execute();
+//                retVal = true;
+//            } catch (SQLException ex) {
+//                System.out.println("error on executing the query" + ex);
+//            }
+//
+//        }
+//        return retVal;
+//    }
 
     public boolean updateProduct(int prodId, int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file){
         boolean retVal = false;
@@ -379,6 +494,39 @@ public class Database {
         //INSERT INTO `shopit`.`products` (`manufacturer_idmanufacturer`, `product_name`, `product_price`, `product_quantity`, `product_description`, `other_product_details`) VALUES ('2', 'Test', '100', '2', 'testa', 'testa');
     }
 
+    public boolean insertUser(int role,
+                              String firstName,
+                              String lastName,
+                              String email,
+                              String loginName,
+                              String password,
+                              String phoneNumber,
+                              String address,
+                              String city,
+                              String country) {
+        boolean retVal = false;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`users` (`Role_idRole`, `first_name`, `last_name`, `email_adress`, `login_name`, `login_password`, `phone_number`, `address_line`, `town_city`, `country`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
+                pst.setInt(1, role);
+                pst.setString(2, firstName);
+                pst.setString(3, lastName);
+                pst.setString(4, email);
+                pst.setString(5, loginName);
+                pst.setString(6, password);
+                pst.setString(7, phoneNumber);
+                pst.setString(8, address);
+                pst.setString(9, city);
+                pst.setString(10, country);
+
+                pst.executeUpdate();
+                retVal = true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return retVal;
+    }
+
     private boolean dbInsertIntString(String insertStatement ,int intNumber, String string) {
         boolean retVal = false;
         if (checkConnection()) {
@@ -438,7 +586,6 @@ public class Database {
         }
     }
 
-
     public boolean update2intString(String statement, int intNum, String string , int intNum2){
 
         String query = statement;
@@ -495,6 +642,7 @@ public class Database {
         }
         return false;
     }
+
     public class UpdateManufacturer implements BooleanMethodString{
         @Override
         public boolean method(int intNum, String string) {
@@ -502,41 +650,81 @@ public class Database {
         }
     }
 
+    public boolean updateUser(User user){
+
+        String query = "UPDATE `shopit`.`users` SET `Role_idRole`= ?, `first_name`= ?, `last_name`= ?, `email_adress`= ?, `login_name`= ?, `login_password`=?, `phone_number`=?, `address_line`=?, `town_city`=?, `country`=? WHERE `user_id`=?;";
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+                pst.setInt(1, user.getRole());
+                pst.setString(2, user.getFirstName());
+                pst.setString(3, user.getLastName());
+                pst.setString(4, user.getEmail());
+                pst.setString(5, user.getLoginName());
+                pst.setString(6, user.getPassword());
+                pst.setString(7, user.getPhoneNumber());
+                pst.setString(8, user.getAddress());
+                pst.setString(9, user.getCity());
+                pst.setString(10, user.getCountry());
+                pst.setInt(11, user.getCustomerID());
+
+                pst.executeUpdate();
+                return true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return false;
+    }
+
     public enum DeleteRecord{
         PRODUCT,
         MANUFACTURER,
         CATEGORY,
-        MENU;
+        MENU,
+        USER,
+        PAYMENT_METHOD;
     }
 
     public boolean deleteRecord(DeleteRecord deleteRecord, int id) {
-        String[] query = new String[2];
-        String warning = "";
+        String[] query = new String[2];//adapt length to how many queries so that loop will know when delete statement is coming
+        String[] warning = new String[5];
         switch (deleteRecord){
             case MENU:
-                query = new String[3];
+                query  =new String[3];
                 query[0] = "SELECT * FROM shopit.category where category.Menu_idMenu = ?;";
+                warning[0] = "Child categories must be removed first";
                 query[1] = "SELECT * FROM shopit.menu where idParentMenu = ?;";
+                warning[1] = "Child menus must be removed first";
                 query[2] = "delete from shopit.menu where idMenu = ?";
-                warning = "Child menus & categories must be removed first";
                 break;
             case PRODUCT:
                 query[1] = "delete from products where product_id = ?;";
                 break;
             case CATEGORY:
                 query[0] = "SELECT * FROM shopit.products where product_catagory_id = ?;";
+                warning[0] = "Child products must be removed first";
                 query[1] = "delete from shopit.category where product_catagory_id = ?;";
-                warning = "Child products must be removed first";
                 break;
             case MANUFACTURER:
                 query[0] = "SELECT * FROM shopit.products where products.manufacturer_idmanufacturer = ?;";
+                warning[0] = "Products that belong to category must be removed first";
                 query[1] = "delete from shopit.manufacturer where idmanufacturer = ?;";
-                warning = "Child products must be removed first";
+            case USER:
+                query  =new String[3];
+                query[0] = "SELECT * FROM shopit.user_payment_methods where users_user_id = ?;";
+                warning[0] = "Users payment methods must be removed first";
+                query[1] = "SELECT * FROM shopit.orders where users_user_id = ?;";
+                warning[1] = "Users orders must be removed first";
+                query[2] = "delete from shopit.users where user_id = ?;";
+                break;
+            case PAYMENT_METHOD:
+                query[1] = "delete from user_payment_methods where users_user_id = ?;";
+                break;
         }
 
         if (checkConnection()) {
             for (int i = 0; i <query.length ; i++) {
-                if(deleteRecord!=PRODUCT || i != 0) {
+                if(deleteRecord != PRODUCT && deleteRecord != PAYMENT_METHOD || i != 0) {
                     try (PreparedStatement pst = connection.prepareStatement(query[i])) {
                         pst.setInt(1, id);
                         if (i == query.length - 1) {
@@ -544,7 +732,7 @@ public class Database {
                             return true;
                         } else {
                             if (pst.executeQuery().next()) {
-                                Alert alert = new Alert(Alert.AlertType.WARNING, warning);
+                                Alert alert = new Alert(Alert.AlertType.WARNING, warning[i]);
                                 alert.show();
                                 return false;
                             }
@@ -561,68 +749,42 @@ public class Database {
 
     }
 
-    public boolean isLogin(String user, String pass) throws SQLException{
+    public User isLogin(String user, String pass) throws SQLException{
 
-        ResultSet resultSet = null;
-        String query = "Select * from users where login_name = ? and login_password = ?";
+        ResultSet rs = null;
+        String query = "Select * from users where BINARY login_name = ? and BINARY login_password = ?";
+        User loggedInUser = null;
+        if(checkConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+                preparedStatement.setString(1, user);
+                preparedStatement.setString(2, pass);
 
-            preparedStatement.setString(1,user);
-            preparedStatement.setString(2,pass);
-
-            resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-                return true;
-            }else {
-                return false;
-            }
-
-        }catch (Exception e ){
-            return false;
-        }
-    }
-
-    public void insertAccountInfoToDB(String fName, String lastName, String email, String userName, String passWord,
-                                      String phone, String adress, String city, String country) throws SQLException {
-
-
-        String query = "insert into users (user_id, Role_idRole, first_name, last_name, " +
-                "email_adress, login_name, login_password, phone_number, address_line, town_city," +
-                "country) values(?,?,?,?,?,?,?,?,?,?,?)";
-
-        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            //TODO ändra PK automatiskt ist och roll manuellt i programmet
-
-            preparedStatement.setInt(1, 3);
-            preparedStatement.setInt(2, 1);
-            preparedStatement.setString(3, fName);
-            preparedStatement.setString(4, lastName);
-            preparedStatement.setString(5, email);
-            preparedStatement.setString(6, userName);
-            preparedStatement.setString(7, passWord);
-            preparedStatement.setString(8,phone);
-            preparedStatement.setString(9,adress);
-            preparedStatement.setString(10,city);
-            preparedStatement.setString(11,country);
-
-
-            int i = preparedStatement.executeUpdate();
-            if (i > 0) {
-                System.out.println("Data is saved");
-            } else {
-                System.out.println("Data is not saved");
-            }
+                rs = preparedStatement.executeQuery();
+                if (rs.next()) {
+                    return loggedInUser = new User(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11));
+                } else {
+                    return null;
+                }
 
             } catch (Exception e) {
-                e.printStackTrace();
+                return null;
             }
-
-
+        }
+        return null;
     }
 }
-
 
 
 
