@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/zaar/customer/PaymentMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/zaar/product/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_46.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_46.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/cart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/icons/cart.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/icons/login.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/icons/menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/icons/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/icons/search.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/Database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/Database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/LoginModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/AdminToolsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/AdminToolsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/add/AddProd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/add/AddProd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/add/AddProdModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/EditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/EditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterManufacturer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/filterPopUps/PopUpFilterString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditCategoryTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditManufacturerTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditManufacturerTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditMenusTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditMenusTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/tables/EditProductTableView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/admin/edit/update/UpdateProdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/customer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/customer/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/ToolsSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Product.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/product/Product.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/product/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/sampleLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/sampleLogin.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/src/zaar/product/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="8245">
-              <caret line="513" column="42" selection-start-line="513" selection-start-column="42" selection-end-line="513" selection-end-column="42" />
+              <caret line="514" column="42" selection-start-line="514" selection-start-column="42" selection-end-line="514" selection-end-column="42" />
               <folding>
                 <element signature="class#ProdMenuItemAction#0;class#ProductController#0" />
               </folding>
@@ -63,11 +30,10 @@
       <file leaf-file-name="Cart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/product/Cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
+            <state relative-caret-position="2223">
+              <caret line="322" selection-start-line="322" selection-end-line="322" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#itemView#0;class#Cart#0" />
               </folding>
             </state>
           </provider>
@@ -87,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/Database/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="25" column="58" lean-forward="true" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+            <state relative-caret-position="187">
+              <caret line="657" column="46" lean-forward="true" selection-start-line="657" selection-start-column="46" selection-end-line="657" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1110#1533#0" />
@@ -130,11 +96,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ScreenSingleton.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+              <folding>
+                <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" />
+                <element signature="class#ScreenChange#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenAddProductScreen#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenEditScreen#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenEditUserScreen#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" />
+                <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" />
+                <element signature="method#activateScreen#0;class#ScreenSingleton#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="191">
-              <caret line="35" column="74" lean-forward="true" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
+              <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,17 +131,8 @@
       <file leaf-file-name="DataSingleton.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2227">
+            <state relative-caret-position="2601">
               <caret line="159" column="16" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
-              <folding>
-                <element signature="e#4695#4696#0" expanded="true" />
-                <element signature="e#4727#4728#0" expanded="true" />
-                <element signature="e#5338#5413#0" />
-                <element signature="e#5338#5558#0" />
-                <element signature="e#5683#5684#0" expanded="true" />
-                <element signature="e#5731#5732#0" expanded="true" />
-                <element signature="e#5892#6349#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -287,7 +264,7 @@
               <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="button" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
@@ -409,13 +386,6 @@
               <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="zaar" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="zaar" type="462c0819:PsiDirectoryNode" />
               <item name="Database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -431,14 +401,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="zaar" type="462c0819:PsiDirectoryNode" />
               <item name="product" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OnlineShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OnlineShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="zaar" type="462c0819:PsiDirectoryNode" />
-              <item name="product" type="462c0819:PsiDirectoryNode" />
-              <item name="Menu" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -559,7 +521,7 @@
       <workItem from="1526995770296" duration="2401000" />
       <workItem from="1527071051685" duration="22750000" />
       <workItem from="1527107472218" duration="15364000" />
-      <workItem from="1527150784086" duration="3344000" />
+      <workItem from="1527150784086" duration="3959000" />
     </task>
     <task id="LOCAL-00001" summary="Test2 Emil">
       <created>1523478044085</created>
@@ -680,14 +642,22 @@
       <option name="project" value="LOCAL" />
       <updated>1526460674926</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fixat massa på alla tänkbara ställen :)">
+      <created>1527154335187</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1527154335187</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="628908000" />
+    <option name="totallyTimeSpent" value="629523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="8" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -695,11 +665,11 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.6242004" side_tool="true" weight="0.23593074" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5026652" side_tool="true" visible="true" weight="0.27056277" />
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4978678" weight="0.271645" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.37579957" visible="true" weight="0.32359308" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49733475" visible="true" weight="0.27056277" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.37526652" weight="0.32359308" />
       <window_info anchor="bottom" id="Sequence" order="12" sideWeight="0.9184435" weight="0.32900432" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info id="Capture Tool" order="7" />
@@ -796,7 +766,8 @@
     <MESSAGE value="Fixat med editering av produkter/menyer/categorier/tillverkare" />
     <MESSAGE value="Fixat en microbugg" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Fixat massa på alla tänkbara ställen :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixat massa på alla tänkbara ställen :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -815,13 +786,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
-          <line>97</line>
+          <line>113</line>
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
-          <line>179</line>
+          <line>200</line>
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
@@ -881,7 +852,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java</url>
-          <line>367</line>
+          <line>365</line>
           <properties />
           <option name="timeStamp" value="221" />
         </line-breakpoint>
@@ -893,7 +864,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/admin/add/AddProdController.java</url>
-          <line>121</line>
+          <line>137</line>
           <properties />
           <option name="timeStamp" value="223" />
         </line-breakpoint>
@@ -917,13 +888,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/product/ProductController.java</url>
-          <line>291</line>
+          <line>292</line>
           <properties />
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/zaar/product/ProductController.java</url>
-          <line>295</line>
+          <line>296</line>
           <properties />
           <option name="timeStamp" value="235" />
         </line-breakpoint>
@@ -1053,24 +1024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-          <folding>
-            <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" />
-            <element signature="class#ScreenChange#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenAddProductScreen#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenEditScreen#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenEditUserScreen#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" />
-            <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" />
-            <element signature="method#activateScreen#0;class#ScreenSingleton#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/admin/add/AddProd.fxml">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -1124,6 +1077,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#ComparePriceAsc#0;class#Product#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1314,24 +1271,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/DataSingleton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2227">
+        <state relative-caret-position="2601">
           <caret line="159" column="16" selection-start-line="159" selection-start-column="16" selection-end-line="159" selection-end-column="16" />
-          <folding>
-            <element signature="e#4695#4696#0" expanded="true" />
-            <element signature="e#4727#4728#0" expanded="true" />
-            <element signature="e#5338#5413#0" />
-            <element signature="e#5338#5558#0" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <element signature="e#5731#5732#0" expanded="true" />
-            <element signature="e#5892#6349#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/product/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8245">
-          <caret line="513" column="42" selection-start-line="513" selection-start-column="42" selection-end-line="513" selection-end-column="42" />
+          <caret line="514" column="42" selection-start-line="514" selection-start-column="42" selection-end-line="514" selection-end-column="42" />
           <folding>
             <element signature="class#ProdMenuItemAction#0;class#ProductController#0" />
           </folding>
@@ -1374,7 +1322,7 @@
     <entry file="file://$PROJECT_DIR$/src/zaar/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
-          <caret line="35" column="74" lean-forward="true" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
+          <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1383,19 +1331,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/product/Cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
+        <state relative-caret-position="2223">
+          <caret line="322" selection-start-line="322" selection-end-line="322" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#itemView#0;class#Cart#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/Database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="25" column="58" lean-forward="true" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+        <state relative-caret-position="187">
+          <caret line="657" column="46" lean-forward="true" selection-start-line="657" selection-start-column="46" selection-end-line="657" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1110#1533#0" />
@@ -1429,6 +1376,24 @@
             <element signature="e#25519#25659#0" />
             <element signature="e#25665#28745#0" />
             <element signature="e#28751#30045#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+          <folding>
+            <element signature="method#ScreenSingleton#0;class#ScreenSingleton#0" />
+            <element signature="class#ScreenChange#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenProductScreen#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenAddProductScreen#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenEditScreen#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenEditUserScreen#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenManageDatabase#0;class#ScreenSingleton#0" />
+            <element signature="class#OpenCartScreen#0;class#ScreenSingleton#0" />
+            <element signature="method#activateScreen#0;class#ScreenSingleton#0" />
           </folding>
         </state>
       </provider>
