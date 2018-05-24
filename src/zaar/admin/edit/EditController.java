@@ -157,8 +157,8 @@ public class EditController implements Initializable {
                     Product product = ((TableView<Product>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
                     if (product != null) {
                         ArrayList<Product> productFromDb = dB.getProduct(product.getProductId(), Database.GetProd.PROD_SINGLE);//Get full product from database
-                        String man = dB.getStringFromTable(product.getManufacturerId(), Database.GetString.GET_MANUFACTURER);// Get manuf. name from db
-                        String cat = dB.getStringFromTable(product.getProductCategory(), Database.GetString.GET_CATEGORY);// Get Cat. name from db
+                        String man = dB.getStringFromTable(product.getManufacturerId(),"", Database.GetString.GET_MANUFACTURER);// Get manuf. name from db
+                        String cat = dB.getStringFromTable(product.getProductCategory(),"", Database.GetString.GET_CATEGORY);// Get Cat. name from db
                         if (man != null && cat != null && !productFromDb.isEmpty()) {
                             try {
                                 Stage stage = new Stage();
@@ -185,7 +185,7 @@ public class EditController implements Initializable {
                 case CATEGORY:
 
                     Category category = ((TableView<Category>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                    String menuName = dB.getStringFromTable(category.getParentMenuId(), Database.GetString.GET_MENU);
+                    String menuName = dB.getStringFromTable(category.getParentMenuId(),"", Database.GetString.GET_MENU);
                     if (category != null && menuName != null) {
                         ScreenSingleton.InsertIntStringToDbPopUp categoryUpdate =  sS.new InsertIntStringToDbPopUp();
                         categoryUpdate.setParametersCategory(category, menuName);
@@ -195,7 +195,7 @@ public class EditController implements Initializable {
 
                 case MENU:
                     Menus menu = ((TableView<Menus>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                    menuName = dB.getStringFromTable(menu.getParentMenuId(), Database.GetString.GET_MENU);
+                    menuName = dB.getStringFromTable(menu.getParentMenuId(),"", Database.GetString.GET_MENU);
                     if (menu != null && menuName != null) {
                         ScreenSingleton.InsertIntStringToDbPopUp menuUpdate =  sS.new InsertIntStringToDbPopUp();
                         menuUpdate.setParametersMenu(menu, menuName);

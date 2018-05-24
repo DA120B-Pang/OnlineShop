@@ -7,13 +7,8 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,12 +17,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import zaar.product.Manufacturer;
 import zaar.product.Menu.BuildMenu;
-
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.sql.DataSource;
 import java.io.*;
-import java.security.SecureRandom;
-import java.util.function.Predicate;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
 
 /**
  * Singleton class for metods used by various classes in application.
@@ -237,6 +235,96 @@ public class ToolsSingleton {
             vBox.getChildren().add(b);
         }
         return vBox;
+    }
+
+    public void sendRecipe(String reciverEmail){
+        try {
+            String from = "shopit.hkr@gmail.com";
+            String pass = "1234qwerty%";
+            Properties properties = System.getProperties();
+            String host = "smtp.gmail.com";
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            properties.put("mail.smtp.host", host);
+            properties.put("mail.smtp.user", from);
+            properties.put("mail.smtp.password", pass);
+            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(properties);
+            MimeMessage message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(from));
+            InternetAddress reciever = new InternetAddress(reciverEmail);
+
+            message.addRecipient(Message.RecipientType.TO, reciever);
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            message.setSubject(String.format("Recipe from Shop-IT %s",dateFormat.format(date)));
+
+            // create and fill the first message part
+            MimeBodyPart mbp1 = new MimeBodyPart();
+            mbp1.setText("Recipe is attached");
+
+            // create the second message part
+            MimeBodyPart mbp2 = new MimeBodyPart();
+
+            // attach the file to the message
+            mbp2.attachFile("src/tmp/tmp.png");
+
+            Multipart mp = new MimeMultipart();
+            mp.addBodyPart(mbp1);
+            mp.addBodyPart(mbp2);
+
+            message.setContent(mp);
+
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }
+        catch (Exception e){
+
+        }
+
+    }
+
+    public void sendPassword(String reciverEmail, String password){
+        try {
+            String from = "shopit.hkr@gmail.com";
+            String pass = "1234qwerty%";
+            Properties properties = System.getProperties();
+            String host = "smtp.gmail.com";
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            properties.put("mail.smtp.host", host);
+            properties.put("mail.smtp.user", from);
+            properties.put("mail.smtp.password", pass);
+            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(properties);
+            MimeMessage message = new MimeMessage(session);
+
+            message.setFrom(new InternetAddress(from));
+            InternetAddress reciever = new InternetAddress(reciverEmail);
+
+            message.addRecipient(Message.RecipientType.TO, reciever);
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();
+            message.setSubject(String.format("Password from Shop-IT %s", dateFormat.format(date)));
+            message.setText(String.format("Your password is: %s",password));
+
+
+            Transport transport = session.getTransport("smtp");
+            transport.connect(host, from, pass);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        } catch (Exception e) {
+
+        }
     }
 
 }

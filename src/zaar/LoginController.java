@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import zaar.Database.Database;
 import zaar.customer.EditAddUser;
+import zaar.customer.ForgotPassword;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import java.net.URL;
@@ -53,6 +54,9 @@ public class LoginController implements Initializable{
         });
         passwdLbl.setOnMouseExited(E->{
             passwdLbl.setStyle("-fx-text-fill: BLACK");
+        });
+        passwdLbl.setOnMouseClicked(E->{
+            new ForgotPassword().popUp();
         });
     }
     public void login(ActionEvent event){

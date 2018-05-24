@@ -6,19 +6,17 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import zaar.customer.OrderItem;
 import zaar.customer.PaymentMethods;
 import zaar.customer.User;
 import zaar.helperclasses.BooleanMethodIntString;
 import zaar.helperclasses.BooleanMethodString;
-import zaar.helperclasses.DataSingleton;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.Category;
 import zaar.product.Menu.Menus;
 import zaar.product.Menu.MenuObject;
 import zaar.product.Product;
-
 import java.io.*;
-import java.nio.file.Path;
 import java.sql.*;
 import java.util.*;
 
@@ -115,26 +113,39 @@ public class Database {
     public enum GetString{
         GET_MANUFACTURER,
         GET_CATEGORY,
-        GET_MENU;
+        GET_MENU,
+        GET_EMAIL,
+        GET_PASSWORD;
     }
 
-    public String getStringFromTable(int id, GetString getString) {
+    public String getStringFromTable(int id, String name, GetString getString) {
         String query;
         if (getString == GetString.GET_CATEGORY) {
             query = "SELECT product_catagory_name FROM shopit.category where product_catagory_id = ?;";
         } else if (getString == GetString.GET_MANUFACTURER) {
             query = "SELECT manufacturer_name FROM shopit.manufacturer where idmanufacturer = ?;";
-        } else{
+        } else if(getString == GetString.GET_MENU){
             query = "select menu.menuName from menu where menu.idMenu = ?;";
+        }
+        else if(getString == GetString.GET_EMAIL){
+            query = "select email_adress from users where binary login_name = ?;";
+        }
+        else{
+            query = "select login_password from users where binary login_name = ?;";
         }
         String string = null;
         if (checkConnection()) {
             try (PreparedStatement pst = connection.prepareStatement(query)) {
-                if(id == 0){
+                if(id == 0 && getString != GetString.GET_EMAIL && getString != GetString.GET_PASSWORD){
                     string ="root";
                 }
                 else {
+                    if(getString == GetString.GET_EMAIL || getString == GetString.GET_PASSWORD){
+                        pst.setString(1, name);
+                    }
+                    else {
                         pst.setInt(1, id);
+                    }
                     ResultSet rs = pst.executeQuery();
                     while (rs.next()) {
                         string = rs.getString(1);
@@ -316,10 +327,13 @@ public class Database {
             query = "SELECT * FROM shopit.user_payment_methods;";
         }
         else{
-            query = "SELECT * FROM shopit.user_payment_methods;";
+            query = "SELECT * FROM shopit.user_payment_methods where users_user_id = ?;";
         }
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.user_payment_methods;")) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+                if(singlePayment) {
+                    pst.setInt(1, id);
+                }
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
                     list.add(new PaymentMethods(rs.getInt(1),rs.getInt(2), rs.getString(3)));
@@ -367,18 +381,21 @@ public class Database {
         return retVal;
     }
 
-    public int insertPayment(String amount) {
+    public int insertPayment(int paymentMethodId,String amount) {
         int retVal = -1;
 
         if (checkConnection()) {
-            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`payments` (`payment_date`, `payment_amount`) VALUES (now(), ?);",Statement.RETURN_GENERATED_KEYS)) {
-                pst.setString(1, amount);
+            try (PreparedStatement pst = connection.prepareStatement(
+                                "INSERT INTO `shopit`.`payments` (`fk_paymentMethodId`, `payment_date`, `payment_amount`) VALUES ( ?, now(), ?);",
+                                Statement.RETURN_GENERATED_KEYS)) {
+                pst.setInt(1,paymentMethodId);
+                pst.setString(2, amount);
                 pst.execute();
 
-                if(pst.getGeneratedKeys().next()){
-                    System.out.println(pst.getGeneratedKeys());
+                ResultSet rs = pst.getGeneratedKeys();
+                if(rs.next()){
+                    retVal = rs.getInt(1);
                 }
-                retVal = 0;
             } catch (SQLException ex) {
                 System.out.println("error on executing the query" + ex);
             }
@@ -387,6 +404,60 @@ public class Database {
         return retVal;
     }
 
+    public int insertOrder(int customerId, int paymentId, String orderMessage) {
+        int retVal = -1;
+
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(
+                                "INSERT INTO `shopit`.`orders` (`users_user_id`, `Payments_payment_id`, `date_order_placed`, `order_details`) VALUES (?, ?, now(), ?);",
+                                Statement.RETURN_GENERATED_KEYS)) {
+
+                pst.setInt(1, customerId);
+                pst.setInt(2, paymentId);
+                pst.setString(3, orderMessage);
+                pst.execute();
+
+                ResultSet rs = pst.getGeneratedKeys();
+                if (rs.next()) {
+                    retVal = rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return retVal;
+    }
+
+
+    public boolean insertOrderItems(OrderItem[] items) {
+        boolean retVal = true;
+
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(
+                    "INSERT INTO `shopit`.`order_items` (`product_id`, `order_id`, `order_item_quantity`, `order_item_price`) VALUES (?, ?, ?, ?);",
+                    Statement.RETURN_GENERATED_KEYS)) {
+                for (int i = 0; i <items.length ; i++) {
+                    pst.setInt(1, items[i].getProdId());
+                    pst.setInt(2, items[i].getOrderId());
+                    pst.setInt(3, items[i].getQuantity());
+                    pst.setDouble(4, items[i].getPrice());
+                    pst.addBatch();
+                }
+                int[] rs = pst.executeBatch();
+
+                for (int i = 0; i <rs.length ; i++) {
+                    if(rs[i]<1){
+                        retVal = false;
+                    }
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+                retVal = false;
+            }
+        }
+        return retVal;
+    }
 //    public boolean updatePaymentMethod(int id, String card){
 //        boolean retVal = false;
 //        if (checkConnection()) {

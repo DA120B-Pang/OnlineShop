@@ -3,18 +3,27 @@ package zaar.product;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import zaar.Database.Database;
 import zaar.admin.edit.PredicateFilters.SetPredicate;
 import zaar.customer.EditAddPaymentMethod;
+import zaar.customer.OrderItem;
 import zaar.customer.PaymentMethods;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ToolsSingleton;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static javafx.geometry.Pos.BASELINE_RIGHT;
@@ -29,10 +38,11 @@ public class Cart {
     private Label sumLbl = new Label();
     private PaymentMethods paymentMethod;
     private final ComboBox<PaymentMethods> choosePaymentComBox =  new ComboBox<>();;
+    private Button confirmOrderBtn;
+    private Label orderLbl;
 
 
-
-    public void makeCart(VBox vBox){
+    public void makeCart(VBox vBox, boolean thankYouForOrdering){
         this.vBox = vBox;
         listCart = dS.getCart();
         tS.removeVboxChildren(vBox);
@@ -83,7 +93,7 @@ public class Cart {
         GridPane.setMargin(sumLbl,new Insets(5,5,5,5));
         gridPane.add(sumLbl,3,gridPane.getRowCount());
 
-        Label orderLbl = new Label("Cart items");
+        orderLbl = new Label("Cart items");
         VBox.setMargin(orderLbl, new Insets(20,0,30,0));
         orderLbl.setFont(Font.font(null, FontWeight.BOLD,16));
         orderLbl.setMaxWidth(5000);
@@ -96,7 +106,13 @@ public class Cart {
         VBox.setMargin(selectPaymentMethodHBox, new Insets(30,0,0,0));
 
         if(listCart.size()<1){
-            Label cartEmpty = new Label("Cart is empty");
+            Label cartEmpty;
+            if(thankYouForOrdering){
+                cartEmpty = new Label(String.format("Thank you for ordering. Confirmation has been sent to %s",dS.getLoggedInUser().getEmail()));
+            }
+            else{
+                cartEmpty = new Label("Cart is empty");
+            }
             cartEmpty.setMaxWidth(5000);
             cartEmpty.setAlignment(CENTER);
 
@@ -169,7 +185,7 @@ public class Cart {
         AnchorPane.setBottomAnchor(imageView,5.0);
 
 
-        Label manufacturerLbl = new Label(dB.getStringFromTable(p.getManufacturerId(),Database.GetString.GET_MANUFACTURER));
+        Label manufacturerLbl = new Label(dB.getStringFromTable(p.getManufacturerId(),"",Database.GetString.GET_MANUFACTURER));
         manufacturerLbl.setMaxWidth(70);
 
         Label nameLbl = new Label(p.getName());
@@ -245,7 +261,7 @@ public class Cart {
         removeX.setOnAction(E->{
             listCart.remove(p);
             dS.uppdateCartLogoQuantity();
-            makeCart(vBox);
+            makeCart(vBox,false);
         });
 
         Insets insets = new Insets(0,5,0,5);
@@ -287,10 +303,34 @@ public class Cart {
         Label city = new Label(String.format("City: %s", dS.getLoggedInUser().getCity()));
         Label country = new Label(String.format("Country: %s", dS.getLoggedInUser().getCountry()));
         Label email = new Label(String.format("Confirmation will be send to: %s", dS.getLoggedInUser().getEmail()));
-        Button confirmOrderBtn = new Button("Confirm order");
+        TextArea orderMessageTxtArea = new TextArea();
+        confirmOrderBtn = new Button("Confirm order");
 
         confirmOrderBtn.setOnAction(E->{
-            dB.insertPayment("100");
+
+            int paymentId = dB.insertPayment(paymentMethod.getPaymentId(), Double.toString(dS.getCartTotal()));
+            if (paymentId > 0) {
+                int orderId = dB.insertOrder(dS.getLoggedInUser().getCustomerID(), paymentId, orderMessageTxtArea.getText());
+                if (orderId > 0) {
+                    OrderItem[] itemArray = new OrderItem[listCart.size()];
+                    for (int i = 0; i < listCart.size(); i++) {
+                        itemArray[i] = new OrderItem(listCart.get(i).getProductId(), orderId, listCart.get(i).getPrice(), listCart.get(i).getQuantity());
+                    }
+                    if (dB.insertOrderItems(itemArray)) {
+                        confirmOrderBtn.setVisible(false);
+                        orderLbl.setText("Recipe");
+                        saveAsPng(vBox,"src/tmp/tmp");
+                        listCart.removeAll(listCart);
+                        dS.uppdateCartLogoQuantity();
+                        makeCart(vBox, true);
+                        tS.sendRecipe(dS.getLoggedInUser().getEmail());
+                    } else {
+
+                    }
+                } else {
+
+                }
+            }
         });
 
         GridPane confirmationGridPane = new GridPane();
@@ -316,12 +356,25 @@ public class Cart {
         insets = new Insets(20,5,5,5);
         VBox.setMargin(confirmationGridPane,insets);
 
+        orderMessageTxtArea.setWrapText(true);
+        orderMessageTxtArea.setMaxWidth(250);
+        orderMessageTxtArea.setMinHeight(100);
+        orderMessageTxtArea.setPromptText("OrderItem message to Shop-IT. \rMax 255 characters.");
 
-        VBox.setMargin(confirmOrderBtn,insets);
-        HBox confirmOrderBtnHBox = new HBox(confirmOrderBtn);
-        confirmOrderBtnHBox.setAlignment(CENTER);
+        orderMessageTxtArea.textProperty().addListener((oB,oV,nV)->{//Max char check
+            if(nV.length()>255){
+                Platform.runLater(()->{
+                    orderMessageTxtArea.setText(oV);
+                });
+            }
+        });
 
-        vBox.getChildren().addAll(confirmationGridPane, confirmOrderBtnHBox);
+        VBox.setMargin(confirmOrderBtn, insets);
+        VBox.setMargin(orderMessageTxtArea, insets);
+        VBox confirmOrderBtnVBox = new VBox(orderMessageTxtArea, confirmOrderBtn);
+        confirmOrderBtnVBox.setAlignment(CENTER);
+
+        vBox.getChildren().addAll(confirmationGridPane, confirmOrderBtnVBox);
     }
 
     private class UpdateCombobox implements SetPredicate {
@@ -329,6 +382,18 @@ public class Cart {
         @Override
         public void setPredicate() {
             updateComboBox();
+        }
+    }
+
+    private void saveAsPng(final Node NODE, final String FILE_NAME) {//https://www.programcreek.com/java-api-examples/?class=javafx.scene.Node&method=snapshot
+        final WritableImage SNAPSHOT = NODE.snapshot(new SnapshotParameters(), null);
+        final String        NAME     = FILE_NAME.replace("\\.[a-zA-Z]{3,4}", "");
+        final File FILE     = new File(NAME + ".png");
+
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(SNAPSHOT, null), "png", FILE);
+        } catch (IOException exception) {
+            // handle exception here
         }
     }
 

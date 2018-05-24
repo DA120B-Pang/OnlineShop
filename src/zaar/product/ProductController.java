@@ -369,7 +369,7 @@ public class ProductController implements Initializable {
         AnchorPane.setLeftAnchor(imageView,30.0);
 
         //Manufacturer label
-        String manufacturerName  = dB.getStringFromTable(prodData.getManufacturerId(), Database.GetString.GET_MANUFACTURER);
+        String manufacturerName  = dB.getStringFromTable(prodData.getManufacturerId(),"", Database.GetString.GET_MANUFACTURER);
         Label manufacturerLbl = new Label();
         manufacturerLbl.setFont(Font.font(null, FontWeight.BOLD,16));//Adding product name
         manufacturerLbl.setLayoutX(245);
@@ -512,7 +512,7 @@ public class ProductController implements Initializable {
         Group group = new Group();
         group.getChildren().addAll(cartBtn,dS.getCartLabel());
         cartBtn.setOnAction(E->{
-            new Cart().makeCart(prodVbox);
+            new Cart().makeCart(prodVbox,false);
         });
         hBox.getChildren().add(group);
         //Button cartBtn = tS.setButtonTopHBox(hBox, "Cart", sS.new OpenCartScreen());//Adds button to top container
