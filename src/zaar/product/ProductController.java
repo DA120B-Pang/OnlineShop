@@ -53,6 +53,7 @@ public class ProductController implements Initializable {
     private ArrayList<Product> prodList;
     private ProdFilter sort;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tS.buttonSetImage(searchBtn,"src/img/icons/search.png",15d,15d); //Set image to buttons

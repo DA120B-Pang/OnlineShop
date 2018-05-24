@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -29,9 +28,6 @@ import zaar.product.Menu.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
 /**
@@ -86,9 +82,10 @@ public class ScreenSingleton {
     }
     public class OpenCartScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            //activateScreen(e,"../sampleLogin.fxml");
+            activateScreen(e,"../product/kundvagn.fxml");
         }
     }
+
     private void activateScreen(ActionEvent e, String url){
         try {
             Node node = (Node) e.getSource();
@@ -103,6 +100,7 @@ public class ScreenSingleton {
             ex.printStackTrace();
         }
     }
+
     //****************Adding products/menus/categories popups*********************************************
     public class SelectManufacturerPopUp {
         public void popUp(Manufacturer manufacturer, Double x, Double y){

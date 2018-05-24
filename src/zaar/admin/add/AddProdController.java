@@ -3,10 +3,13 @@ package zaar.admin.add;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -19,6 +22,7 @@ import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
+import zaar.product.Product;
 
 import java.io.File;
 import java.net.URL;
@@ -85,6 +89,18 @@ public class AddProdController implements Initializable{
     @FXML
     private TextField pictureTxtFld;
 
+    @FXML
+    private TableView<DataSingleton> cartTable;
+
+    @FXML
+    private TableColumn<DataSingleton, String> prodCol;
+
+    @FXML
+    private TableColumn<DataSingleton, Double> priceCol;
+
+    @FXML
+    private TableColumn<DataSingleton, Integer> amountCol;
+
     private Database dB = Database.getInstance();
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
@@ -133,6 +149,11 @@ public class AddProdController implements Initializable{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
             sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+
+            //prodCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            //priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+            //amountCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
         });
 
         addMenuBtn.setOnAction((Event)->{//Opens dialog for choosing manufacturer for product
