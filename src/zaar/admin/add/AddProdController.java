@@ -91,7 +91,6 @@ public class AddProdController implements Initializable{
     private ScreenSingleton sS = ScreenSingleton.getInstance();
     private Category category;
     private Manufacturer manufacturer = new Manufacturer();
-    private AddProdModel aPM = new AddProdModel();
     private final FileChooser fileChooser = new FileChooser();
     private File file;
 
@@ -99,7 +98,7 @@ public class AddProdController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        aPM.getTopHBox(hBox);//Get navigation buttons for top container
+        getTopHBox(hBox);//Get navigation buttons for top container
 
         setChangelisteners();//Set changelisteners for textfields
 
@@ -144,6 +143,10 @@ public class AddProdController implements Initializable{
 
         choosePicBtn.setOnAction((Event)->{//Opens dialog for choosing picture for product
             file = tS.openFileChooser(fileChooser, Event, pictureTxtFld);
+            if(file!=null && file.length()>64000){
+                file = null;
+                pictureTxtFld.setText("maximum file size 64kb");
+            }
         });
         tS.setFileChooser(fileChooser);
         tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null, null, BuildMenu.MenuBuildMode.STANDARD,null);
@@ -235,6 +238,24 @@ public class AddProdController implements Initializable{
                 tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);
             }
         });
+
+        desqTxtArea.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>500){
+                desqTxtArea.setText(oV);
+            }
+        });
+
+        nameTxtFld.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>100){
+                nameTxtFld.setText(oV);
+            }
+        });
+
+        detailsTxtArea.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>500){
+                detailsTxtArea.setText(oV);
+            }
+        });
     }
     public class AddProdMenuAction implements MenuAction{
         @Override
@@ -250,5 +271,12 @@ public class AddProdController implements Initializable{
             categoryTxtFld.setText(String.valueOf(cat.getName()));
             category = cat;
         }
+    }
+
+    public void getTopHBox(HBox hBox){
+        ToolsSingleton tS = ToolsSingleton.getInstance();
+        ScreenSingleton sS = ScreenSingleton.getInstance();
+        tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
+        tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
 }

@@ -23,14 +23,11 @@ import zaar.product.Menu.Category;
 import zaar.product.Menu.Menus;
 
 public class EditMenusTableView {
-    private Database dB = Database.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
-    private ToolsSingleton tS = ToolsSingleton.getInstance();
     private EditFiltersMenus eFM = EditFiltersMenus.getInstance();
     private EditFiltersMenus.EditFilterObject editProdFilterObject;
     private PopUpFilterString popUpFilterName;
     private PopUpFilterCategoryMenu popUpParentMenuId;
-    private ScreenSingleton sS = ScreenSingleton.getInstance();
     private final String TOOLTIP_FILTER_EMPTY = "Click to set filter";
 
 

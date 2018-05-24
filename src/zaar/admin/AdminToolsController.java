@@ -7,7 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import zaar.admin.edit.tables.EditCategoryTableView;
+import zaar.customer.EditAddUser;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 
@@ -29,13 +32,18 @@ public class AdminToolsController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getTopHBox(hBox);
-        vBox.getChildren().add(getProdTools());
+
+        vBox.getChildren().addAll(getProdTools(), getUserTools());
 
     }
-
+    /**
+     * Creates button menu for product tools
+     * @return
+     */
     public VBox getProdTools(){
 
         Button addProductBtn = new Button("Add products/menu/category");
+        addProductBtn.setPrefWidth(180);
         addProductBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -56,6 +64,36 @@ public class AdminToolsController implements Initializable{
         VBox.setMargin(vBox,new Insets(20,20,20,20));
         return vBox;
     }
+
+    /**
+     * Creates button menu for User tools
+     * @return
+     */
+    public VBox getUserTools() {
+
+
+        Button editUserBtn = new Button("Edit user");
+        editUserBtn.setPrefWidth(180);
+        editUserBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                sS.new OpenEditUserScreen().screenChange(e);//Open edit user screen
+            }
+        });
+
+        Button addUserBtn = new Button("Add user");
+        addUserBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                new EditAddUser("Add user").popUp();
+            }
+        });
+        VBox vBox = tS.makeButtonMenuModel("User tools", editUserBtn, addUserBtn);
+
+        VBox.setMargin(vBox,new Insets(20,20,20,20));
+        return vBox;
+    }
+
     public void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
     }

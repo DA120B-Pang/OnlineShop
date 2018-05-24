@@ -24,12 +24,10 @@ import zaar.product.Manufacturer;
 import zaar.product.Menu.Category;
 
 public class EditManufacturerTableView {
-    private Database dB = Database.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
     private EditFiltersMan eFMan = EditFiltersMan.getInstance();
     private EditFiltersMan.EditFilterObject editManFilterObject;
     private PopUpFilterString popUpFilterName;
-    private ScreenSingleton sS = ScreenSingleton.getInstance();
     private final String TOOLTIP_FILTER_EMPTY = "Click to set filter";
 
 

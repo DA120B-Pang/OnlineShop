@@ -158,6 +158,10 @@ public class UpdateProdController implements Initializable{
         //Choose picture
         choosePicBtn.setOnAction((Event)->{
             file = tS.openFileChooser(fileChooser, Event,pictureTxtFld);
+            if(file!=null && file.length()>64000){
+                file = null;
+                pictureTxtFld.setText("maximum file size 64kb");
+            }
         });
         tS.setFileChooser(fileChooser);
         tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
@@ -215,6 +219,20 @@ public class UpdateProdController implements Initializable{
 
 
     private void setChangelisteners(){
+
+        quantityTxtFld.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
+                if(!newValue.equalsIgnoreCase("")) {
+                    try {
+                        Integer.parseInt(newValue);
+                    } catch (Exception e) {
+                        quantityTxtFld.setText(oldValue);
+                    }
+                }
+            }
+        });
+
         priceTxtFld.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -228,16 +246,23 @@ public class UpdateProdController implements Initializable{
             }
         });
 
-        quantityTxtFld.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue){
-                if(!newValue.equalsIgnoreCase("")) {
-                    try {
-                        Integer.parseInt(newValue);
-                    } catch (Exception e) {
-                        quantityTxtFld.setText(oldValue);
-                    }
-                }
+
+
+        desqTxtArea.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>500){
+                desqTxtArea.setText(oV);
+            }
+        });
+
+        nameTxtFld.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>100){
+                nameTxtFld.setText(oV);
+            }
+        });
+
+        detailsTxtArea.textProperty().addListener((oB,oV,nV)->{
+            if(nV.length()>500){
+                detailsTxtArea.setText(oV);
             }
         });
 

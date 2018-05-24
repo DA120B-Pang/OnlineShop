@@ -22,7 +22,6 @@ import static zaar.admin.edit.filterPopUps.FilterPopUpCommons.TOOLTIP_FILTER_EMP
 public class PopUpFilterString implements FilterShowHide {
     private DataSingleton dS = DataSingleton.getInstance();
     private ToolsSingleton tS = ToolsSingleton.getInstance();
-    private EditFiltersProd eF = EditFiltersProd.getInstance();
     private Stage stage = new Stage();;
     private TextField filterText = new TextField();;
     private Button filterBtn;

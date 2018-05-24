@@ -109,7 +109,7 @@ public class EditController implements Initializable {
      * Sets the buttons in topbox
      * @param hBox
      */
-    public void getTopHBox(HBox hBox){
+    private void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
@@ -117,7 +117,7 @@ public class EditController implements Initializable {
     /**
      * Creates side menu on Edit page
      */
-    public void buildSideMenu(){
+    private void buildSideMenu(){
 
         VBox menuEditVBox = tS.makeButtonMenuModel("Select type to edit", editProductBtn, editCategoryBtn, editMenuBtn, editManufacturerBtn);
         VBox menuActionVBox = tS.makeButtonMenuModel("Select action", actionUpdateBtn,actionDeleteBtn);
@@ -250,7 +250,6 @@ public class EditController implements Initializable {
                             listMenus.remove(menu);
                             eMTV.getMasterFilter().setPredicate();
                         }
-
                     }
 
                     break;
@@ -273,7 +272,7 @@ public class EditController implements Initializable {
      * Creates Tableview with filters
      * @return
      */
-    public void getEditProduct(){
+    private void getEditProduct(){
         listProduct = FXCollections.observableList(dB.getAllProducts());
         FilteredList<Product> filteredData = new FilteredList<>(listProduct, l -> true);
         tS.removeVboxChildren(tableVBox);
@@ -284,7 +283,7 @@ public class EditController implements Initializable {
      * Creates Tableview with filters
      * @return
      */
-    public void getEditCategory(){
+    private void getEditCategory(){
         listCategory = FXCollections.observableList(dB.getAllCategories());
         FilteredList<Category> filteredData = new FilteredList<>(listCategory, l -> true);
         tS.removeVboxChildren(tableVBox);
@@ -295,7 +294,7 @@ public class EditController implements Initializable {
     /**
      * Creates Tableview with filters
      */
-    public void getEditMenu(){
+    private void getEditMenu(){
         listMenus = FXCollections.observableList(dB.getAllMenus());
         FilteredList<Menus> filteredData = new FilteredList<>(listMenus, l -> true);
         tS.removeVboxChildren(tableVBox);
@@ -303,7 +302,7 @@ public class EditController implements Initializable {
         tableVBox.getChildren().add(eMTV.getMenusTableView(filteredData));
     }
 
-    public void getEditManufacturer(){
+    private void getEditManufacturer(){
         listManufacturer = FXCollections.observableList(dB.getAllManufacturers());
         FilteredList<Manufacturer> filteredData = new FilteredList<>(listManufacturer, l -> true);
         tS.removeVboxChildren(tableVBox);

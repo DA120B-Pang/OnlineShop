@@ -69,6 +69,11 @@ public class ScreenSingleton {
             activateScreen(e,"../admin/edit/Edit.fxml");
         }
     }
+    public class OpenEditUserScreen implements ScreenChange {
+        public void screenChange(ActionEvent e) {
+            activateScreen(e,"../admin/edit/EditUser.fxml");
+        }
+    }
     public class OpenManageDatabase implements ScreenChange {
         public void screenChange(ActionEvent e) {
             activateScreen(e,"../admin/AdminTools.fxml");

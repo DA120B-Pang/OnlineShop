@@ -135,6 +135,7 @@ public class ToolsSingleton {
      */
     public void getButtonAnimation(Pane pane, Button button, Image image){
 
+
         Double x = button.getLayoutX()+button.getWidth()/2;
         Double y = button.getLayoutY();
 

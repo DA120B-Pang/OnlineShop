@@ -24,9 +24,7 @@ import zaar.product.Product;
  * And method for setting the topBox
  */
 public class EditProductTableView {
-    private Database dB = Database.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
-    private ToolsSingleton tS = ToolsSingleton.getInstance();
     private EditFiltersProd eFP = EditFiltersProd.getInstance();
     private EditFilterObject editProdFilterObject;
     private PopUpFilterString popUpFilterName;

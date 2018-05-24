@@ -102,12 +102,12 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <TextArea fx:id="desqTxtArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter Description" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <TextArea fx:id="desqTxtArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter Description" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
                               </TextArea>
-                              <TextArea fx:id="detailsTxtArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter Details" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <TextArea fx:id="detailsTxtArea" prefHeight="200.0" prefWidth="200.0" promptText="Enter Details" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
