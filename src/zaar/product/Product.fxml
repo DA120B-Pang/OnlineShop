@@ -40,7 +40,15 @@
       </HBox>
       <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
          <content>
-            <VBox fx:id="prodVbox" maxWidth="1.7976931348623157E308" prefHeight="410.0" prefWidth="100.0" />
+            <VBox fx:id="prodVbox" maxWidth="1.7976931348623157E308" prefHeight="410.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="452.0" fitWidth="799.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/erbjudande.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="134.0" prefWidth="799.0" style="-fx-background-color: #112731;" />
+               </children></VBox>
          </content>
       </ScrollPane>
    </children>
