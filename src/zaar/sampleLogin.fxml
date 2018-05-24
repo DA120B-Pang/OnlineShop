@@ -5,25 +5,36 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LoginController">
+<HBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.LoginController">
     <children>
-        <TextField fx:id="username" layoutX="217.0" layoutY="118.0" promptText="Användarnamn" />
-        <Label layoutX="264.0" layoutY="57.0" prefHeight="43.0" prefWidth="79.0" text="Login">
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
-        <Button fx:id="backButton" layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#useBackButton" text="&lt;---" />
-      <Label layoutX="218.0" layoutY="224.0" prefHeight="17.0" prefWidth="135.0" text="Glömt ditt lösenord?" />
-      <Button fx:id="loginButton" layoutX="218.0" layoutY="253.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="167.0" text="Logga in" />
-      <Label layoutX="216.0" layoutY="320.0" text="Har du inget konto?" />
-      <Label layoutX="216.0" layoutY="342.0" text="Vill du logga in som admin?" />
-      <Label fx:id="dbStatus" layoutX="426.0" layoutY="23.0" prefHeight="27.0" prefWidth="127.0" />
-      <Label fx:id="loginStatus" layoutX="216.0" layoutY="97.0" prefHeight="17.0" prefWidth="275.0" />
-      <PasswordField fx:id="password" layoutX="218.0" layoutY="154.0" promptText="Lösenord" />
-      <Button fx:id="addUserButton" layoutX="213.0" layoutY="315.0" mnemonicParsing="false" onAction="#addUser" opacity="0.0" prefHeight="27.0" prefWidth="127.0" text="Button" />
-      <Button fx:id="adminLoginButton" layoutX="213.0" layoutY="337.0" mnemonicParsing="false" onAction="#adminLogin" opacity="0.0" prefHeight="27.0" prefWidth="175.0" text="adminLoginButton" />
+        <VBox alignment="TOP_CENTER" maxHeight="5000.0" maxWidth="5000.0">
+            <children>
+                <VBox>
+                    <children>
+                        <Button fx:id="backButton" mnemonicParsing="false" onAction="#useBackButton" />
+                    </children>
+                </VBox>
+                <AnchorPane maxHeight="5000.0" maxWidth="5000.0" prefHeight="400.0" prefWidth="600.0">
+                    <children>
+                        <TextField fx:id="username" layoutX="218.0" layoutY="120.0" promptText="Användarnamn" />
+                        <Label layoutX="264.0" layoutY="57.0" prefHeight="43.0" prefWidth="79.0" text="Login">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="passwdLbl" layoutX="233.0" layoutY="256.0" prefHeight="17.0" prefWidth="135.0" text="Glömt ditt lösenord?" />
+                        <Button fx:id="loginButton" layoutX="218.0" layoutY="187.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="149.0" text="Logga in" />
+                        <Label fx:id="accountLbl" layoutX="201.0" layoutY="285.0" text="Har du inget konto? Skapa ett här!" />
+                        <Label fx:id="dbStatus" layoutX="426.0" layoutY="23.0" prefHeight="27.0" prefWidth="127.0" />
+                        <Label fx:id="loginStatus" layoutX="216.0" layoutY="97.0" prefHeight="17.0" prefWidth="275.0" />
+                        <PasswordField fx:id="password" layoutX="218.0" layoutY="154.0" promptText="Lösenord" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
     </children>
-</AnchorPane>
+</HBox>
