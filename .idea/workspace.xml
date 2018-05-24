@@ -1,208 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="Kundvagnen">
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/FabricCommunicationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/FabricConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/FabricStateResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/HashShardMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/RangeShardMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ServerGroup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ServerMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ServerRole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ShardIndex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ShardMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ShardMappingFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ShardTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/ShardingType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/hibernate/FabricMultiTenantConnectionProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/ErrorReportingExceptionInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/FabricMySQLConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/FabricMySQLConnectionProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/FabricMySQLDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/FabricMySQLDriver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/JDBC4FabricMySQLConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/jdbc/JDBC4FabricMySQLConnectionProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/AuthenticatedXmlRpcMethodCaller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/DigestAuthentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/InternalXmlRpcMethodCaller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/ResultSetParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/XmlRpcClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/proto/xmlrpc/XmlRpcMethodCaller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Array.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Fault.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/MethodCall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/MethodResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Param.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Params.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/ResponseParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Struct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/base/Value.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/fabric/xmlrpc/exceptions/MySQLFabricException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/authentication/MysqlClearPasswordPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/authentication/MysqlNativePasswordPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/authentication/MysqlOldPasswordPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/authentication/Sha256PasswordPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/3-0-Compat.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/5-0-Compat.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/clusterBase.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/coldFusion.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/fullDebug.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/maxPerformance.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/configs/solarisMaxPerformance.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/DeadlockTimeoutRollbackMarker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLIntegrityConstraintViolationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLInvalidAuthorizationSpecException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLNonTransientConnectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLNonTransientException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLQueryInterruptedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLStatementCancelledException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLSyntaxErrorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLTimeoutException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLTransactionRollbackException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLTransientConnectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/MySQLTransientException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/CommunicationsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLDataException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLIntegrityConstraintViolationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLInvalidAuthorizationSpecException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLNonTransientConnectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLNonTransientException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLQueryInterruptedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLSyntaxErrorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLTimeoutException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLTransactionRollbackException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLTransientConnectionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/exceptions/jdbc4/MySQLTransientException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/integration/c3p0/MysqlConnectionTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/integration/jboss/ExtendedMysqlExceptionSorter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/integration/jboss/MysqlValidConnectionChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/interceptors/ResultSetScannerInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/interceptors/ServerStatusDiffInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/interceptors/SessionAssociationInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/CallableStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/ConnectionWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC42CallableStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC42PreparedStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4CallableStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4ConnectionWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4MysqlPooledConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4MysqlXAConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4PreparedStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4StatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/JDBC4SuspendableXAConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlConnectionPoolDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlDataSourceFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlPooledConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlXAConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlXADataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlXAException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/MysqlXid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/PreparedStatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/StatementWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/SuspendableXAConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/jdbc2/optional/WrapperBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/profiler/LoggingProfilerEventHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/profiler/ProfilerEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/profiler/ProfilerEventHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/Base64Decoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/LRUCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/PropertiesDocGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/ReadAheadInputStream.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/ResultSetUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/com/mysql/jdbc/util/TimezoneDump.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/Client1_Fabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/EmployeesDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/EmployeesJdbc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/HibernateFabric.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/demo/fabric/resources/com/mysql/fabric/demo/employee.hbm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/doc/sources/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/lib/c3p0-0.9.1-pre6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/lib/c3p0-0.9.1-pre6.src.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper-src.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/lib/slf4j-api-1.6.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/org/gjt/mm/mysql/Driver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/BaseStatementInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/BaseTestCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/UnreliableSocketFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/BaseFabricTestCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/SetupFabricTestsuite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/TestAdminCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/TestDumpCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/TestResultSetParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/TestShardMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/TestXmlRpcCore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/jdbc/TestBasicConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/jdbc/TestFabricMySQLConnectionSharding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/jdbc/TestHABasics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/jdbc/TestHashSharding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/fabric/jdbc/TestRegressions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/perf/BasePerfTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/perf/LoadStorePerfTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/perf/RetrievalPerfTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/BlobRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/CallableStatementRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/CharsetRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/ConnectionRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/EscapeProcessorRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/MetaDataRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/NumbersRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/PooledConnectionRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/StatementRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/StringRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/SubqueriesRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/SyntaxRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/regression/UtilsRegressionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/BlobTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/CallableStatementTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/CharsetTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/ConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/DataSourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/DateTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/EscapeProcessingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/MetadataTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/MiniAdminTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/MultiHostConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/NumbersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/ReadOnlyCallableStatementTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/ResultSetTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/SSLTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/ServerControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/SimpleTransformer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/SplitDBdotNameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/StatementsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/StringUtilsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/TestBug57662Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/TestLifecycleInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/TransactionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/TraversalTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/UpdatabilityTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/UtilsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/XATest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc4/StatementsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc42/ConnectionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc42/ResultSetTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/jdbc42/StatementsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-5.1.45/src/testsuite/simple/tb2-data.txt.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d7fa433b-7d50-44a3-9f46-c481d007833b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/zaar/customer/PaymentMethods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/zaar/product/Cart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zaar/helperclasses/ScreenSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/CartController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/SqlConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/emptyCartController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/removeItemController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/taBortProdukt.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zaar/product/tomVarukorgen.fxml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -257,8 +59,8 @@
       <file leaf-file-name="Cart.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/zaar/product/Cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="307" lean-forward="true" selection-start-line="307" selection-end-line="307" />
+            <state relative-caret-position="204">
+              <caret line="81" column="78" lean-forward="true" selection-start-line="81" selection-start-column="78" selection-end-line="81" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11927#11928#0" expanded="true" />
@@ -836,7 +638,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526981670420</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Kundvagnen fixad">
+      <created>1527152348639</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1527152348639</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -987,7 +796,8 @@
     <MESSAGE value="after payments" />
     <MESSAGE value="Kundvagnen" />
     <MESSAGE value="Fixat med att tömma &amp; ta bort produkter från kundvagnen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixat med att tömma &amp; ta bort produkter från kundvagnen" />
+    <MESSAGE value="Kundvagnen fixad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kundvagnen fixad" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1443,8 +1253,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/zaar/product/Cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="307" lean-forward="true" selection-start-line="307" selection-end-line="307" />
+        <state relative-caret-position="204">
+          <caret line="81" column="78" lean-forward="true" selection-start-line="81" selection-start-column="78" selection-end-line="81" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11927#11928#0" expanded="true" />
