@@ -47,6 +47,7 @@
                         <Image url="@../../img/erbjudande.png" />
                      </image>
                   </ImageView>
+                  <HBox prefHeight="134.0" prefWidth="799.0" style="-fx-background-color: #112731;" />
                </children></VBox>
          </content>
       </ScrollPane>
