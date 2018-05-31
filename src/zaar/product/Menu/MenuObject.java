@@ -33,6 +33,6 @@ public class MenuObject implements Comparator<MenuObject> {
 
     @Override
     public int compare(MenuObject o1, MenuObject o2) {
-        return o1.name.compareTo(o2.name);
+        return o1.name.toLowerCase().compareTo(o2.name.toLowerCase());
     }
 }
