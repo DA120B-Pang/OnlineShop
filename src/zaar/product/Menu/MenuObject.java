@@ -10,6 +10,7 @@ public class MenuObject implements Comparator<MenuObject> {
     public MenuObject() {
         this("",0);
     }
+
     public MenuObject(String name, int parentMenuId) {
         this.name = name;
         this.parentMenuId = parentMenuId;
