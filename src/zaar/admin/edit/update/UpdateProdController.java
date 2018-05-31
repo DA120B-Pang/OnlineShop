@@ -21,9 +21,11 @@ import zaar.admin.edit.filterPopUps.FilterObjectType;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
+import zaar.product.AddManufacturer;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
 import zaar.product.Product;
+import zaar.product.SelectManufacturerPopUp;
 
 import java.io.File;
 import java.net.URL;
@@ -33,7 +35,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class UpdateProdController implements Initializable, UpdateCaller {
+public class UpdateProdController implements Initializable {
 
     @FXML
     private VBox vBox;
@@ -118,14 +120,14 @@ public class UpdateProdController implements Initializable, UpdateCaller {
         chooseManBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
+            new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,new UpdateManufacturer());
         });
 
         //Adds manufacturer
         addManBtn.setOnAction((Event)->{//Add manufacturer
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
+            new AddManufacturer().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,null);
         });
 
         //Shows available menus
@@ -139,14 +141,14 @@ public class UpdateProdController implements Initializable, UpdateCaller {
         addCatBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, this);
+            new AddMenuCategory().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, new UpdateCategories());
         });
 
         //Add menu
         addMenuBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
+            new AddMenuCategory().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,null);
         });
 
         //Choose picture
@@ -290,19 +292,31 @@ public class UpdateProdController implements Initializable, UpdateCaller {
         gridPane.add(product.getImageView(),1,8);
     }
 
-    @Override
-    public void update() {
-        tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
+    private class UpdateCategories implements UpdateCaller {
+        @Override
+        public void update() {
+            tS.getBuildMenu().getMenu(menuBtn, new UpdateProdMenuAction(), new UpdateProdMenuItemAction(), null, null, BuildMenu.MenuBuildMode.STANDARD, null);
+        }
     }
 
-    public class UpdateProdMenuAction implements MenuAction {
+    private class UpdateManufacturer implements UpdateCaller{
+
+        @Override
+        public void update() {
+            manufacturerTxtFld.setText(manufacturer.getName());
+        }
+    }
+
+
+
+    private class UpdateProdMenuAction implements MenuAction {
         @Override
         public void action(Menus menu) {
 
         }
     }
 
-    public class UpdateProdMenuItemAction implements MenuItemAction {
+    private class UpdateProdMenuItemAction implements MenuItemAction {
 
         @Override
         public void action(Category cat) {

@@ -3,13 +3,10 @@ package zaar.admin.add;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -21,16 +18,17 @@ import zaar.UpdateCaller;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
+import zaar.product.AddManufacturer;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
-import zaar.product.Product;
+import zaar.product.SelectManufacturerPopUp;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class AddProdController implements Initializable, UpdateCaller {
+public class AddProdController implements Initializable {
 
 
     @FXML
@@ -126,13 +124,13 @@ public class AddProdController implements Initializable, UpdateCaller {
         chooseManBtn.setOnAction((Event)->{//Button for selecting manufacturer for product dialog
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, null);
+            new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, new UpdateSelectedManufacturer());
         });
 
         addManBtn.setOnAction((Event)->{//Add manufacturer to database dialog
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,null);
+            new AddManufacturer().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,null);
         });
 
         chooseCatBtn.setOnMouseClicked((Event)->{//Builds category menu if error has occured in previous attempt
@@ -144,14 +142,14 @@ public class AddProdController implements Initializable, UpdateCaller {
         addCatBtn.setOnAction((Event)->{//Opens dialog for choosing category for product
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
+            new AddMenuCategory().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,new UpdateCategories());
 
         });
 
         addMenuBtn.setOnAction((Event)->{//Opens dialog for choosing manufacturer for product
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, this);
+            new AddMenuCategory().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, null);
         });
 
         choosePicBtn.setOnAction((Event)->{//Opens dialog for choosing picture for product
@@ -264,10 +262,6 @@ public class AddProdController implements Initializable, UpdateCaller {
         });
     }
 
-    @Override
-    public void update() {
-        tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);
-    }
 
     public class AddProdMenuAction implements MenuAction{
         @Override
@@ -290,6 +284,21 @@ public class AddProdController implements Initializable, UpdateCaller {
         ScreenSingleton sS = ScreenSingleton.getInstance();
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
+    }
+    private class UpdateCategories implements UpdateCaller{
+
+        @Override
+        public void update() {
+            tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);
+        }
+    }
+
+    private class UpdateSelectedManufacturer implements UpdateCaller{
+
+        @Override
+        public void update() {
+            manufacturerTxtFld.setText(manufacturer.getName());
+        }
     }
 
 }

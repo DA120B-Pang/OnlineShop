@@ -28,7 +28,9 @@ import zaar.admin.edit.update.UpdateProdController;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
+import zaar.product.AddManufacturer;
 import zaar.product.Manufacturer;
+import zaar.product.Menu.AddMenuCategory;
 import zaar.product.Menu.Category;
 import zaar.product.Menu.Menus;
 import zaar.product.Product;
@@ -173,7 +175,7 @@ public class EditController implements Initializable , UpdateCaller {
                     Category category = ((TableView<Category>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
                     String menuName = dB.getStringFromTable(category.getParentMenuId(),"", Database.GetString.GET_MENU);
                     if (category != null && menuName != null) {
-                        ScreenSingleton.InsertIntStringToDbPopUp categoryUpdate =  sS.new InsertIntStringToDbPopUp();
+                        AddMenuCategory categoryUpdate =  new AddMenuCategory();
                         categoryUpdate.setParametersCategory(category, menuName);
                         categoryUpdate.popUp("Update", dB.new UpdateCategory(), false,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
@@ -183,7 +185,7 @@ public class EditController implements Initializable , UpdateCaller {
                     Menus menu = ((TableView<Menus>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
                     menuName = dB.getStringFromTable(menu.getParentMenuId(),"", Database.GetString.GET_MENU);
                     if (menu != null && menuName != null) {
-                        ScreenSingleton.InsertIntStringToDbPopUp menuUpdate =  sS.new InsertIntStringToDbPopUp();
+                        AddMenuCategory menuUpdate =  new AddMenuCategory();
                         menuUpdate.setParametersMenu(menu, menuName);
                         menuUpdate.popUp("Update", dB.new UpdateMenu(), true,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
@@ -194,7 +196,7 @@ public class EditController implements Initializable , UpdateCaller {
 
                     Manufacturer manufacturer = ((TableView<Manufacturer>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
                     if (manufacturer != null) {
-                        ScreenSingleton.InsertStringToDbPopUp manufacturerUpdate =  sS.new InsertStringToDbPopUp();
+                        AddManufacturer manufacturerUpdate =  new AddManufacturer();
                         manufacturerUpdate.setId(manufacturer);
                         manufacturerUpdate.popUp("Update", dB.new UpdateManufacturer(),callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
