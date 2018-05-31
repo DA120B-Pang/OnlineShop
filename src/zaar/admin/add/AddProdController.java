@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import zaar.Database.Database;
+import zaar.UpdateCaller;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
@@ -29,7 +30,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class AddProdController implements Initializable{
+public class AddProdController implements Initializable, UpdateCaller {
 
 
     @FXML
@@ -125,18 +126,13 @@ public class AddProdController implements Initializable{
         chooseManBtn.setOnAction((Event)->{//Button for selecting manufacturer for product dialog
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, null);
         });
 
         addManBtn.setOnAction((Event)->{//Add manufacturer to database dialog
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
-        });
-
-        dS.manChangedProperty().addListener(l->{
-                manufacturerTxtFld.setText(manufacturer.getName());
-
+            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,null);
         });
 
         chooseCatBtn.setOnMouseClicked((Event)->{//Builds category menu if error has occured in previous attempt
@@ -148,18 +144,14 @@ public class AddProdController implements Initializable{
         addCatBtn.setOnAction((Event)->{//Opens dialog for choosing category for product
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
-
-            //prodCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            //priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-            //amountCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
 
         });
 
         addMenuBtn.setOnAction((Event)->{//Opens dialog for choosing manufacturer for product
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, this);
         });
 
         choosePicBtn.setOnAction((Event)->{//Opens dialog for choosing picture for product
@@ -253,13 +245,6 @@ public class AddProdController implements Initializable{
             }
         });
 
-        dS.menuChangedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);
-            }
-        });
-
         desqTxtArea.textProperty().addListener((oB,oV,nV)->{
             if(nV.length()>500){
                 desqTxtArea.setText(oV);
@@ -278,6 +263,12 @@ public class AddProdController implements Initializable{
             }
         });
     }
+
+    @Override
+    public void update() {
+        tS.getBuildMenu().getMenu(chooseCatBtn,new AddProdMenuAction(), new AddProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);
+    }
+
     public class AddProdMenuAction implements MenuAction{
         @Override
         public void action(Menus menu) {
@@ -300,4 +291,5 @@ public class AddProdController implements Initializable{
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
+
 }

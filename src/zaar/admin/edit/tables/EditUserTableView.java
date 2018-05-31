@@ -100,6 +100,10 @@ public class EditUserTableView {
         TableColumn<User,Integer> roleColumn  = new TableColumn<>("Role");
         roleColumn.setMinWidth(100);
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+        //************************ Role*****************************
+        TableColumn<User,Integer> userIdColumn  = new TableColumn<>("Uid");
+        userIdColumn.setMinWidth(100);
+        userIdColumn.setCellValueFactory(new PropertyValueFactory<>("customerID"));
 
 
 
@@ -116,7 +120,8 @@ public class EditUserTableView {
                 loginNameColumn,
                 passwordColumn,
                 phoneColumn,
-                roleColumn);
+                roleColumn,
+                userIdColumn);
 
         SortedList<User> sortedData = new SortedList<>(list);//Activates sorting ability in table
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());

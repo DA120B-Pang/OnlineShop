@@ -1,18 +1,16 @@
 package zaar.customer;
 
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import zaar.Database.Database;
-import zaar.admin.edit.PredicateFilters.SetPredicate;
+import zaar.UpdateCaller;
 
 
 public class EditAddPaymentMethod {
@@ -23,13 +21,13 @@ public class EditAddPaymentMethod {
     private boolean isUpdate = false;
     private int id;
     Stage stage;
-    SetPredicate updateCaller;
+    UpdateCaller updateCaller;
 
     public EditAddPaymentMethod(boolean isUpdate, int id){
         this.isUpdate  = isUpdate;
         this.id = id;
     }
-    public void setUpdateCaller(SetPredicate setCaller){
+    public void setUpdateCaller(UpdateCaller setCaller){
         updateCaller = setCaller;
     }
 
@@ -45,7 +43,9 @@ public class EditAddPaymentMethod {
         }
         else {
             editAddBtn.setOnAction(e->{
-                updateCard();
+               if(!cardNumberTextField.getText().isEmpty()) {
+                    updateCard();
+                }
             });
         }
         stage = new Stage();
@@ -76,12 +76,15 @@ public class EditAddPaymentMethod {
     private void addCard(){
 
         if(dB.insertPaymentMethod(id, cardNumberTextField.getText())){
-            updateCaller.setPredicate();
+            updateCaller.update();
             stage.close();
         }
     }
 
     private void updateCard(){
-
+        if(dB.updatePaymentMethod(id, cardNumberTextField.getText())){
+            updateCaller.update();
+            stage.close();
+        }
     }
 }

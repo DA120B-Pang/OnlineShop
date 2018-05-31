@@ -1,9 +1,6 @@
 package zaar.customer;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -13,14 +10,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import zaar.Database.Database;
-import zaar.admin.edit.PredicateFilters.SetPredicate;
+import zaar.UpdateCaller;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ToolsSingleton;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
 public class EditAddUser {
 
@@ -68,21 +63,23 @@ public class EditAddUser {
 
     private boolean isUpdate = false;
     private String title;
-    private SetPredicate setPredicate;
+    private UpdateCaller updateCaller;
     private Database dB = Database.getInstance();
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
     private User user;
-    Pane pane;
+    private Pane pane;
+    private boolean hideRole;
 
     public EditAddUser(String title){
         this.title = title;
     }
 
 
-    public void setUserData(User user, SetPredicate setPredicate) {
-        this.setPredicate = setPredicate;
+    public void setUserData(User user, boolean hideRole, UpdateCaller updateCaller) {
+        this.updateCaller = updateCaller;
         this.user = user;
+        this.hideRole = hideRole;
         id = user.getCustomerID();
         Role tmp;
         if(user.getRole()==1){
@@ -177,8 +174,10 @@ public class EditAddUser {
         }
 
         //Row 1
-        gridPane.add(roleLbl,0,0,1,1);
-        gridPane.add(roleComboBox,1,0,1,1);
+        if(!hideRole) {
+            gridPane.add(roleLbl, 0, 0, 1, 1);
+            gridPane.add(roleComboBox, 1, 0, 1, 1);
+        }
         //Row 2
         gridPane.add(firstNameLbl,0,1,1,1);
         gridPane.add(firstNameTxtField,1,1,1,1);
@@ -311,7 +310,9 @@ public class EditAddUser {
                 user.setAddress(addressTxtField.getText());
                 user.setCity(cityTxtField.getText());
                 user.setCountry(countryTxtField.getText());
-                setPredicate.setPredicate();
+                if(updateCaller !=null) {
+                    updateCaller.update();
+                }
                 tS.getButtonAnimation(pane,writeBtn,dS.getOkImgView().getImage());
             }     
             else{

@@ -32,8 +32,6 @@ public class DataSingleton {
     private Image removeX;
     private Label cartLabel = new Label();
     private SimpleIntegerProperty cartSum = new SimpleIntegerProperty(0);
-    private SimpleBooleanProperty menuChanged = new SimpleBooleanProperty(false);
-    private SimpleBooleanProperty manChanged = new SimpleBooleanProperty(false);
 
     public static DataSingleton getInstance() {
         return ourInstance;
@@ -50,7 +48,7 @@ public class DataSingleton {
                 cartYellow.setFitHeight(20);
                 cartYellow.setFitWidth(20);
                 cartLabel.setLayoutX(50);
-                cartLabel.setLayoutY(2);
+                cartLabel.setLayoutY(0);
                 cartLabel.setGraphic(cartYellow);
                 cartLabel.setContentDisplay(ContentDisplay.CENTER);
             }
@@ -142,17 +140,6 @@ public class DataSingleton {
         return imageView;
     }
 
-    /**
-     * If user is logged in returns true
-     * @return boolean
-     */
-    public boolean isUserLoggedIn(){
-        if (loggedInUser.getCustomerID()>0){
-            return true;
-        }
-        return false;
-    }
-
     public User getLoggedInUser() {
         return loggedInUser;
     }
@@ -163,10 +150,6 @@ public class DataSingleton {
 
     public ArrayList<Product> getCart() {
         return cart;
-    }
-
-    public void setCart(ArrayList<Product> cart) {
-        this.cart = cart;
     }
 
     public void addToCart(Product cartProduct){
@@ -228,29 +211,4 @@ public class DataSingleton {
         imageView.setFitHeight(10);
         button.setGraphic(imageView);
     }
-
-    public SimpleBooleanProperty menuChangedProperty() {
-        return menuChanged;
-    }
-
-    public void toggleMenuChanged(){
-        if(menuChanged.getValue()){
-            menuChanged.setValue(false);
-        }
-        else{
-            menuChanged.setValue(true);
-        }
-    }
-    public SimpleBooleanProperty manChangedProperty() {
-        return manChanged;
-    }
-
-    public void toggleManChanged() {
-        if (manChanged.getValue()) {
-            manChanged.setValue(false);
-        } else {
-            manChanged.setValue(true);
-        }
-    }
-
 }

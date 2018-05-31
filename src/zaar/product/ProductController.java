@@ -507,18 +507,27 @@ public class ProductController implements Initializable {
             });
         }
 
+        //Button cartBtn = tS.setButtonTopHBox(hBox, "Cart", sS.new OpenCartScreen());//Adds button to top container
+        if(dS.getLoggedInUser() != null) {
+            tS.setButtonTopHBox(hBox, "My account", sS.new OpenMyAccount());//Adds button to top container
+        }
+
+        //Button cartBtn = tS.setButtonTopHBox(hBox, "Cart", sS.new OpenCartScreen());//Adds button to top container
+        if(dS.getLoggedInUser() != null && dS.getLoggedInUser().getRole() == 1 ) {
+            tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());//Adds button to top container
+        }
+
         Button cartBtn  = new Button("Cart");
+        cartBtn.setLayoutY(2);
         tS.buttonSetImage(cartBtn,"src/img/icons/cart.png",15d,15d);//Set image to button
         Group group = new Group();
+        HBox.setMargin(group, new Insets(0,5,0,5));
         group.getChildren().addAll(cartBtn,dS.getCartLabel());
         cartBtn.setOnAction(E->{
             new Cart().makeCart(prodVbox,false);
         });
         hBox.getChildren().add(group);
-        //Button cartBtn = tS.setButtonTopHBox(hBox, "Cart", sS.new OpenCartScreen());//Adds button to top container
-        if(dS.getLoggedInUser() != null && dS.getLoggedInUser().getRole() == 1 ) {
-            tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());//Adds button to top container
-        }
+
     }
 
     /**

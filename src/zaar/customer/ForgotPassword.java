@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import zaar.Database.Database;
@@ -61,6 +60,9 @@ public class ForgotPassword {
 
         HBox hBox = new HBox(enterLoginNameTxtFiled,okBtn);
 
+        Platform.runLater(()->{
+            okBtn.requestFocus();
+        });
         Scene scene = new Scene(hBox);
         stage.setScene(scene);
         stage.show();

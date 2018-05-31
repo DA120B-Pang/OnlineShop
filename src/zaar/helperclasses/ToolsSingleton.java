@@ -91,7 +91,7 @@ public class ToolsSingleton {
      * @return              Button for further handling
      */
     public Button setButtonTopHBox(HBox hbox, String name, ScreenSingleton.ScreenChange screenChange){
-        Insets insets = new Insets(0,10,0,10);
+        Insets insets = new Insets(0,5,0,5);
         Button button = new Button(name);
         HBox.setMargin(button, insets);
         button.setOnAction(new EventHandler<ActionEvent>() {

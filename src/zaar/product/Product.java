@@ -118,7 +118,6 @@ public class Product {
         }
     }
 
-
     public class CompareNameAsc implements Comparator<Product>{
 
         @Override

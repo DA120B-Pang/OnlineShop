@@ -15,9 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
 import zaar.Database.Database;
+import zaar.UpdateCaller;
 import zaar.admin.edit.filterPopUps.FilterObjectType;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
@@ -34,7 +33,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class UpdateProdController implements Initializable{
+public class UpdateProdController implements Initializable, UpdateCaller {
 
     @FXML
     private VBox vBox;
@@ -119,19 +118,14 @@ public class UpdateProdController implements Initializable{
         chooseManBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+            sS.new SelectManufacturerPopUp().popUp(manufacturer, stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
         });
 
         //Adds manufacturer
         addManBtn.setOnAction((Event)->{//Add manufacturer
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
-        });
-
-        //Puts choosen name in manufactorer textfield
-        dS.manChangedProperty().addListener(l-> {
-                manufacturerTxtFld.setText(manufacturer.getName());
+            sS.new InsertStringToDbPopUp().popUp("Add manufacturer", dB.new InsertManufacturer(), stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
         });
 
         //Shows available menus
@@ -145,14 +139,14 @@ public class UpdateProdController implements Initializable{
         addCatBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+            sS.new InsertIntStringToDbPopUp().popUp("Add category", dB.new InsertCategory(),false,"Id",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50, this);
         });
 
         //Add menu
         addMenuBtn.setOnAction((Event)->{
             Node node = (Node)Event.getSource();
             Stage stage = (Stage)node.getScene().getWindow();//Gets stage for positioning poup
-            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50);
+            sS.new InsertIntStringToDbPopUp().popUp("Add menu", dB.new InsertMenu(),true,"Empty means root",stage.getX()+chooseManBtn.getLayoutX(),stage.getY()+chooseManBtn.getLayoutY()+50,this);
         });
 
         //Choose picture
@@ -265,13 +259,6 @@ public class UpdateProdController implements Initializable{
                 detailsTxtArea.setText(oV);
             }
         });
-
-        dS.menuChangedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
-            }
-        });
     }
 
     /**
@@ -301,6 +288,11 @@ public class UpdateProdController implements Initializable{
         product.getImageView().setFitWidth(230);
         product.getImageView().setFitHeight(230);
         gridPane.add(product.getImageView(),1,8);
+    }
+
+    @Override
+    public void update() {
+        tS.getBuildMenu().getMenu(menuBtn,new UpdateProdMenuAction(), new UpdateProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.CHOOSE_MENU,null);
     }
 
     public class UpdateProdMenuAction implements MenuAction {

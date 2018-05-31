@@ -14,7 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import zaar.Database.Database;
-import zaar.admin.edit.PredicateFilters.SetPredicate;
+import zaar.UpdateCaller;
 import zaar.customer.EditAddPaymentMethod;
 import zaar.customer.OrderItem;
 import zaar.customer.PaymentMethods;
@@ -177,13 +177,6 @@ public class Cart {
     }
 
     private void itemView(Product p, GridPane gridPane, int index){
-        ImageView imageView = new ImageView(p.getImageView().getImage());
-        imageView.setFitWidth(40);
-        imageView.setFitHeight(40);
-        AnchorPane.setLeftAnchor(imageView,5.0);
-        AnchorPane.setTopAnchor(imageView,5.0);
-        AnchorPane.setBottomAnchor(imageView,5.0);
-
 
         Label manufacturerLbl = new Label(dB.getStringFromTable(p.getManufacturerId(),"",Database.GetString.GET_MANUFACTURER));
         manufacturerLbl.setMaxWidth(70);
@@ -308,7 +301,7 @@ public class Cart {
 
         confirmOrderBtn.setOnAction(E->{
 
-            int paymentId = dB.insertPayment(paymentMethod.getPaymentId(), Double.toString(dS.getCartTotal()));
+            int paymentId = dB.insertPayment(paymentMethod.getCardNbr(), Double.toString(dS.getCartTotal()));
             if (paymentId > 0) {
                 int orderId = dB.insertOrder(dS.getLoggedInUser().getCustomerID(), paymentId, orderMessageTxtArea.getText());
                 if (orderId > 0) {
@@ -377,10 +370,10 @@ public class Cart {
         vBox.getChildren().addAll(confirmationGridPane, confirmOrderBtnVBox);
     }
 
-    private class UpdateCombobox implements SetPredicate {
+    private class UpdateCombobox implements UpdateCaller {
 
         @Override
-        public void setPredicate() {
+        public void update() {
             updateComboBox();
         }
     }

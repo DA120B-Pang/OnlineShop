@@ -17,14 +17,17 @@ import zaar.Database.Database;
 import zaar.UpdateCaller;
 import zaar.admin.edit.tables.EditPaymentMethodsTableView;
 import zaar.admin.edit.tables.EditUserTableView;
-import zaar.customer.*;
+import zaar.customer.EditAddPaymentMethod;
+import zaar.customer.EditAddUser;
+import zaar.customer.PaymentMethods;
+import zaar.customer.User;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditUserController implements Initializable, UpdateCaller {
+public class EditOrderController implements Initializable, UpdateCaller {
 
     private enum TypeEdited{
         USER,

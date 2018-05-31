@@ -21,8 +21,10 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import zaar.Database.BooleanMethodIntString;
+import zaar.Database.BooleanMethodString;
 import zaar.Database.Database;
-import zaar.admin.edit.PredicateFilters.product.EditFiltersProd;
+import zaar.UpdateCaller;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.*;
 
@@ -36,8 +38,6 @@ import java.util.function.Predicate;
 public class ScreenSingleton {
     private static ScreenSingleton ourInstance = new ScreenSingleton();
     private DataSingleton dS = DataSingleton.getInstance();
-    private ToolsSingleton tS = ToolsSingleton.getInstance();
-    private EditFiltersProd ePF = EditFiltersProd.getInstance();
 
     public static ScreenSingleton getInstance() {
         return ourInstance;
@@ -77,12 +77,13 @@ public class ScreenSingleton {
     }
     public class OpenLoginScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../sampleLogin.fxml");
+            activateScreen(e,"../Login.fxml");
         }
     }
-    public class OpenCartScreen implements ScreenChange {
+    public class OpenMyAccount implements ScreenChange{
+        @Override
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../product/kundvagn.fxml");
+            activateScreen(e,"../customer/MyAccount.fxml");
         }
     }
 
@@ -103,7 +104,9 @@ public class ScreenSingleton {
 
     //****************Adding products/menus/categories popups*********************************************
     public class SelectManufacturerPopUp {
-        public void popUp(Manufacturer manufacturer, Double x, Double y){
+        private  UpdateCaller updateCaller = null;
+        public void popUp(Manufacturer manufacturer, Double x, Double y, UpdateCaller updateCaller){
+            this.updateCaller = updateCaller;
             Database dB = Database.getInstance();
             ArrayList<Manufacturer> list = dB.getManufacturers();
             if(list!=null) {
@@ -139,7 +142,10 @@ public class ScreenSingleton {
                     if(selectedIndices!=null) {
                         manufacturer.setId(selectedIndices.getId());
                         manufacturer.setName(selectedIndices.getName());
-                        dS.toggleManChanged();
+                        if(updateCaller!=null){
+                            updateCaller.update();
+                        }
+//                        dS.toggleManChanged();
                         stage.close();
                     }
                 });
@@ -173,12 +179,14 @@ public class ScreenSingleton {
         private boolean retVal;
         private Manufacturer manufacturer = new Manufacturer();
         private TextField nameTxtField = new TextField();
+        private UpdateCaller updateCaller = null;
 
         public void setId(Manufacturer manufacturer){
             this.manufacturer = manufacturer;
             nameTxtField.setText(manufacturer.getName());
         }
-        public void popUp(String titleAddButton, BooleanMethodString dbQuery, Double x, Double y){
+        public void popUp(String titleAddButton, BooleanMethodString dbQuery, Double x, Double y, UpdateCaller updateCaller){
+            this.updateCaller = updateCaller;
             Database dB = Database.getInstance();
             ToolsSingleton tS = ToolsSingleton.getInstance();
             DataSingleton dS = DataSingleton.getInstance();
@@ -223,7 +231,10 @@ public class ScreenSingleton {
                     tS.getButtonAnimation(anchorPane,addBtn,dS.getOkImgView().getImage());
                     manufacturer.setName(nameTxtField.getText());
                     nameTxtField.setText("");
-                    dS.toggleManChanged();
+                    if(updateCaller!=null){
+                        updateCaller.update();
+                    }
+//                    dS.toggleManChanged();
                 }
                 else{
                     tS.getButtonAnimation(anchorPane,addBtn,dS.getNotOkImgView().getImage());
@@ -271,6 +282,7 @@ public class ScreenSingleton {
         private boolean useRootBtn = false;
         private Button rootBtn;
         private MenuAction menuAction;
+        private UpdateCaller updateCaller = null;
 
         /**
          * Sets parameters when editing an existing Category
@@ -301,7 +313,8 @@ public class ScreenSingleton {
             useRootBtn = true;
         }
 
-        public void popUp(String titleAddButton, BooleanMethodIntString dbQuery, boolean idNullOk,String idPrompt, Double x, Double y){
+        public void popUp(String titleAddButton, BooleanMethodIntString dbQuery, boolean idNullOk, String idPrompt, Double x, Double y, UpdateCaller updateCaller){
+            this.updateCaller = updateCaller;
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(titleAddButton);
@@ -309,8 +322,8 @@ public class ScreenSingleton {
                 @Override
                 public void handle(WindowEvent event) {
                     event.consume();
-                    if(menuChanged){
-                        dS.toggleMenuChanged();//Announce that change has been made (if something should be updated)
+                    if(updateCaller!=null && menuChanged){
+                        updateCaller.update();
                     }
                     stage.close();
                 }

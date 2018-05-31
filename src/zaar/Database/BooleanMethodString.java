@@ -1,4 +1,4 @@
-package zaar.helperclasses;
+package zaar.Database;
 
 /**
  * Is for passing a method to another method

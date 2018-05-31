@@ -6,11 +6,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import zaar.customer.OrderItem;
-import zaar.customer.PaymentMethods;
-import zaar.customer.User;
-import zaar.helperclasses.BooleanMethodIntString;
-import zaar.helperclasses.BooleanMethodString;
+import zaar.customer.*;
 import zaar.product.Manufacturer;
 import zaar.product.Menu.Category;
 import zaar.product.Menu.Menus;
@@ -381,14 +377,14 @@ public class Database {
         return retVal;
     }
 
-    public int insertPayment(int paymentMethodId,String amount) {
+    public int insertPayment(String cardNbr,String amount) {
         int retVal = -1;
 
         if (checkConnection()) {
             try (PreparedStatement pst = connection.prepareStatement(
-                                "INSERT INTO `shopit`.`payments` (`fk_paymentMethodId`, `payment_date`, `payment_amount`) VALUES ( ?, now(), ?);",
+                                "INSERT INTO `shopit`.`payments` (`CardNbr`, `payment_date`, `payment_amount`) VALUES ( ?, now(), ?);",
                                 Statement.RETURN_GENERATED_KEYS)) {
-                pst.setInt(1,paymentMethodId);
+                pst.setString(1,cardNbr);
                 pst.setString(2, amount);
                 pst.execute();
 
@@ -428,6 +424,47 @@ public class Database {
         return retVal;
     }
 
+    public ArrayList<Order> getOrders(int userId){
+        ArrayList<Order> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.orders where users_user_id = ?;")) {
+                pst.setInt(1, userId);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    int statusID = rs.getInt(4);
+                    OrderStatus status;
+                    if(statusID == 0){
+                        status = OrderStatus.PROCESSING;
+                    }
+                    else{
+                        status = OrderStatus.SHIPPED;
+                    }
+                    list.add(new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3), status,rs.getString(5),rs.getString(6)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<OrderItem> getOrderItems(int orderId){
+        ArrayList<OrderItem> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.order_items where order_id = ?;")) {
+                pst.setInt(1, orderId);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new OrderItem(rs.getInt(2),rs.getInt(3),rs.getDouble(5),rs.getInt(4)));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
 
     public boolean insertOrderItems(OrderItem[] items) {
         boolean retVal = true;
@@ -458,22 +495,22 @@ public class Database {
         }
         return retVal;
     }
-//    public boolean updatePaymentMethod(int id, String card){
-//        boolean retVal = false;
-//        if (checkConnection()) {
-//            try (PreparedStatement pst = connection.prepareStatement("INSERT INTO `shopit`.`user_payment_methods` (`users_user_id`, `credit_card_number`) VALUES (?, ?);")) {
-//                pst.setInt(1, id);
-//                pst.setString(2, card);
-//
-//                pst.execute();
-//                retVal = true;
-//            } catch (SQLException ex) {
-//                System.out.println("error on executing the query" + ex);
-//            }
-//
-//        }
-//        return retVal;
-//    }
+    public boolean updatePaymentMethod(int id, String card){
+        boolean retVal = false;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("UPDATE `shopit`.`user_payment_methods` SET `credit_card_number`=? WHERE `customer_payment_id`=?;")) {
+                pst.setString(1, card);
+                pst.setInt(2, id);
+
+                pst.execute();
+                retVal = true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+
+        }
+        return retVal;
+    }
 
     public boolean updateProduct(int prodId, int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file){
         boolean retVal = false;
@@ -789,7 +826,7 @@ public class Database {
                 query[2] = "delete from shopit.users where user_id = ?;";
                 break;
             case PAYMENT_METHOD:
-                query[1] = "delete from user_payment_methods where users_user_id = ?;";
+                query[1] = "delete from user_payment_methods where customer_payment_id = ?;";
                 break;
         }
 

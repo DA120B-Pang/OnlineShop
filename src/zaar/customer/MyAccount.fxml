@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zaar.customer.MyAccountController">
+   <children>
+      <HBox fx:id="hBox" alignment="CENTER_LEFT" prefHeight="100.0" style="-fx-background-color: #112731;">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/ShopITsmallV2.png" />
+               </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="500.0" minWidth="800.0" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="vBox" fillWidth="false" />
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import zaar.Database.Database;
+import zaar.UpdateCaller;
 import zaar.admin.edit.tables.EditCategoryTableView;
 import zaar.admin.edit.tables.EditManufacturerTableView;
 import zaar.admin.edit.tables.EditMenusTableView;
@@ -37,7 +38,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class EditController implements Initializable {
+public class EditController implements Initializable , UpdateCaller {
+
+
     private enum TypeEdited{
         PRODUCT,
         MANUFACTURER,
@@ -77,7 +80,6 @@ public class EditController implements Initializable {
     private ObservableList<Category> listCategory;
     private ObservableList<Menus> listMenus;
     private ObservableList<Manufacturer> listManufacturer;
-    private SimpleBooleanProperty menuOrCategoryTableChanged;
 
 
     @Override
@@ -87,22 +89,6 @@ public class EditController implements Initializable {
         setOnActionsSideMenu();
         getEditProduct();
         setTypeEdited(TypeEdited.PRODUCT);
-        menuOrCategoryTableChanged = dS.menuChangedProperty();
-
-        menuOrCategoryTableChanged.addListener((o)->{//Update filtered list
-            if(typeEdited == TypeEdited.CATEGORY){
-                eCTV.getMasterFilter().setPredicate();
-           }
-           else if(typeEdited == TypeEdited.MENU){
-                eMTV.getMasterFilter().setPredicate();
-            }
-        });
-
-        dS.manChangedProperty().addListener(l->{
-            if(eManTV!=null) {
-                eManTV.getMasterFilter().setPredicate();
-            }
-        });
 
     }
     /**
@@ -189,7 +175,7 @@ public class EditController implements Initializable {
                     if (category != null && menuName != null) {
                         ScreenSingleton.InsertIntStringToDbPopUp categoryUpdate =  sS.new InsertIntStringToDbPopUp();
                         categoryUpdate.setParametersCategory(category, menuName);
-                        categoryUpdate.popUp("Update", dB.new UpdateCategory(), false,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50);
+                        categoryUpdate.popUp("Update", dB.new UpdateCategory(), false,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
                     break;
 
@@ -199,7 +185,7 @@ public class EditController implements Initializable {
                     if (menu != null && menuName != null) {
                         ScreenSingleton.InsertIntStringToDbPopUp menuUpdate =  sS.new InsertIntStringToDbPopUp();
                         menuUpdate.setParametersMenu(menu, menuName);
-                        menuUpdate.popUp("Update", dB.new UpdateMenu(), true,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50);
+                        menuUpdate.popUp("Update", dB.new UpdateMenu(), true,"Id",callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
 
                     break;
@@ -210,7 +196,7 @@ public class EditController implements Initializable {
                     if (manufacturer != null) {
                         ScreenSingleton.InsertStringToDbPopUp manufacturerUpdate =  sS.new InsertStringToDbPopUp();
                         manufacturerUpdate.setId(manufacturer);
-                        manufacturerUpdate.popUp("Update", dB.new UpdateManufacturer(),callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50);
+                        manufacturerUpdate.popUp("Update", dB.new UpdateManufacturer(),callingStage.getX()+actionUpdateBtn.getLayoutX(),callingStage.getY()+actionUpdateBtn.getLayoutY()+50,this);
                     }
                     break;
                 }
@@ -334,4 +320,16 @@ public class EditController implements Initializable {
         editMainLbl.setText(title);
     }
 
+    @Override
+    public void update() {
+        if(typeEdited == TypeEdited.CATEGORY){
+            eCTV.getMasterFilter().setPredicate();
+        }
+        else if(typeEdited == TypeEdited.MENU){
+            eMTV.getMasterFilter().setPredicate();
+        }
+        else if (typeEdited == TypeEdited.MANUFACTURER) {
+            eManTV.getMasterFilter().setPredicate();
+        }
+    }
 }
