@@ -20,12 +20,12 @@ public class ViewOrderTableView {
     private final String TOOLTIP_FILTER_EMPTY = "Click to set filter";
 
 
-    public TableView<Order> getUserTableView(FilteredList<Order> list){
+    public TableView<Order> getOrderTableView(FilteredList<Order> list, boolean showUid){
 
 
         //************************ first name column*****************************
         TableColumn<Order,String> dateColumn  = new TableColumn<>("Date");
-        dateColumn.setMinWidth(100);
+        dateColumn.setMinWidth(150);
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         //************************ lastname column*****************************
@@ -33,15 +33,27 @@ public class ViewOrderTableView {
         statusColumn.setMinWidth(100);
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("shipmentStatus"));
 
+        //************************ uid column*****************************
+        TableColumn<Order,Integer> uidColumn  = new TableColumn<>("User id");
+        uidColumn.setMinWidth(100);
+        uidColumn.setCellValueFactory(new PropertyValueFactory<>("userId"));
 
         TableView<Order> tableView = new TableView();//Create table
         tableView.setPrefHeight(-1);
         tableView.setPrefWidth(-1);
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
-        tableView.getColumns().addAll(
-                dateColumn,
-                statusColumn);
+        if(showUid) {
+            tableView.getColumns().addAll(
+                    dateColumn,
+                    statusColumn,
+                    uidColumn);
+        }
+        else{
+            tableView.getColumns().addAll(
+                    dateColumn,
+                    statusColumn);
+        }
 
         SortedList<Order> sortedData = new SortedList<>(list);//Activates sorting ability in table
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());

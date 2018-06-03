@@ -83,6 +83,10 @@ public class MyAccountController implements Initializable{
 
     public void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View product", sS.new OpenProductScreen());
+        //Button cartBtn = tS.setButtonTopHBox(hBox, "Cart", sS.new OpenCartScreen());//Adds button to top container
+        if(dS.getLoggedInUser() != null && dS.getLoggedInUser().getRole() == 1 ) {
+            tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());//Adds button to top container
+        }
     }
 
 }

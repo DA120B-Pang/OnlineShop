@@ -5,12 +5,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import zaar.admin.edit.tables.EditCategoryTableView;
 import zaar.customer.EditAddUser;
+import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 
@@ -25,15 +27,16 @@ public class AdminToolsController implements Initializable{
     @FXML
     private VBox vBox;
 
-    ToolsSingleton tS = ToolsSingleton.getInstance();
-    ScreenSingleton sS = ScreenSingleton.getInstance();
+    private ToolsSingleton tS = ToolsSingleton.getInstance();
+    private ScreenSingleton sS = ScreenSingleton.getInstance();
+    private DataSingleton dS = DataSingleton.getInstance();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         getTopHBox(hBox);
 
-        vBox.getChildren().addAll(getProdTools(), getUserTools());
+        vBox.getChildren().addAll(getProdTools(), getUserTools(), getOrderTools());
 
     }
     /**
@@ -94,8 +97,26 @@ public class AdminToolsController implements Initializable{
         return vBox;
     }
 
+    public VBox getOrderTools() {
+
+
+        Button editOrderBtn = new Button("Edit Orders");
+        editOrderBtn.setPrefWidth(180);
+        editOrderBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                sS.new OpenEditOrderScreen().screenChange(e);//Open edit user screen
+            }
+        });
+        VBox vBox = tS.makeButtonMenuModel("Order tools", editOrderBtn);
+
+        VBox.setMargin(vBox,new Insets(20,20,20,20));
+        return vBox;
+    }
+
     public void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
+        tS.setButtonTopHBox(hBox, "My account", sS.new OpenMyAccount());//Adds button to top container
     }
 
 }

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -17,11 +18,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import zaar.product.Cart;
 import zaar.product.Menu.BuildMenu;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.sql.DataSource;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -104,6 +109,7 @@ public class ToolsSingleton {
         return button;
     }
 
+
     /**
      * Creates image on button
      * @param button        Button base Any button
@@ -112,9 +118,8 @@ public class ToolsSingleton {
      * @param fitHeight     Double Height of image on button
      */
     public void buttonSetImage(ButtonBase button, String url, Double fitWidth, Double fitHeight){
-        try {
+        try(InputStream input = this.getClass().getResourceAsStream(url);) {
             //Adding image to button
-            FileInputStream input = new FileInputStream(url);
             Image image = new Image(input);
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(fitWidth);
@@ -271,7 +276,7 @@ public class ToolsSingleton {
             MimeBodyPart mbp2 = new MimeBodyPart();
 
             // attach the file to the message
-            mbp2.attachFile("src/tmp/tmp.png");
+            mbp2.attachFile("tmp.png");
 
             Multipart mp = new MimeMultipart();
             mp.addBodyPart(mbp1);
@@ -285,7 +290,16 @@ public class ToolsSingleton {
             transport.close();
         }
         catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                Path path = Paths.get("tmp.png");
+                Files.delete(path);
+            }
+            catch (Exception ex){
 
+            }
         }
 
     }

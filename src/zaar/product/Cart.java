@@ -165,7 +165,6 @@ public class Cart {
 
             vBox.getChildren().addAll(orderLbl, gridPane, selectPaymentMethodHBox);
         }
-
     }
 
     private void updateComboBox(){
@@ -312,7 +311,7 @@ public class Cart {
                     if (dB.insertOrderItems(itemArray)) {
                         confirmOrderBtn.setVisible(false);
                         orderLbl.setText("Recipe");
-                        saveAsPng(vBox,"src/tmp/tmp");
+                        saveAsPng(vBox,"tmp");
                         listCart.removeAll(listCart);
                         dS.uppdateCartLogoQuantity();
                         makeCart(vBox, true);

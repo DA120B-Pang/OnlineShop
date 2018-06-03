@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OnlineShop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OnlineShop_jar</output-path>
+    <root id="archive" name="OnlineShop.jar">
+      <element id="module-output" name="OnlineShop" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaMail/javax.mail.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Databas/Java/DB_Connector/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaMail/activation.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

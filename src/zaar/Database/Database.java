@@ -223,7 +223,7 @@ public class Database {
                             e.printStackTrace();
                         }
                     } else {
-                        try(FileInputStream input = new FileInputStream("src/img/icons/noimage.png");) {
+                        try(InputStream input = this.getClass().getResourceAsStream("/icons/noimage.png");) {
                             Image image = new Image(input);
                             imageView = new ImageView(image);
                         } catch (Exception e) {
@@ -289,6 +289,7 @@ public class Database {
         return list;
     };
 
+
     public ArrayList<User> getAllUsers(){
         ArrayList<User> list = new ArrayList<>();
         if (checkConnection()) {
@@ -310,6 +311,61 @@ public class Database {
                 }
 
             } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    public User getUser(int id){
+        User user = null;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT * FROM shopit.users where user_id = ?;")) {
+                pst.setInt(1,id);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    user = new User(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return user;
+    }
+
+    public  ArrayList<Order> getOrders(boolean newOrders){
+        ArrayList<Order> list = new ArrayList<>();
+        String query;
+        OrderStatus status;
+        if (newOrders){
+            query = "SELECT * FROM shopit.orders where shipmentStatus = 0;";
+            status = OrderStatus.PROCESSING;
+        }
+        else{
+            query = "SELECT * FROM shopit.orders where shipmentStatus = 1;";
+            status = OrderStatus.SHIPPED;
+        }
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement(query)) {
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    list.add(new Order(rs.getInt(1),rs.getInt(2), rs.getInt(3), status, rs.getString(5), rs.getString(6)));
+                }
+
+            } catch (SQLException ex) {
+                list = null;
                 ex.printStackTrace();
             }
         }
@@ -343,6 +399,42 @@ public class Database {
         return list;
     }
 
+    public ArrayList<Product> searchProducts(String search) {
+        String searchWild = "%"+search+"%";
+        ArrayList<Product> list = new ArrayList<>();
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("SELECT distinct * FROM shopit.products where product_name like ? OR product_id = ? ;")) {
+                pst.setString(1,searchWild);
+                pst.setString(2,search);
+                ResultSet rs = pst.executeQuery();
+
+                while (rs.next()) {
+                    ImageView imageView = new ImageView();
+                    if (rs.getBinaryStream(9) != null) {
+                        try (InputStream is = rs.getBinaryStream(9);){
+                            Image image = new Image(is);
+                            imageView = new ImageView(image);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try(InputStream input = this.getClass().getResourceAsStream("/icons/noimage.png");) {
+                            Image image = new Image(input);
+                            imageView = new ImageView(image);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    list.add(new Product(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDouble(5), rs.getInt(6), rs.getString(7), rs.getString(8), imageView));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> list = new ArrayList<>();
         if (checkConnection()) {
@@ -358,6 +450,20 @@ public class Database {
             }
         }
         return list;
+    }
+
+    public boolean setOrderToShipped(int id){
+        boolean retVal = false;
+        if (checkConnection()) {
+            try (PreparedStatement pst = connection.prepareStatement("UPDATE `shopit`.`orders` SET `shipmentStatus`='1' WHERE `order_id`= ?;")) {
+                pst.setInt(1, id);
+                pst.execute();
+                retVal = true;
+            } catch (SQLException ex) {
+                System.out.println("error on executing the query" + ex);
+            }
+        }
+        return retVal;
     }
 
     public boolean insertPaymentMethod(int id, String card){
@@ -511,6 +617,7 @@ public class Database {
         }
         return retVal;
     }
+
 
     public boolean updateProduct(int prodId, int categoryId, int manufacturerId, String name, Double price, int Quantity, String desc, String other, File file){
         boolean retVal = false;
@@ -806,6 +913,8 @@ public class Database {
                 query[2] = "delete from shopit.menu where idMenu = ?";
                 break;
             case PRODUCT:
+                query[0] = "SELECT * FROM shopit.order_items where product_id = ?;";
+                warning[0] = "Product is ordered and cannot be removed";
                 query[1] = "delete from products where product_id = ?;";
                 break;
             case CATEGORY:
@@ -832,7 +941,7 @@ public class Database {
 
         if (checkConnection()) {
             for (int i = 0; i <query.length ; i++) {
-                if(deleteRecord != PRODUCT && deleteRecord != PAYMENT_METHOD || i != 0) {
+                if(deleteRecord != PAYMENT_METHOD || i != 0) {
                     try (PreparedStatement pst = connection.prepareStatement(query[i])) {
                         pst.setInt(1, id);
                         if (i == query.length - 1) {

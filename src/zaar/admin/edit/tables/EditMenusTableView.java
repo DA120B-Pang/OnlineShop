@@ -59,6 +59,11 @@ public class EditMenusTableView {
         Button menuIdFilterBtn = createColumnBtn();
         parentMenuIdColumn.setGraphic(menuIdFilterBtn);
 
+        //************************id column*****************************
+        TableColumn<Menus,Integer> menuIdColumn  = new TableColumn<>("Menu Id");
+        menuIdColumn.setMinWidth(150);
+        menuIdColumn.setCellValueFactory(new PropertyValueFactory<>("menuId"));
+
         menuIdFilterBtn.setOnAction((Event)->{//Set Event for button in top of column
             if(popUpParentMenuId ==null) {
                 popUpParentMenuId = new PopUpFilterCategoryMenu(menuIdFilterBtn,list, FilterObjectType.MENU);//Creates popup to show filter
@@ -76,7 +81,7 @@ public class EditMenusTableView {
 
         tableView.getColumns().addAll(
                 nameColumn,
-                parentMenuIdColumn);
+                parentMenuIdColumn,menuIdColumn);
 
         SortedList<Menus> sortedData = new SortedList<>(list);//Activates sorting ability in table
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());

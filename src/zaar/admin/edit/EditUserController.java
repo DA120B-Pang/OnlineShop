@@ -72,6 +72,7 @@ public class EditUserController implements Initializable, UpdateCaller {
      */
     private void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
+        tS.setButtonTopHBox(hBox, "My account", sS.new OpenMyAccount());//Adds button to top container
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
 

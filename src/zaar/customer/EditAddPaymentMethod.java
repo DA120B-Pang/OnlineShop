@@ -32,6 +32,18 @@ public class EditAddPaymentMethod {
     }
 
     public void popUp() {
+        cardNumberTextField.textProperty().addListener((oB,oV,nV)->{
+            if(!nV.isEmpty()) {
+                try {
+                    Integer.parseInt(nV);
+                } catch (Exception e) {
+                    Platform.runLater(() -> {
+                        cardNumberTextField.setText(oV);
+                    });
+                }
+            }
+        });
+
         if(!isUpdate) {
             cardNumberTextField.setPromptText("Card number");
             editAddBtn.setText("Add");

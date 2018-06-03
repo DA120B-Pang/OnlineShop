@@ -67,6 +67,12 @@ public class EditCategoryTableView {
             showHideFilter(Event,categoryIdFilterBtn, popUpParentMenuId,0,-10);//Shows filter popUp att buttons coordinate plus offset
         });
 
+
+        //************************Category id column*****************************
+        TableColumn<Category,Integer> IdColumn  = new TableColumn<>("Category Id");
+        IdColumn.setMinWidth(150);
+        IdColumn.setCellValueFactory(new PropertyValueFactory<>("categoryId"));
+
         TableView<Category> tableView = new TableView();//Create table
         tableView.setPrefHeight(-1);
         tableView.setPrefWidth(-1);
@@ -74,7 +80,8 @@ public class EditCategoryTableView {
 
         tableView.getColumns().addAll(
                 nameColumn,
-                parentMenuIdColumn);
+                parentMenuIdColumn,
+                IdColumn);
 
         SortedList<Category> sortedData = new SortedList<>(list);//Activates sorting ability in table
         sortedData.comparatorProperty().bind(tableView.comparatorProperty());

@@ -1,21 +1,16 @@
 package zaar.customer;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import zaar.Database.Database;
-import zaar.UpdateCaller;
 import zaar.helperclasses.DataSingleton;
 
 
@@ -42,7 +37,7 @@ public class ViewOrders {
 
         ObservableList<Order> observableList = FXCollections.observableList(dB.getOrders(id));
         FilteredList<Order> filteredData = new FilteredList<>(observableList, l -> true);
-        TableView<Order> tableView = viewOrderTableView.getUserTableView(filteredData);
+        TableView<Order> tableView = viewOrderTableView.getOrderTableView(filteredData,false);
 
         viewOrderBtn.setOnAction(E->{
             Order order = tableView.getSelectionModel().getSelectedItem();

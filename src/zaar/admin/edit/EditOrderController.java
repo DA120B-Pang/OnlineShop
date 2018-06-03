@@ -15,12 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import zaar.Database.Database;
 import zaar.UpdateCaller;
-import zaar.admin.edit.tables.EditPaymentMethodsTableView;
-import zaar.admin.edit.tables.EditUserTableView;
-import zaar.customer.EditAddPaymentMethod;
-import zaar.customer.EditAddUser;
-import zaar.customer.PaymentMethods;
-import zaar.customer.User;
+import zaar.customer.*;
 import zaar.helperclasses.ScreenSingleton;
 import zaar.helperclasses.ToolsSingleton;
 
@@ -30,8 +25,8 @@ import java.util.ResourceBundle;
 public class EditOrderController implements Initializable, UpdateCaller {
 
     private enum TypeEdited{
-        USER,
-        PAYMENT_METHODS;
+        NEW,
+        OLD;
     }
 
     @FXML
@@ -47,18 +42,15 @@ public class EditOrderController implements Initializable, UpdateCaller {
     @FXML
     private VBox vBoxSide;
 
-    private EditUserTableView eUTV;
-    private EditPaymentMethodsTableView ePTV;
-    private TypeEdited typeEdited = TypeEdited.USER;
+    private ViewOrderTableView vOTV;
+    private TypeEdited typeEdited = TypeEdited.NEW;
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private ScreenSingleton sS = ScreenSingleton.getInstance();
     private Database dB = Database.getInstance();
-    private Button editUserBtn = new Button("User");
-    private Button editPaymentBtn = new Button("Payment methods");
+    private Button editNewBtn = new Button("New orders");
+    private Button viewOldtBtn = new Button("Old orders");
     private Button actionUpdateBtn = new Button("Update");
-    private Button actionDeleteBtn = new Button("Delete");
-    private ObservableList<User> listUser;
-    private ObservableList<PaymentMethods> listPaymentMethod;
+    private ObservableList<Order> listOrder;
 
 
     @Override
@@ -66,8 +58,8 @@ public class EditOrderController implements Initializable, UpdateCaller {
         getTopHBox(hBox);
         buildSideMenu();
         setOnActionsSideMenu();
-        getEditUser();
-        setTypeEdited(TypeEdited.USER);
+        setTypeEdited(TypeEdited.NEW);
+        getOrders();
     }
     /**
      * Sets the buttons in topbox
@@ -75,6 +67,7 @@ public class EditOrderController implements Initializable, UpdateCaller {
      */
     private void getTopHBox(HBox hBox){
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
+        tS.setButtonTopHBox(hBox, "My account", sS.new OpenMyAccount());//Adds button to top container
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
 
@@ -83,8 +76,8 @@ public class EditOrderController implements Initializable, UpdateCaller {
      */
     private void buildSideMenu(){
 
-        VBox menuEditVBox = tS.makeButtonMenuModel("Select type to edit", editUserBtn, editPaymentBtn);
-        VBox menuActionVBox = tS.makeButtonMenuModel("Select action", actionUpdateBtn,actionDeleteBtn);
+        VBox menuEditVBox = tS.makeButtonMenuModel("Select type to edit", editNewBtn, viewOldtBtn);
+        VBox menuActionVBox = tS.makeButtonMenuModel("Select action", actionUpdateBtn);
 
         VBox.setMargin(menuEditVBox, new Insets(5,5,5,5));
         VBox.setMargin(menuActionVBox, new Insets(5,5,5,5));
@@ -93,66 +86,34 @@ public class EditOrderController implements Initializable, UpdateCaller {
     }
 
     private void setOnActionsSideMenu(){
-        editUserBtn.setOnAction((Event)->{
-            getEditUser();
-            setTypeEdited(TypeEdited.USER);
+        editNewBtn.setOnAction((Event)->{
+            setTypeEdited(TypeEdited.NEW);
+            getOrders();
         });
-        editPaymentBtn.setOnAction((Event)->{
-            getEditPaymentMethods();
-            setTypeEdited(TypeEdited.PAYMENT_METHODS);
+        viewOldtBtn.setOnAction((Event)->{
+            setTypeEdited(TypeEdited.OLD);
+            getOrders();
+
         });
 
         actionUpdateBtn.setOnAction((Event)->{
-            Node node = (Node) Event.getSource();
-            Stage callingStage = (Stage) node.getScene().getWindow();
-
             switch (typeEdited) {
 
-                case USER:
-                    User user = ((TableView<User>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                    if (user != null) {
-                        EditAddUser editAddUser = new EditAddUser("Update");
-                        editAddUser.setUserData(user, false, new UpdateCallerUser());
-                        editAddUser.popUp();
+                case NEW:
+                    Order order = ((TableView<Order>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
+                    if (order != null) {
+                        ViewOrderDetails viewOrderDetails = new ViewOrderDetails();
+                        viewOrderDetails.popUpAdmin(order,this, false);
                     }
                     break;
-                case PAYMENT_METHODS:
-
-                    PaymentMethods paymentMethods = ((TableView<PaymentMethods>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                    if (paymentMethods != null) {
-                        EditAddPaymentMethod editAddPaymentMethod = new EditAddPaymentMethod(true, paymentMethods.getPaymentId());
-                        editAddPaymentMethod.setUpdateCaller(this);
-                        editAddPaymentMethod.popUp();
+                case OLD:
+                    order = ((TableView<Order>) tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
+                    if (order != null) {
+                        ViewOrderDetails viewOrderDetails = new ViewOrderDetails();
+                        viewOrderDetails.popUpAdmin(order,this, true);
                     }
                     break;
                 }
-
-
-
-        });
-        actionDeleteBtn.setOnAction((Event)->{
-            switch (typeEdited){
-
-                case USER://Delete action for products
-                User user = ((TableView<User>)tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                if(user != null) {
-                    if(dB.deleteRecord(Database.DeleteRecord.USER, user.getCustomerID())){
-                        listUser.remove(user);
-                        eUTV.getMasterFilter().setPredicate();
-                    }
-
-                }
-                break;
-
-                case PAYMENT_METHODS://Delete action for categories
-                    PaymentMethods paymentMethods = ((TableView<PaymentMethods>)tableVBox.getChildren().get(0)).getSelectionModel().getSelectedItem();
-                    if(paymentMethods != null) {
-                        if(dB.deleteRecord(Database.DeleteRecord.PAYMENT_METHOD, paymentMethods.getUserId())){
-                            listPaymentMethod.remove(paymentMethods);
-                        }
-                    }
-                    break;
-            }
         });
     }
 
@@ -160,30 +121,22 @@ public class EditOrderController implements Initializable, UpdateCaller {
      * Creates Tableview with filters
      * @return
      */
-    private void getEditUser(){
-        listUser = FXCollections.observableList(dB.getAllUsers());
-        FilteredList<User> filteredData = new FilteredList<>(listUser, l -> true);
+    private void getOrders() {
+        if (typeEdited == TypeEdited.NEW) {
+            listOrder = FXCollections.observableList(dB.getOrders(true));
+        }
+        else{
+            listOrder = FXCollections.observableList(dB.getOrders(false));
+        }
+        FilteredList<Order> filteredData = new FilteredList<>(listOrder, l -> true);
         tS.removeVboxChildren(tableVBox);
-        eUTV = new EditUserTableView();
-        tableVBox.getChildren().add(eUTV.getUserTableView(filteredData));
-    }
-    /**
-     * Creates Tableview with filters
-     * @return
-     */
-    private void getEditPaymentMethods() {
-        listPaymentMethod = FXCollections.observableList(dB.getPayment(0,false));
-        FilteredList<PaymentMethods> filteredData = new FilteredList<>(listPaymentMethod, l -> true);
-        tS.removeVboxChildren(tableVBox);
-        ePTV = new EditPaymentMethodsTableView();
-        tableVBox.getChildren().add(ePTV.getPaymentMethodsTableView(filteredData));
+        vOTV = new ViewOrderTableView();
+        tableVBox.getChildren().add(vOTV.getOrderTableView(filteredData,true));
     }
 
     @Override
     public void update() {
-        if(typeEdited == TypeEdited.PAYMENT_METHODS){
-            getEditPaymentMethods();
-        }
+        getOrders();
     }
 
     /**
@@ -194,20 +147,16 @@ public class EditOrderController implements Initializable, UpdateCaller {
         String title = "";
         this.typeEdited = typeEdited;
         switch (typeEdited){
-            case USER:
-                title="Edit user";
+            case NEW:
+                title="New Orders";
+                actionUpdateBtn.setText("Update");
                 break;
-            case PAYMENT_METHODS:
-                title="Edit payment methods";
+            case OLD:
+                title="Shipped orders";
+                actionUpdateBtn.setText("View");
                 break;
         }
         editMainLbl.setText(title);
-    }
-    private class UpdateCallerUser implements UpdateCaller {
-        @Override
-        public void update() {
-            eUTV.getMasterFilter().setPredicate();
-        }
     }
 
 }

@@ -10,6 +10,7 @@ import zaar.customer.User;
 import zaar.product.Product;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 /**
  * Singleton class for data used by various classes in application.
@@ -60,19 +61,22 @@ public class DataSingleton {
     }
 
     private final void createImageViews(){
-        try(FileInputStream input1 = new FileInputStream("src/img/button/redcheck.png");
-            FileInputStream input2 = new FileInputStream("src/img/button/greencheck.png");
-            FileInputStream input3 = new FileInputStream("src/img/button/plus.png");
-            FileInputStream input4 = new FileInputStream("src/img/button/plusyellow.png");
-            FileInputStream input5 = new FileInputStream("src/img/button/arrowback.png");
-            FileInputStream input6 = new FileInputStream("src/img/button/arrowforward.png");
-            FileInputStream input7 = new FileInputStream("src/img/button/arrowup.png");
-            FileInputStream input8 = new FileInputStream("src/img/button/arrowdown.png");
-            FileInputStream input9 = new FileInputStream("src/img/button/roundyellow.png");
-            FileInputStream input10 = new FileInputStream("src/img/button/minusblack.png");
-            FileInputStream input11 = new FileInputStream("src/img/button/plusblack.png");
-            FileInputStream input12 = new FileInputStream("src/img/button/xremove.png");
-            ) {
+
+        try(InputStream input1 = this.getClass().getResourceAsStream("/button/redcheck.png");
+            InputStream input2 = this.getClass().getResourceAsStream("/button/greencheck.png");
+            InputStream input3 = this.getClass().getResourceAsStream("/button/plus.png");
+            InputStream input4 = this.getClass().getResourceAsStream("/button/plusyellow.png");
+            InputStream input5 = this.getClass().getResourceAsStream("/button/arrowback.png");
+            InputStream input6 = this.getClass().getResourceAsStream("/button/arrowforward.png");
+            InputStream input7 = this.getClass().getResourceAsStream("/button/arrowup.png");
+            InputStream input8 = this.getClass().getResourceAsStream("/button/arrowdown.png");
+            InputStream input9 = this.getClass().getResourceAsStream("/button/roundyellow.png");
+            InputStream input10 = this.getClass().getResourceAsStream("/button/minusblack.png");
+            InputStream input11 = this.getClass().getResourceAsStream("/button/plusblack.png");
+            InputStream input12 = this.getClass().getResourceAsStream("/button/xremove.png");
+        )
+
+        {
             //input = new FileInputStream("src/img/button/redcheck.png");
             Image image = new Image(input1);
             notOkImgView = new ImageView(image);
@@ -103,6 +107,7 @@ public class DataSingleton {
             removeX = new Image(input12);
         }
         catch (Exception e){
+            e.printStackTrace();
             ButtonType OK = new ButtonType("Ok", ButtonBar.ButtonData.OK_DONE);
             Alert alert = new Alert(Alert.AlertType.WARNING,"Files are missing.. Shutting down.",OK);
             alert.showAndWait();

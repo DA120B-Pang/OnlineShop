@@ -52,38 +52,45 @@ public class ScreenSingleton {
 
     public class OpenProductScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../product/Product.fxml");
+            activateScreen(e,"/zaar/product/Product.fxml");
         }
     }
     public class OpenAddProductScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../admin/add/AddProd.fxml");
+            activateScreen(e,"/zaar/admin/add/AddProd.fxml");
         }
     }
     public class OpenEditScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../admin/edit/Edit.fxml");
+            activateScreen(e,"/zaar/admin/edit/Edit.fxml");
         }
     }
     public class OpenEditUserScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../admin/edit/EditUser.fxml");
+            activateScreen(e,"/zaar/admin/edit/EditUser.fxml");
         }
     }
+
+    public class OpenEditOrderScreen implements ScreenChange {
+        public void screenChange(ActionEvent e) {
+            activateScreen(e,"/zaar/admin/edit/EditOrder.fxml");
+        }
+    }
+
     public class OpenManageDatabase implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../admin/AdminTools.fxml");
+            activateScreen(e,"/zaar/admin/AdminTools.fxml");
         }
     }
     public class OpenLoginScreen implements ScreenChange {
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../Login.fxml");
+            activateScreen(e,"/zaar/Login.fxml");
         }
     }
     public class OpenMyAccount implements ScreenChange{
         @Override
         public void screenChange(ActionEvent e) {
-            activateScreen(e,"../customer/MyAccount.fxml");
+            activateScreen(e,"/zaar/customer/MyAccount.fxml");
         }
     }
 

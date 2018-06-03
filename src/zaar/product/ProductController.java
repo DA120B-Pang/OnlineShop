@@ -52,14 +52,25 @@ public class ProductController implements Initializable {
     private int viewIndex = 0;
     private ArrayList<Product> prodList;
     private ProdFilter sort;
+    private HashMap<Integer, Manufacturer> manufacturersHash = new HashMap<>();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tS.buttonSetImage(searchBtn,"src/img/icons/search.png",15d,15d); //Set image to buttons
-        tS.buttonSetImage(menuBtn, "src/img/icons/menu.png", 15d,15d);
+        tS.buttonSetImage(searchBtn,"/icons/search.png",15d,15d); //Set image to buttons
+        tS.buttonSetImage(menuBtn, "/icons/menu.png", 15d,15d);
 
         getMenu(menuBtn, prodVbox);//Get menu to menubutton
+
+        searchBtn.setOnAction(E->{
+            if(!searchField.getText().isEmpty()){
+                prodList = dB.searchProducts(searchField.getText());
+                getManufacturerHash();
+                sort = ProdFilter.NONE;
+                viewIndex = 0;
+                populateProductVbox(prodVbox, prodList);
+            }
+        });
 
         menuBtn.setOnMouseClicked((Event)->{
             if(menuBtn.getItems().size()==0){
@@ -80,7 +91,7 @@ public class ProductController implements Initializable {
      * @param button MenuButton
      * @param vBox  VBox
      */
-    public void getMenu(MenuButton button, VBox vBox){
+    private void getMenu(MenuButton button, VBox vBox){
         tS.getBuildMenu().getMenu(button,new ProdMenuAction(), new ProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);//Call build menu
     }
 
@@ -89,7 +100,7 @@ public class ProductController implements Initializable {
      * @param vBox
      * @param products
      */
-    public void populateProductVbox(VBox vBox, ArrayList<Product> products){
+    private void populateProductVbox(VBox vBox, ArrayList<Product> products){
         ToolsSingleton.getInstance().removeVboxChildren(vBox);
         List<Product> subList = new ArrayList<>();
 
@@ -241,7 +252,7 @@ public class ProductController implements Initializable {
         AnchorPane.setBottomAnchor(imageView,10.0);
 
 
-        Label productName = new Label(product.getName());//Adding product name
+        Label productName = new Label(manufacturersHash.get(product.getManufacturerId()).getName()+" "+product.getName()+" "+"art: "+product.getProductId());//Adding product name
         productName.setFont(Font.font(null, FontWeight.BOLD,14));//Adding product name
         productName.setLayoutX(126);//Adding product name
         productName.setLayoutY(14);//Adding product name
@@ -269,7 +280,7 @@ public class ProductController implements Initializable {
         inStockLbl.setLayoutY(77);
 
         Button addToCartBtn = new Button("Add");//Adding add to cart button
-        tS.buttonSetImage(addToCartBtn,"src/img/icons/cart.png",20d,20d);//Set image to button
+        tS.buttonSetImage(addToCartBtn,"/icons/cart.png",20d,20d);//Set image to button
         addToCartBtn.setLayoutX(600);
         addToCartBtn.setLayoutY(73);
 
@@ -420,7 +431,7 @@ public class ProductController implements Initializable {
         inStockLbl.setLayoutY(87);
 
         Button addToCartBtn = new Button("Add");//Adding add to cart button
-        tS.buttonSetImage(addToCartBtn,"src/img/icons/cart.png",20d,20d);//Set image to button
+        tS.buttonSetImage(addToCartBtn,"/icons/cart.png",20d,20d);//Set image to button
         addToCartBtn.setLayoutX(600);
         addToCartBtn.setLayoutY(113);
 
@@ -496,7 +507,7 @@ public class ProductController implements Initializable {
         ScreenSingleton sS = ScreenSingleton.getInstance();
         if(dS.getLoggedInUser()==null) {
             Button loginBtn = tS.setButtonTopHBox(hBox, "Login", sS.new OpenLoginScreen());//Adds button to top container
-            tS.buttonSetImage(loginBtn,"src/img/icons/login.png",15d,15d);//Set image to button
+            tS.buttonSetImage(loginBtn,"/icons/login.png",15d,15d);//Set image to button
         }else{
             Button logoutBtn = tS.setButtonTopHBox(hBox, "Logout", null);//Adds button to top container
 //            Button logoutBtn = new Button("Logout");
@@ -519,7 +530,7 @@ public class ProductController implements Initializable {
 
         Button cartBtn  = new Button("Cart");
         cartBtn.setLayoutY(2);
-        tS.buttonSetImage(cartBtn,"src/img/icons/cart.png",15d,15d);//Set image to button
+        tS.buttonSetImage(cartBtn,"/icons/cart.png",15d,15d);//Set image to button
         Group group = new Group();
         HBox.setMargin(group, new Insets(0,5,0,5));
         group.getChildren().addAll(cartBtn,dS.getCartLabel());
@@ -528,6 +539,15 @@ public class ProductController implements Initializable {
         });
         hBox.getChildren().add(group);
 
+    }
+
+    private void getManufacturerHash(){
+        if(manufacturersHash.isEmpty()) {
+            ArrayList<Manufacturer> manufacturersList = dB.getManufacturers();
+            for (Manufacturer m : manufacturersList) {
+                manufacturersHash.put(m.getId(), m);
+            }
+        }
     }
 
     /**
@@ -541,6 +561,7 @@ public class ProductController implements Initializable {
             prodList = db.getProduct(category.getCategoryId(), Database.GetProd.PROD_CATEGORY);
             sort = ProdFilter.NONE;
             viewIndex = 0;
+            getManufacturerHash();
             populateProductVbox(prodVbox, prodList);
         }
     }
