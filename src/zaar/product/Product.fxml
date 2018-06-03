@@ -42,7 +42,7 @@
          <content>
             <VBox fx:id="prodVbox" maxWidth="1.7976931348623157E308" prefHeight="410.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="452.0" fitWidth="799.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="offerImageView" fitWidth="799.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../img/erbjudande.png" />
                      </image>

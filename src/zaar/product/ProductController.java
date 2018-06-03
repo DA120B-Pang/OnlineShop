@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 import zaar.Database.Database;
 import zaar.helperclasses.DataSingleton;
 import zaar.helperclasses.ScreenSingleton;
@@ -45,6 +46,7 @@ public class ProductController implements Initializable {
     @FXML private VBox prodVbox;
     @FXML private HBox hBox;
     @FXML private ScrollPane scrollPane;
+    @FXML private ImageView offerImageView;
     private ToolsSingleton tS = ToolsSingleton.getInstance();
     private DataSingleton dS = DataSingleton.getInstance();
     private Database dB = Database.getInstance();
@@ -57,6 +59,11 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Platform.runLater(()->{
+            offerImageView.fitWidthProperty().bind(((Stage)offerImageView.getScene().getWindow()).widthProperty());
+        });
+
+
         tS.buttonSetImage(searchBtn,"/icons/search.png",15d,15d); //Set image to buttons
         tS.buttonSetImage(menuBtn, "/icons/menu.png", 15d,15d);
 
