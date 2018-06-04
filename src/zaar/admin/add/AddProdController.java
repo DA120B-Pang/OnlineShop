@@ -283,6 +283,7 @@ public class AddProdController implements Initializable {
         ToolsSingleton tS = ToolsSingleton.getInstance();
         ScreenSingleton sS = ScreenSingleton.getInstance();
         tS.setButtonTopHBox(hBox, "View products", sS.new OpenProductScreen());
+        tS.setButtonTopHBox(hBox, "My account", sS.new OpenMyAccount());//Adds button to top container
         tS.setButtonTopHBox(hBox, "Admin tools", sS.new OpenManageDatabase());
     }
     private class UpdateCategories implements UpdateCaller{

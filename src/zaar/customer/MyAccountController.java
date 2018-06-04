@@ -23,9 +23,9 @@ public class MyAccountController implements Initializable{
     @FXML
     private VBox vBox;
 
-    ToolsSingleton tS = ToolsSingleton.getInstance();
-    ScreenSingleton sS = ScreenSingleton.getInstance();
-    DataSingleton dS = DataSingleton.getInstance();
+    private ToolsSingleton tS = ToolsSingleton.getInstance();
+    private ScreenSingleton sS = ScreenSingleton.getInstance();
+    private DataSingleton dS = DataSingleton.getInstance();
 
 
     @Override
