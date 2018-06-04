@@ -412,7 +412,7 @@ public class ProductController implements Initializable, MenuItemAction, MenuAct
         productDesc.wrapTextProperty().setValue(true);//Adding product description
 
         Label titleDetailLbl = new Label("Details");
-        Label productDetail = new Label(product.getDescription());//Adding product description
+        Label productDetail = new Label(product.getTechnicalDetail());//Adding product description
         productDetail.setFont(Font.font(null,12));//Adding product descriptio
         productDetail.setPrefWidth(400);//Adding product description
         productDetail.setPrefHeight(-1);//Adding product description
