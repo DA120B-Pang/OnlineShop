@@ -29,7 +29,7 @@ import java.util.*;
 
 import static javafx.scene.paint.Color.BLACK;
 
-public class ProductController implements Initializable {
+public class ProductController implements Initializable, MenuItemAction, MenuAction {
 
     private enum ProdFilter{
         PRICE_UP,
@@ -99,7 +99,7 @@ public class ProductController implements Initializable {
      * @param vBox  VBox
      */
     private void getMenu(MenuButton button, VBox vBox){
-        tS.getBuildMenu().getMenu(button,new ProdMenuAction(), new ProdMenuItemAction(),null,null, BuildMenu.MenuBuildMode.STANDARD,null);//Call build menu
+        tS.getBuildMenu().getMenu(button,this, this,null,null, BuildMenu.MenuBuildMode.STANDARD,null);//Call build menu
     }
 
     /**
@@ -558,30 +558,22 @@ public class ProductController implements Initializable {
     }
 
     /**
-     * Action for menuitem in product view
-     */
-    public class ProdMenuItemAction implements MenuItemAction {
-        Database db = Database.getInstance();
-
-        @Override
-        public void action(Category category) {
-            prodList = db.getProduct(category.getCategoryId(), Database.GetProd.PROD_CATEGORY);
-            sort = ProdFilter.NONE;
-            viewIndex = 0;
-            getManufacturerHash();
-            populateProductVbox(prodVbox, prodList);
-        }
-    }
-
-    /**
      * Action for menu in product view
      */
-    public class ProdMenuAction implements MenuAction {
-
-        @Override
-        public void action(Menus menu) {
-            //Nothing;
-        }
+    @Override
+    public void action(Menus menu) {
+        //Nothing;
+    }
+    /**
+     * Action for menuitem in product view
+     */
+    @Override
+    public void action(Category cat) {
+        prodList = dB.getProduct(cat.getCategoryId(), Database.GetProd.PROD_CATEGORY);
+        sort = ProdFilter.NONE;
+        viewIndex = 0;
+        getManufacturerHash();
+        populateProductVbox(prodVbox, prodList);
     }
 
 }

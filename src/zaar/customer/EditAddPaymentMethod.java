@@ -14,14 +14,14 @@ import zaar.UpdateCaller;
 
 
 public class EditAddPaymentMethod {
-    Database dB  =Database.getInstance();
+    private Database dB  =Database.getInstance();
     private Label cardNumberLbl = new Label("CardNumber: ");
     private TextField cardNumberTextField = new TextField();
     private Button editAddBtn = new Button("Edit");
     private boolean isUpdate = false;
     private int id;
-    Stage stage;
-    UpdateCaller updateCaller;
+    private Stage stage;
+    private UpdateCaller updateCaller;
 
     public EditAddPaymentMethod(boolean isUpdate, int id){
         this.isUpdate  = isUpdate;
